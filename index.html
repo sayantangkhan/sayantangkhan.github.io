@@ -1,4 +1,41 @@
-<html>
-<h1>Work in progress</h1>
-<p>Main page</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Homepage | Sayantan Khan</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="navigation"></div>
+
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+			<h3 class=text-center>Homepage</h3>
+			<p class=text-justify>
+                This is the personal website of Sayantan Khan, i.e. me. I am an undergraduate at the Indian Institute of Sciece,
+                majoring in Mathematics. This website contains details of the courses I've taken, my past projects, both in pure
+                mathematics, as well as other areas.
+            </p>
+            <p class=text-justift>
+                You can have a look at my past projects, presentations, and courses by clicking on the relevant link on the
+                navigation bar. The navigation bar also has links to my CV, my Github profile, and a page describing my
+                other activities, which include tinkering around with open source software, and Linux in particular,
+                and long distance cycling.
+            </p>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.navigation').load('navbar.html');
+        });
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
 </html>
