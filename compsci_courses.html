@@ -1,88 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Computer Science Courses | Sayantan Khan</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-      ga('create', 'UA-89281350-1', 'auto');
-      ga('send', 'pageview');
-
+        ga('create', 'UA-89281350-1', 'auto');
+        ga('send', 'pageview');
     </script>
-  </head>
-  <body>
+</head>
+
+<body>
 
     <div class="navigation"></div>
 
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <h3 class=text-center>Introductory Data Structures and Algorithms (Semester 1)</h3>
-            <p class=text-justify>
-                After a basic introduction to the C programming language, the course moved on to
-                elementary data structures like, linked lists, trees, graphs, etc. It then focused
-                on various algorithms using these data structures like Dijkstra's algorithm for minimal
-                path, Prim's and Kruskal's algorithms for minimal spanning tree.
-            </p>
-        </div>
-        <div class="col-md-4"></div>
-    </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title text-center">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+        Semester 5</a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <h4>Automata Theory and Computability</h4>
+                            This course focused on automatons, i.e. finite automatons, pushdown automatons, and Turing machines, and how they were useful
+                            in solving decision problems in formal logic. The capstone of the course was a proof of Gödel's
+                            First Incompleteness Theorem using computable reductions to the negation of the Halting Problem
+                            which is not recursively enumerable.
 
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <h3 class=text-center>Cryptography (Semester 4)</h3>
-            <p class=text-justify>
-                This course focused on proofs of security of various protocols, most of the proofs being
-                reductions to known hard problems. We covered encryption protocols, message authentication
-                protocols, and signing protocols, both in the symmetric and asymmetric key setting.
-            </p>
-        </div>
-        <div class="col-md-4"></div>
-    </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title text-center">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+        Semester 4</a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <h4>Cryptography</h4>
+                            This course focused on proofs of security of various protocols, most of the proofs being reductions to known hard problems.
+                            We covered encryption protocols, message authentication protocols, and signing protocols, both
+                            in the symmetric and asymmetric key setting.
 
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <h3 class=text-center>Randomized Algorithms (Semester 4) (Not credited)</h3>
-            <p class=text-justify>
-                This course focused on looking at various algorithms that used randomness
-                in the course of their execution, and how that affected their running complexity.
-                We also developed many approximation methods in the course of this analysis, like
-                Lovász local lemma, Markov chains, etc.
-            </p>
-        </div>
-        <div class="col-md-4"></div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <h3 class=text-center>Automata Theory and Computability (Semester 5)</h3>
-            <p class=text-justify>
-                This course focused on automatons, i.e. finite automatons, pushdown automatons,
-                and Turing machines, and how they were useful in solving decision problems in formal
-                logic. The capstone of the course was a proof of Gödel's First Incompleteness Theorem
-                using computable reductions to the negation of the Halting Problem which is not recursively
-                enumerable.
-            </p>
+                            <h4>Randomized Algorithms</h4>
+                            This course focused on looking at various algorithms that used randomness in the course of their execution, and how that
+                            affected their running complexity. We also developed many approximation methods in the course
+                            of this analysis, like Lovász local lemma, Markov chains, etc.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title text-center">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+        Semester 1</a>
+                        </h4>
+                    </div>
+                    <div id="collapse3" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <h4>Introductory Data Structures and Algorithms</h4>
+                            After a basic introduction to the C programming language, the course moved on to elementary data structures like, linked
+                            lists, trees, graphs, etc. It then focused on various algorithms using these data structures
+                            like Dijkstra's algorithm for minimal path, Prim's and Kruskal's algorithms for minimal spanning
+                            tree.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-3"></div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.navigation').load('navbar.html');
         });
     </script>
     <script src="js/bootstrap.min.js"></script>
-  </body>
+</body>
+
 </html>
