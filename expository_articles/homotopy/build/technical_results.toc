@@ -1,0 +1,12 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Homotopy Excision Theorem}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Statement and proof of the excision theorem}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Corollaries of the excision theorem}{5}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}Freudenthal suspension theorem}{5}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}Stable homotopy}{6}{subsubsection.1.2.2}
+\contentsline {section}{\numberline {2}Comparison theorem for cohomology theories}{6}{section.2}
+\contentsline {section}{\numberline {3}Brown's representability theorem}{7}{section.3}
+\contentsline {subsection}{\numberline {3.1}Spectra and cohomology theories}{8}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Proof of Brown's representability theorem}{9}{subsection.3.2}
+\contentsline {section}{\numberline {A}Definitions and notation}{12}{appendix.A}
+\contentsline {section}{\numberline {B}Some useful lemmas and theorems}{12}{appendix.B}
