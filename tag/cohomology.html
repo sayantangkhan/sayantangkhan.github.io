@@ -75,174 +75,177 @@ by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
         </div>
         
         <div><h2>Motivation for cohomology</h2>
-<p>In most introductory algebraic topology courses, cohomology is rather poorly
-motivated. It's most commonly seen form in an algebraic topology course
-is singular cohomology, which
-arises as a the homology of the dual of the singular chain complex,
-but that doesn't really tell you why it's of any more interest than singular
-homology, aside from the fact that you get an additional cup product which
-you did not have before. However, this approach obscures the geometric meaning
-of cohomology. </p>
-<p>A much more intuitive introduction to cohomology turns out
-to be De Rham cohomology, often encountered in introductory differential
-geometry courses. Loosely speaking, De Rham cohomology measures
-in how many different ways can a closed form fail to be exact.</p>
-<p>Another cohomology theory we'll look at is sheaf cohomology. Loosely,
-the cohomology of a sheaf measures how a certain functor <span class="math">\(\Gamma\)</span>, which
-we'll define later fails to be an exact functor. </p>
-<p>In the case of De Rham cohomology,
-we'll interpret the form being closed as a local property, and it being exact a global property,
-and the the case of sheaf cohomology, the exactness of the following sequence (the 
-exact details of which we'll see in a later section) as a local property.
-</p>
-<div class="math">$$0 \rightarrow \mathcal{S}_1 \rightarrow \mathcal{S}_2\rightarrow \mathcal{S}_3 \rightarrow 0$$</div>
-<p>
-The exactness of the sequence we get by applying <span class="math">\(\Gamma\)</span> to the above sequence turns
-out to be a global property.</p>
-<p>In both the cases, the cohomology measures how the local property fails to translate to the
-global one.</p>
+<p>In most introductory algebraic topology courses, cohomology is rather poorly motivated. It's most
+commonly seen form in an algebraic topology course is singular cohomology, which arises as a the
+homology of the dual of the singular chain complex, but that doesn't really tell you why it's of any
+more interest than singular homology, aside from the fact that you get an additional cup product
+which you did not have before. However, this approach obscures the geometric meaning of cohomology.</p>
+<p>A much more intuitive introduction to cohomology turns out to be De Rham cohomology, often
+encountered in introductory differential geometry courses. Loosely speaking, De Rham cohomology
+measures in how many different ways can a closed form fail to be exact.</p>
+<p>Another cohomology theory we'll look at is sheaf cohomology. Loosely, the cohomology of a sheaf
+measures how a certain functor <span class="math">\(\Gamma\)</span>, which we'll define later fails to be an exact functor.</p>
+<p>In the case of De Rham cohomology, we'll interpret the form being closed as a local property, and it
+being exact a global property, and the the case of sheaf cohomology, the exactness of the following
+sequence (the exact details of which we'll see in a later section) as a local property.  </p>
+<div class="math">$$0
+\rightarrow \mathcal{S}_1 \rightarrow \mathcal{S}_2\rightarrow \mathcal{S}_3 \rightarrow 0$$</div>
+<p> The
+exactness of the sequence we get by applying <span class="math">\(\Gamma\)</span> to the above sequence turns out to be a global
+property.</p>
+<p>In both the cases, the cohomology measures how the local property fails to translate to the global
+one.</p>
 <h2>De Rham Cohomology</h2>
-<p>The De Rham cohomology of a manifold <span class="math">\(M\)</span> (of dimension <span class="math">\(m\)</span>) is the homology of the following of the following
-cochain sequence.
-</p>
-<div class="math">$$0 \xrightarrow{d} \Lambda^0(M) \xrightarrow{d} \Lambda^1(M) \xrightarrow{d} \cdots \xrightarrow{d} \Lambda^m(M) \xrightarrow{d} 0$$</div>
-<p>
-Here, <span class="math">\(\Lambda^k(M)\)</span> is the space of <span class="math">\(k\)</span>-forms on <span class="math">\(M\)</span>,  and <span class="math">\(d\)</span> is the exterior derivative operator.
-For a <span class="math">\(k\)</span>-form <span class="math">\(\omega\)</span> to be closed, <span class="math">\(d\omega\)</span> must be <span class="math">\(0\)</span>. This is a local property, in the sense that
-<span class="math">\(d\omega\)</span> evaluated at any point <span class="math">\(p \in M\)</span> depends only on the value of <span class="math">\(\omega\)</span> on any small neighbourhood of <span class="math">\(p\)</span>.
-In fact, one can say a little more, and claim that <span class="math">\(d\omega(p)\)</span> depends only on the <em>germ</em> of <span class="math">\(\omega\)</span> at <span class="math">\(p\)</span>.
-If we pick a Euclidean neighbourhood <span class="math">\(U\)</span> of <span class="math">\(p\)</span> which is homeomorphic to the open unit ball, the Poincaré lemma
-tells us that there is some <span class="math">\((k+1)\)</span>-form <span class="math">\(\eta\)</span> defined on <span class="math">\(U\)</span> such that <span class="math">\(\omega = d\eta\)</span>. In
-other words, the closed form <span class="math">\(\omega\)</span> is locally exact.</p>
+<p>The De Rham cohomology of a manifold <span class="math">\(M\)</span> (of dimension <span class="math">\(m\)</span>) is the homology of the following of the
+following cochain sequence.  </p>
+<div class="math">$$0 \xrightarrow{d} \Lambda^0(M) \xrightarrow{d} \Lambda^1(M)
+\xrightarrow{d} \cdots \xrightarrow{d} \Lambda^m(M) \xrightarrow{d} 0$$</div>
+<p> Here, <span class="math">\(\Lambda^k(M)\)</span> is the
+space of <span class="math">\(k\)</span>-forms on <span class="math">\(M\)</span>, and <span class="math">\(d\)</span> is the exterior derivative operator.  For a <span class="math">\(k\)</span>-form <span class="math">\(\omega\)</span> to
+be closed, <span class="math">\(d\omega\)</span> must be <span class="math">\(0\)</span>. This is a local property, in the sense that <span class="math">\(d\omega\)</span> evaluated at
+any point <span class="math">\(p \in M\)</span> depends only on the value of <span class="math">\(\omega\)</span> on any small neighbourhood of <span class="math">\(p\)</span>.  In
+fact, one can say a little more, and claim that <span class="math">\(d\omega(p)\)</span> depends only on the <em>germ</em> of <span class="math">\(\omega\)</span>
+at <span class="math">\(p\)</span>.  If we pick a Euclidean neighbourhood <span class="math">\(U\)</span> of <span class="math">\(p\)</span> which is homeomorphic to the open unit
+ball, the Poincaré lemma tells us that there is some <span class="math">\((k+1)\)</span>-form <span class="math">\(\eta\)</span> defined on <span class="math">\(U\)</span> such that
+<span class="math">\(\omega = d\eta\)</span>. In other words, the closed form <span class="math">\(\omega\)</span> is locally exact.</p>
 <p>The De Rham cohomology class of <span class="math">\(\omega\)</span> measures how badly does the property of local exactness
-fail to translate to global exactness. We can write <span class="math">\(\omega\)</span> as <span class="math">\(\gamma + d\zeta\)</span>, where <span class="math">\(\gamma\)</span>
-is the canonical representative of the cohomology class of <span class="math">\(\omega\)</span> (more on this in later posts),
-and <span class="math">\(\zeta\)</span> is a <span class="math">\((k-1)\)</span>-form. If we stretch the analogy a bit, we can say <span class="math">\(\omega\)</span> misses being globally
-exact by <span class="math">\(\gamma\)</span> amount. This is the first example of how cohomology measures how badly a local
-property fails to be global.</p>
+fail to translate to global exactness. We can write <span class="math">\(\omega\)</span> as <span class="math">\(\gamma + d\zeta\)</span>, where <span class="math">\(\gamma\)</span> is
+the canonical representative of the cohomology class of <span class="math">\(\omega\)</span> (more on this in later posts), and
+<span class="math">\(\zeta\)</span> is a <span class="math">\((k-1)\)</span>-form. If we stretch the analogy a bit, we can say <span class="math">\(\omega\)</span> misses being
+globally exact by <span class="math">\(\gamma\)</span> amount. This is the first example of how cohomology measures how badly a
+local property fails to be global.</p>
 <h2>Sheaf Cohomology</h2>
-<p>Before we see what sort of local to global failure sheaf cohomology measures, we'll quickly define sheaves
-and sheaf cohomology, and look at one example.</p>
+<p>Before we see what sort of local to global failure sheaf cohomology measures, we'll quickly define
+sheaves and sheaf cohomology, and look at one example.</p>
 <h3>Quick introduction to sheaves</h3>
-<p>Given a manifold <span class="math">\(M\)</span> (whatever we discuss will hold in for Hausdorff spaces, and with a little 
-more work, can be made to work even for a larger class of spaces like spectra of rings), a sheaf <span class="math">\(\mathcal{S}\)</span>
-of <span class="math">\(K\)</span>-modules (<span class="math">\(K\)</span> is always assumed to be a commutative ring with identity)
-over <span class="math">\(M\)</span> is a topological space <span class="math">\(\mathcal{S}\)</span> with a surjective map <span class="math">\(\pi: \mathcal{S} \to M\)</span>, such that
-the following properties are satisfied.</p>
+<p>Given a manifold <span class="math">\(M\)</span> (whatever we discuss will hold in for Hausdorff spaces, and with a little more
+work, can be made to work even for a larger class of spaces like spectra of rings), a sheaf
+<span class="math">\(\mathcal{S}\)</span> of <span class="math">\(K\)</span>-modules (<span class="math">\(K\)</span> is always assumed to be a commutative ring with identity) over <span class="math">\(M\)</span>
+is a topological space <span class="math">\(\mathcal{S}\)</span> with a surjective map <span class="math">\(\pi: \mathcal{S} \to M\)</span>, such that the
+following properties are satisfied.</p>
 <ol>
 <li><span class="math">\(\pi\)</span> is a local homeomorphism, i.e. for any point <span class="math">\(s \in \mathcal{S}\)</span>, there's a neighbourhood
 of <span class="math">\(s\)</span> such that <span class="math">\(\pi\)</span> restricted to that neighbourhood is a homeomorphism.</li>
-<li><span class="math">\(\pi^{-1}(x)\)</span>, which we'll denote by <span class="math">\(\mathcal{O}_x\)</span>, is a <span class="math">\(K\)</span>-module, for all <span class="math">\(x \in M\)</span>. <span class="math">\(\mathcal{O}_x\)</span>
-is called the stalk of <span class="math">\(\mathcal{S}\)</span> at <span class="math">\(x\)</span>.</li>
+<li><span class="math">\(\pi^{-1}(x)\)</span>, which we'll denote by <span class="math">\(\mathcal{O}_x\)</span>, is a <span class="math">\(K\)</span>-module, for all <span class="math">\(x \in
+M\)</span>. <span class="math">\(\mathcal{O}_x\)</span> is called the stalk of <span class="math">\(\mathcal{S}\)</span> at <span class="math">\(x\)</span>.</li>
 <li>The module operations on the stalk are continuous, i.e. if we look at the stalk with the subspace
 topology, the module operations of addition and scalar multiplication are continuous.</li>
 </ol>
 <p>Sheaves in some sense a modules parametrized by the space <span class="math">\(M\)</span>, like vector bundles, but vector
-bundles do not satisfy the first condition, unlike sheaves.
-The simplest example of a sheaf is the <em>constant sheaf</em> which is just <span class="math">\(M \times V\)</span>, where <span class="math">\(V\)</span> is a
-<span class="math">\(K\)</span>-module with the discrete topology.</p>
-<p>Another important example is the sheaf of germs of <span class="math">\(C^{\infty}\)</span> functions on a manifold
-<span class="math">\(M\)</span>. For each <span class="math">\(x \in M\)</span>, a point in <span class="math">\(\mathcal{O}_x\)</span> is an equivalence class of functions, the equivalence
-relation being that <span class="math">\(f \sim g\)</span> if <span class="math">\(f\)</span> and <span class="math">\(g\)</span> agree on some neighbourhood of <span class="math">\(x\)</span>. This sheaf deserves a post
-of its own, and I shall write about it in the future.</p>
-<p>The last example, which will be key to our goal, is the <em>skyscraper sheaf</em>. We'll describe it by first
-describing the stalk at each point, and then putting an appropriate topology on it. Fix a point <span class="math">\(x_0 \in M\)</span>.
-The stalk <span class="math">\(\mathcal{O}_{x_0}\)</span> at <span class="math">\(x_0\)</span> will be <span class="math">\(K\)</span> as a module over itself. The stalk at every other point
-is the zero module. As a set, our sheaf is the following.
-</p>
-<div class="math">$$\mathcal{S} = K \sqcup \bigsqcup_{x \neq x_0} \{0\}$$</div>
-<p>
-The question is what topology do we put on this space. The 
+bundles do not satisfy the first condition, unlike sheaves.  The simplest example of a sheaf is the
+<em>constant sheaf</em> which is just <span class="math">\(M \times V\)</span>, where <span class="math">\(V\)</span> is a <span class="math">\(K\)</span>-module with the discrete topology.</p>
+<p>Another important example is the sheaf of germs of <span class="math">\(C^{\infty}\)</span> functions on a manifold <span class="math">\(M\)</span>. For
+each <span class="math">\(x \in M\)</span>, a point in <span class="math">\(\mathcal{O}_x\)</span> is an equivalence class of functions, the equivalence
+relation being that <span class="math">\(f \sim g\)</span> if <span class="math">\(f\)</span> and <span class="math">\(g\)</span> agree on some neighbourhood of <span class="math">\(x\)</span>. This sheaf
+deserves a post of its own, and I shall write about it in the future.</p>
+<p>The last example, which will be key to our goal, is the <em>skyscraper sheaf</em>. We'll describe it by
+first describing the stalk at each point, and then putting an appropriate topology on it. Fix a
+point <span class="math">\(x_0 \in M\)</span>.  The stalk <span class="math">\(\mathcal{O}_{x_0}\)</span> at <span class="math">\(x_0\)</span> will be <span class="math">\(K\)</span> as a module over itself. The
+stalk at every other point is the zero module. As a set, our sheaf is the following.  </p>
+<div class="math">$$\mathcal{S}
+= K \sqcup \bigsqcup_{x \neq x_0} \{0\}$$</div>
+<p> The question is what topology do we put on this space. The
 <a href="https://en.wikipedia.org/wiki/Non-Hausdorff_manifold#Line_with_two_origins">line with two origins</a>
 provides a hint. What we do is take <span class="math">\(|K|\)</span> copies of the space <span class="math">\(M\)</span>, and if <span class="math">\(x \neq x_0\)</span>, we identify
-all of those <span class="math">\(x\)</span>'s, otherwise we do nothing. It's not too hard to check that this defines
-a sheaf over <span class="math">\(M\)</span> (the local homeomorphism property is the hardest to check, and relies on the fact
-that points are closed in Hausdorff spaces). In fact, if <span class="math">\(M = \mathbb{R}\)</span> and <span class="math">\(K = \mathbb{Z}/2\)</span>, then
-then skyscraper sheaf at <span class="math">\(0\)</span> <em>is</em> the line with two origins. The reason this is called the skyscraper
-sheaf is because only the stalk at <span class="math">\(x_0\)</span> is tall, the stalks everywhere are flat, which makes it look
-like a tall structure in an otherwise flat featureless landscape.</p>
+all of those <span class="math">\(x\)</span>'s, otherwise we do nothing. It's not too hard to check that this defines a sheaf
+over <span class="math">\(M\)</span> (the local homeomorphism property is the hardest to check, and relies on the fact that
+points are closed in Hausdorff spaces). In fact, if <span class="math">\(M = \mathbb{R}\)</span> and <span class="math">\(K = \mathbb{Z}/2\)</span>, then
+then skyscraper sheaf at <span class="math">\(0\)</span> <em>is</em> the line with two origins. The reason this is called the
+skyscraper sheaf is because only the stalk at <span class="math">\(x_0\)</span> is tall, the stalks everywhere are flat, which
+makes it look like a tall structure in an otherwise flat featureless landscape.</p>
 <p>We're really interested in is a variant of a skyscraper sheaf with two skyscrapers, i.e. the stalks
 at points <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span> are <span class="math">\(K\)</span>, and otherwise <span class="math">\(0\)</span>. The topology on this sheaf can be defined
 analogously. We'll come back to this example once we've defined sheaf cohomology.</p>
 <h3>The category of sheaves of <span class="math">\(K\)</span>-modules over a space</h3>
-<p>Just like in the case of a vector bundles over a manifold <span class="math">\(M\)</span>, where the <em>right</em> kind of map
-between vector bundles is a smooth map that is a linear map on each fibre, the <em>right</em> kind
-of map between two sheaves <span class="math">\(\mathcal{S}_1\)</span> and <span class="math">\(\mathcal{S}_2\)</span> on a space <span class="math">\(M\)</span> is a continuous map <span class="math">\(f\)</span>
-such that it satisfies the following properties.</p>
+<p>Just like in the case of a vector bundles over a manifold <span class="math">\(M\)</span>, where the <em>right</em> kind of map between
+vector bundles is a smooth map that is a linear map on each fibre, the <em>right</em> kind of map between
+two sheaves <span class="math">\(\mathcal{S}_1\)</span> and <span class="math">\(\mathcal{S}_2\)</span> on a space <span class="math">\(M\)</span> is a continuous map <span class="math">\(f\)</span> such that it
+satisfies the following properties.</p>
 <ol>
 <li><span class="math">\(\pi = \pi \circ f\)</span></li>
 <li><span class="math">\(f\)</span> restricted to any any stalk <span class="math">\(\mathcal{O}_x\)</span> is a <span class="math">\(K\)</span>-module homomorphism.</li>
 </ol>
-<p>Fixing a space <span class="math">\(M\)</span>, we get the category of sheaves of <span class="math">\(K\)</span>-modules over <span class="math">\(M\)</span>, whose objects are sheaves,
-and the morphisms are what we just defined, called sheaf homomorphisms. It follows from the fact that
-<span class="math">\(\pi\)</span> is a local homeomorphism that even sheaf homomorphisms are local homeomorphisms.
-This category turns out to be
-especially nice, sharing many characteristics with the category of abelian groups and more generally, the
-category of <span class="math">\(K\)</span>-modules, such as maps possessing kernels and cokernels, and possessing a version
-of the <a href="https://en.wikipedia.org/wiki/Isomorphism_theorems#First_isomorphism_theorem">First Isomorphism Theorem</a>.
-This sort of category is called an abelian category, and this category is the appropriate category
-to do homological algebra in. Coming back to sheaves, the kernel of a sheaf homomorphism <span class="math">\(f: \mathcal{S}_1 \to \mathcal{S}_2\)</span>
-is the set of all points which map to the zero element in the stalk. With a little bit of work, we can show the
-image of <span class="math">\(f\)</span> is a sheaf in its own right, and subsheaf of <span class="math">\(\mathcal{S}_2\)</span>, just like the kernel of <span class="math">\(f\)</span>
-is a subsheaf of <span class="math">\(\mathcal{S}_1\)</span> (the definition of a subsheaf is the most obvious one).</p>
-<p>With all these definitions in hand, we can talk about exact sequences of sheaves. Consider a sequence of sheaves
-and sheaf homomorphisms of the following kind.
-</p>
-<div class="math">$$\cdots \xrightarrow{d_{i-2}} \mathcal{S}_{i-1} \xrightarrow{d_{i-1}} \mathcal{S}_{i} \xrightarrow{d_{i}} \mathcal{S}_{i+1} \xrightarrow{d_{i+1}} \cdots$$</div>
-<p>
-This sequence is exact if <span class="math">\(\mathrm{ker}(d_{i}) = \mathrm{im}(d_{i-1})\)</span>.</p>
+<p>Fixing a space <span class="math">\(M\)</span>, we get the category of sheaves of <span class="math">\(K\)</span>-modules over <span class="math">\(M\)</span>, whose objects are
+sheaves, and the morphisms are what we just defined, called sheaf homomorphisms. It follows from the
+fact that <span class="math">\(\pi\)</span> is a local homeomorphism that even sheaf homomorphisms are local homeomorphisms.
+This category turns out to be especially nice, sharing many characteristics with the category of
+abelian groups and more generally, the category of <span class="math">\(K\)</span>-modules, such as maps possessing kernels and
+cokernels, and possessing a version of the <a href="https://en.wikipedia.org/wiki/Isomorphism_theorems#First_isomorphism_theorem">First Isomorphism
+Theorem</a>.  This sort
+of category is called an abelian category, and this category is the appropriate category to do
+homological algebra in. Coming back to sheaves, the kernel of a sheaf homomorphism <span class="math">\(f: \mathcal{S}_1
+\to \mathcal{S}_2\)</span> is the set of all points which map to the zero element in the stalk. With a
+little bit of work, we can show the image of <span class="math">\(f\)</span> is a sheaf in its own right, and subsheaf of
+<span class="math">\(\mathcal{S}_2\)</span>, just like the kernel of <span class="math">\(f\)</span> is a subsheaf of <span class="math">\(\mathcal{S}_1\)</span> (the definition of a
+subsheaf is the most obvious one).</p>
+<p>With all these definitions in hand, we can talk about exact sequences of sheaves. Consider a
+sequence of sheaves and sheaf homomorphisms of the following kind.  </p>
+<div class="math">$$\cdots \xrightarrow{d_{i-2}}
+\mathcal{S}_{i-1} \xrightarrow{d_{i-1}} \mathcal{S}_{i} \xrightarrow{d_{i}} \mathcal{S}_{i+1}
+\xrightarrow{d_{i+1}} \cdots$$</div>
+<p> This sequence is exact if <span class="math">\(\mathrm{ker}(d_{i}) =
+\mathrm{im}(d_{i-1})\)</span>.</p>
 <p>The next thing we look at is the functor <span class="math">\(\Gamma\)</span> from the category of sheaves of <span class="math">\(K\)</span>-modules over
 <span class="math">\(M\)</span> to the category of <span class="math">\(K\)</span>-modules. For each sheaf <span class="math">\(\mathcal{S}\)</span>, the object <span class="math">\(\Gamma(\mathcal{S})\)</span>
-is the module of sections of <span class="math">\(\mathcal{S}\)</span>. A section of a sheaf <span class="math">\(\mathcal{S}\)</span> is a map <span class="math">\(s: M \to \mathcal{S}\)</span>
-such that <span class="math">\(\pi \circ s = \mathrm{id}\)</span>. Clearly, we can add two sections, and we can also multiply them by
-a scalar; we therefore have a <span class="math">\(K\)</span>-module. The functor <span class="math">\(\Gamma\)</span> acts on morphisms by composing them with
-the section map, i.e. <span class="math">\(\Gamma(f) = f \circ s\)</span>. The important question to ask here is whether the functor
-<span class="math">\(\Gamma\)</span> is exact, i.e. does it short exact sequences to short exact sequences. The answer is no. Consider
-the following short exact sequence.
-</p>
-<div class="math">$$0 \rightarrow \mathcal{S}_1 \xrightarrow{\alpha} \mathcal{S}_2\xrightarrow{\beta} \mathcal{S}_3 \rightarrow 0 \tag{1}$$</div>
-<p>
-If we apply the functor <span class="math">\(\Gamma\)</span> to the sequence, we get something that is not completely exact.
-</p>
-<div class="math">$$0 \rightarrow \Gamma(\mathcal{S}_1) \xrightarrow{\Gamma(\alpha)} \Gamma(\mathcal{S}_2) \xrightarrow{\Gamma(\beta)} \Gamma(\mathcal{S}_3) \rightarrow 0
-\tag{2}$$</div>
-<p>
-This sequence is exact only
-exact at <span class="math">\(\Gamma(\mathcal{S}_1)\)</span> and <span class="math">\(\Gamma(\mathcal{S}_2)\)</span>.</p>
+is the module of sections of <span class="math">\(\mathcal{S}\)</span>. A section of a sheaf <span class="math">\(\mathcal{S}\)</span> is a map <span class="math">\(s: M \to
+\mathcal{S}\)</span> such that <span class="math">\(\pi \circ s = \mathrm{id}\)</span>. Clearly, we can add two sections, and we can
+also multiply them by a scalar; we therefore have a <span class="math">\(K\)</span>-module. The functor <span class="math">\(\Gamma\)</span> acts on
+morphisms by composing them with the section map, i.e. <span class="math">\(\Gamma(f) = f \circ s\)</span>. The important
+question to ask here is whether the functor <span class="math">\(\Gamma\)</span> is exact, i.e. does it short exact sequences to
+short exact sequences. The answer is no. Consider the following short exact sequence.  </p>
+<div class="math">$$0
+\rightarrow \mathcal{S}_1 \xrightarrow{\alpha} \mathcal{S}_2\xrightarrow{\beta} \mathcal{S}_3
+\rightarrow 0 \tag{1}$$</div>
+<p> If we apply the functor <span class="math">\(\Gamma\)</span> to the sequence, we get something that is
+not completely exact.  </p>
+<div class="math">$$0 \rightarrow \Gamma(\mathcal{S}_1) \xrightarrow{\Gamma(\alpha)}
+\Gamma(\mathcal{S}_2) \xrightarrow{\Gamma(\beta)} \Gamma(\mathcal{S}_3) \rightarrow 0 \tag{2}$$</div>
+<p> This
+sequence is exact only exact at <span class="math">\(\Gamma(\mathcal{S}_1)\)</span> and <span class="math">\(\Gamma(\mathcal{S}_2)\)</span>.</p>
 <p>Suppose some <span class="math">\(s \in \Gamma(\mathcal{S}_1)\)</span> maps to <span class="math">\(0\)</span> in <span class="math">\(\Gamma(\mathcal{S}_2)\)</span>. That tells us
-that <span class="math">\(\Gamma(\alpha)(s) = 0\)</span>. But that by definition means that <span class="math">\(\alpha \circ s = 0\)</span>. But <span class="math">\(\alpha\)</span> is injective,
-which means <span class="math">\(s = 0\)</span>. This shows exactness at <span class="math">\(\Gamma(\mathcal{S}_1)\)</span>.</p>
-<p>Showing exactness at <span class="math">\(\Gamma(\mathcal{S}_2)\)</span> is a little more involved. Consider an element <span class="math">\(s \in \Gamma(\mathcal{S}_2)\)</span>
-which gets mapped to the zero section in <span class="math">\(\Gamma(\mathcal{S}_3)\)</span>. That means for all <span class="math">\(m \in M\)</span>, <span class="math">\(\beta(s(m)) = 0\)</span>.
-By exactness at <span class="math">\(\mathcal{S}_2\)</span>, we can find for each <span class="math">\(m\)</span>, an element <span class="math">\(s'(m)\)</span> of <span class="math">\(\mathcal{S}_1\)</span> such that <span class="math">\(\alpha(s'(m)) = s(m)\)</span>.
-Furthermore, because the original short exact sequence is exact at <span class="math">\(\mathcal{S}_1\)</span>, the element <span class="math">\(s'(m)\)</span> is uniquely
-defined (this is where the argument fails to work for <span class="math">\(\Gamma(\mathcal{S}_3)\)</span>). All we need to show now is that the
-map <span class="math">\(m \mapsto s'(m)\)</span> is a continuous map. This is where we use the fact that sheaf homomorphisms are local
-homeomorphisms. For any <span class="math">\(m\)</span>, pick a small enough neighbourhood <span class="math">\(U\)</span> around <span class="math">\(s'(m)\)</span> such that <span class="math">\(\alpha\)</span> is a local
-homeomorphism on <span class="math">\(U\)</span>. Then <span class="math">\(s'^{-1}(U)\)</span> is given by <span class="math">\(s^{-1}(\alpha(U))\)</span>, which is open since <span class="math">\(s\)</span> is a continuous section.</p>
-<p>Notice that the exactness of sequence <span class="math">\((1)\)</span> is a purely local property; it suffices to check whether the sequence on
-each stalk is exact. On the other hand, showing exactness at <span class="math">\(\Gamma(\mathcal{S}_3)\)</span> would be a global property. This
-is because given any section <span class="math">\(s \in \Gamma(\mathcal{S}_3)\)</span>, the best we can do is construct sections <span class="math">\(s_U\)</span> on open
-subsets <span class="math">\(U\)</span> of <span class="math">\(M\)</span>. It might so happen that these sections defined on different subsets of <span class="math">\(M\)</span> cannot be patched together
-consistently to get a continuous section. The cohomology of the sheaf will measure how badly the functor <span class="math">\(\Gamma\)</span> fails
-to be exact; to be more precise, the cohomology will tell us how extend sequence <span class="math">\((2)\)</span> to get an exact sequence. We'll
-leave the precise details of this for a later post, and satisfy ourselves with an example of when exactness fails
-to happen at <span class="math">\(\Gamma(\mathcal{S}_3)\)</span>.</p>
-<p>To show this, we will exhibit a surjective sheaf homomorphism <span class="math">\(f\)</span> such that <span class="math">\(\Gamma(f)\)</span> is not
-a surjective module map. Consider a connected space <span class="math">\(M\)</span>, and let <span class="math">\(\mathcal{S}_1\)</span> be the constant
-sheaf on <span class="math">\(M\)</span>. Recall that this means <span class="math">\(\mathcal{S}_1\)</span> is <span class="math">\(M \times K\)</span>, with the discrete topology
-on <span class="math">\(K\)</span>. Let <span class="math">\(\mathcal{S}_2\)</span> be the skyscraper sheaf on <span class="math">\(M\)</span> with two skyscrapers,
-which means the stalk is <span class="math">\(K\)</span> at points <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span> and zero otherwise.
-On the stalk at point which is not <span class="math">\(x_0\)</span> or <span class="math">\(x_1\)</span>, the homomorphism is obviously the 
-zero homomorphism. On the stalk at <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span>, we let the homomorphism be the identity
-homomorphism. It's clear that this sheaf homomorphism, call it <span class="math">\(f\)</span> is surjective. But observe that
-<span class="math">\(\Gamma(\mathcal{S}_1) = K\)</span>. That's because we picked <span class="math">\(M\)</span> to be a connected manifold, which means
-the section must the constant section. On the other hand, <span class="math">\(\Gamma(\mathcal{S}_2) = K \oplus K\)</span>,
-since the section can take any value independently at <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span>. Which means <span class="math">\(\Gamma(f)\)</span> is
-a map from <span class="math">\(K\)</span> to <span class="math">\(K \oplus K\)</span>, which cannot be surjective in general.</p>
+that <span class="math">\(\Gamma(\alpha)(s) = 0\)</span>. But that by definition means that <span class="math">\(\alpha \circ s = 0\)</span>. But <span class="math">\(\alpha\)</span>
+is injective, which means <span class="math">\(s = 0\)</span>. This shows exactness at <span class="math">\(\Gamma(\mathcal{S}_1)\)</span>.</p>
+<p>Showing exactness at <span class="math">\(\Gamma(\mathcal{S}_2)\)</span> is a little more involved. Consider an element <span class="math">\(s \in
+\Gamma(\mathcal{S}_2)\)</span> which gets mapped to the zero section in <span class="math">\(\Gamma(\mathcal{S}_3)\)</span>. That means
+for all <span class="math">\(m \in M\)</span>, <span class="math">\(\beta(s(m)) = 0\)</span>.  By exactness at <span class="math">\(\mathcal{S}_2\)</span>, we can find for each <span class="math">\(m\)</span>, an
+element <span class="math">\(s'(m)\)</span> of <span class="math">\(\mathcal{S}_1\)</span> such that <span class="math">\(\alpha(s'(m)) = s(m)\)</span>.  Furthermore, because the
+original short exact sequence is exact at <span class="math">\(\mathcal{S}_1\)</span>, the element <span class="math">\(s'(m)\)</span> is uniquely defined
+(this is where the argument fails to work for <span class="math">\(\Gamma(\mathcal{S}_3)\)</span>). All we need to show now is
+that the map <span class="math">\(m \mapsto s'(m)\)</span> is a continuous map. This is where we use the fact that sheaf
+homomorphisms are local homeomorphisms. For any <span class="math">\(m\)</span>, pick a small enough neighbourhood <span class="math">\(U\)</span> around
+<span class="math">\(s'(m)\)</span> such that <span class="math">\(\alpha\)</span> is a local homeomorphism on <span class="math">\(U\)</span>. Then <span class="math">\(s'^{-1}(U)\)</span> is given by
+<span class="math">\(s^{-1}(\alpha(U))\)</span>, which is open since <span class="math">\(s\)</span> is a continuous section.</p>
+<p>Notice that the exactness of sequence <span class="math">\((1)\)</span> is a purely local property; it suffices to check whether
+the sequence on each stalk is exact. On the other hand, showing exactness at <span class="math">\(\Gamma(\mathcal{S}_3)\)</span>
+would be a global property. This is because given any section <span class="math">\(s \in \Gamma(\mathcal{S}_3)\)</span>, the
+best we can do is construct sections <span class="math">\(s_U\)</span> on open subsets <span class="math">\(U\)</span> of <span class="math">\(M\)</span>. It might so happen that these
+sections defined on different subsets of <span class="math">\(M\)</span> cannot be patched together consistently to get a
+continuous section. The cohomology of the sheaf will measure how badly the functor <span class="math">\(\Gamma\)</span> fails to
+be exact; to be more precise, the cohomology will tell us how extend sequence <span class="math">\((2)\)</span> to get an exact
+sequence. We'll leave the precise details of this for a later post, and satisfy ourselves with an
+example of when exactness fails to happen at <span class="math">\(\Gamma(\mathcal{S}_3)\)</span>.</p>
+<p>To show this, we will exhibit a surjective sheaf homomorphism <span class="math">\(f\)</span> such that <span class="math">\(\Gamma(f)\)</span> is not a
+surjective module map. Consider a connected space <span class="math">\(M\)</span>, and let <span class="math">\(\mathcal{S}_1\)</span> be the constant sheaf
+on <span class="math">\(M\)</span>. Recall that this means <span class="math">\(\mathcal{S}_1\)</span> is <span class="math">\(M \times K\)</span>, with the discrete topology on
+<span class="math">\(K\)</span>. Let <span class="math">\(\mathcal{S}_2\)</span> be the skyscraper sheaf on <span class="math">\(M\)</span> with two skyscrapers, which means the stalk
+is <span class="math">\(K\)</span> at points <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span> and zero otherwise.  On the stalk at point which is not <span class="math">\(x_0\)</span> or
+<span class="math">\(x_1\)</span>, the homomorphism is obviously the zero homomorphism. On the stalk at <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span>, we let
+the homomorphism be the identity homomorphism. It's clear that this sheaf homomorphism, call it <span class="math">\(f\)</span>
+is surjective. But observe that <span class="math">\(\Gamma(\mathcal{S}_1) = K\)</span>. That's because we picked <span class="math">\(M\)</span> to be a
+connected manifold, which means the section must the constant section. On the other hand,
+<span class="math">\(\Gamma(\mathcal{S}_2) = K \oplus K\)</span>, since the section can take any value independently at <span class="math">\(x_0\)</span>
+and <span class="math">\(x_1\)</span>. Which means <span class="math">\(\Gamma(f)\)</span> is a map from <span class="math">\(K\)</span> to <span class="math">\(K \oplus K\)</span>, which cannot be surjective in
+general.</p>
 <p>This tells us that exactness at <span class="math">\(\Gamma(\mathcal{S}_3)\)</span> is a global property, and the cohomology
-measures (in a loose sense) how the local property of exactness of <span class="math">\((1)\)</span> fails to translate to exactness
-of <span class="math">\((2)\)</span>.</p>
+measures (in a loose sense) how the local property of exactness of <span class="math">\((1)\)</span> fails to translate to
+exactness of <span class="math">\((2)\)</span>.</p>
+<p>ADDENDUM: I will add links to similar expositions whenever I find them.</p>
+<ol>
+<li>Čech cohomology and the Mittag-Leffler problem: The Čech cohomology determines
+whether meromorphic functions defined on small open sets can be patched together to
+get a globally defined meromorphic function satisfying certain properties. 
+(<a href="https://toperkin.mysite.syr.edu/talks/sheaves_and_more_cohomology.pdf">Link</a> to article)</li>
+</ol>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
