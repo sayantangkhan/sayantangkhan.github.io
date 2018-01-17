@@ -64,8 +64,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="/cohomology-local-global.html"><h1>Cohomology as a measure of local to global failure</h1></a>
-Mon 25 December 2017
+            <a href="/latex-gitlab-ci.html"><h1>Setting up GitLab to automatically generate PDFs from committed LaTeX files</h1></a>
+Wed 17 January 2018
 
 by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
  
@@ -74,236 +74,150 @@ by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
  
         </div>
         
-        <div><h2>Motivation for cohomology</h2>
-<p>In most introductory algebraic topology courses, cohomology is rather poorly motivated. It's most
-commonly seen form in an algebraic topology course is singular cohomology, which arises as a the
-homology of the dual of the singular chain complex, but that doesn't really tell you why it's of any
-more interest than singular homology, aside from the fact that you get an additional cup product
-which you did not have before. However, this approach obscures the geometric meaning of cohomology.</p>
-<p>A much more intuitive introduction to cohomology turns out to be De Rham cohomology, often
-encountered in introductory differential geometry courses. Loosely speaking, De Rham cohomology
-measures in how many different ways can a closed form fail to be exact.</p>
-<p>Another cohomology theory we'll look at is sheaf cohomology. Loosely, the cohomology of a sheaf
-measures how a certain functor <span class="math">\(\Gamma\)</span>, which we'll define later fails to be an exact functor.</p>
-<p>In the case of De Rham cohomology, we'll interpret the form being closed as a local property, and it
-being exact a global property, and the the case of sheaf cohomology, the exactness of the following
-sequence (the exact details of which we'll see in a later section) as a local property.  </p>
-<div class="math">$$0
-\rightarrow \mathcal{S}_1 \rightarrow \mathcal{S}_2\rightarrow \mathcal{S}_3 \rightarrow 0$$</div>
-<p> The
-exactness of the sequence we get by applying <span class="math">\(\Gamma\)</span> to the above sequence turns out to be a global
-property.</p>
-<p>In both the cases, the cohomology measures how the local property fails to translate to the global
-one.</p>
-<h2>De Rham Cohomology</h2>
-<p>The De Rham cohomology of a manifold <span class="math">\(M\)</span> (of dimension <span class="math">\(m\)</span>) is the homology of the following of the
-following cochain sequence.  </p>
-<div class="math">$$0 \xrightarrow{d} \Lambda^0(M) \xrightarrow{d} \Lambda^1(M)
-\xrightarrow{d} \cdots \xrightarrow{d} \Lambda^m(M) \xrightarrow{d} 0$$</div>
-<p> Here, <span class="math">\(\Lambda^k(M)\)</span> is the
-space of <span class="math">\(k\)</span>-forms on <span class="math">\(M\)</span>, and <span class="math">\(d\)</span> is the exterior derivative operator.  For a <span class="math">\(k\)</span>-form <span class="math">\(\omega\)</span> to
-be closed, <span class="math">\(d\omega\)</span> must be <span class="math">\(0\)</span>. This is a local property, in the sense that <span class="math">\(d\omega\)</span> evaluated at
-any point <span class="math">\(p \in M\)</span> depends only on the value of <span class="math">\(\omega\)</span> on any small neighbourhood of <span class="math">\(p\)</span>.  In
-fact, one can say a little more, and claim that <span class="math">\(d\omega(p)\)</span> depends only on the <em>germ</em> of <span class="math">\(\omega\)</span>
-at <span class="math">\(p\)</span>.  If we pick a Euclidean neighbourhood <span class="math">\(U\)</span> of <span class="math">\(p\)</span> which is homeomorphic to the open unit
-ball, the Poincaré lemma tells us that there is some <span class="math">\((k+1)\)</span>-form <span class="math">\(\eta\)</span> defined on <span class="math">\(U\)</span> such that
-<span class="math">\(\omega = d\eta\)</span>. In other words, the closed form <span class="math">\(\omega\)</span> is locally exact.</p>
-<p>The De Rham cohomology class of <span class="math">\(\omega\)</span> measures how badly does the property of local exactness
-fail to translate to global exactness. We can write <span class="math">\(\omega\)</span> as <span class="math">\(\gamma + d\zeta\)</span>, where <span class="math">\(\gamma\)</span> is
-the canonical representative of the cohomology class of <span class="math">\(\omega\)</span> (more on this in later posts), and
-<span class="math">\(\zeta\)</span> is a <span class="math">\((k-1)\)</span>-form. If we stretch the analogy a bit, we can say <span class="math">\(\omega\)</span> misses being
-globally exact by <span class="math">\(\gamma\)</span> amount. This is the first example of how cohomology measures how badly a
-local property fails to be global.</p>
-<h2>Sheaf Cohomology</h2>
-<p>Before we see what sort of local to global failure sheaf cohomology measures, we'll quickly define
-sheaves and sheaf cohomology, and look at one example.</p>
-<h3>Quick introduction to sheaves</h3>
-<p>Given a manifold <span class="math">\(M\)</span> (whatever we discuss will hold in for Hausdorff spaces, and with a little more
-work, can be made to work even for a larger class of spaces like spectra of rings), a sheaf
-<span class="math">\(\mathcal{S}\)</span> of <span class="math">\(K\)</span>-modules (<span class="math">\(K\)</span> is always assumed to be a commutative ring with identity) over <span class="math">\(M\)</span>
-is a topological space <span class="math">\(\mathcal{S}\)</span> with a surjective map <span class="math">\(\pi: \mathcal{S} \to M\)</span>, such that the
-following properties are satisfied.</p>
-<ol>
-<li><span class="math">\(\pi\)</span> is a local homeomorphism, i.e. for any point <span class="math">\(s \in \mathcal{S}\)</span>, there's a neighbourhood
-of <span class="math">\(s\)</span> such that <span class="math">\(\pi\)</span> restricted to that neighbourhood is a homeomorphism.</li>
-<li><span class="math">\(\pi^{-1}(x)\)</span>, which we'll denote by <span class="math">\(\mathcal{O}_x\)</span>, is a <span class="math">\(K\)</span>-module, for all <span class="math">\(x \in
-M\)</span>. <span class="math">\(\mathcal{O}_x\)</span> is called the stalk of <span class="math">\(\mathcal{S}\)</span> at <span class="math">\(x\)</span>.</li>
-<li>The module operations on the stalk are continuous, i.e. if we look at the stalk with the subspace
-topology, the module operations of addition and scalar multiplication are continuous.</li>
-</ol>
-<p>Sheaves in some sense a modules parametrized by the space <span class="math">\(M\)</span>, like vector bundles, but vector
-bundles do not satisfy the first condition, unlike sheaves.  The simplest example of a sheaf is the
-<em>constant sheaf</em> which is just <span class="math">\(M \times V\)</span>, where <span class="math">\(V\)</span> is a <span class="math">\(K\)</span>-module with the discrete topology.</p>
-<p>Another important example is the sheaf of germs of <span class="math">\(C^{\infty}\)</span> functions on a manifold <span class="math">\(M\)</span>. For
-each <span class="math">\(x \in M\)</span>, a point in <span class="math">\(\mathcal{O}_x\)</span> is an equivalence class of functions, the equivalence
-relation being that <span class="math">\(f \sim g\)</span> if <span class="math">\(f\)</span> and <span class="math">\(g\)</span> agree on some neighbourhood of <span class="math">\(x\)</span>. This sheaf
-deserves a post of its own, and I shall write about it in the future.</p>
-<p>The last example, which will be key to our goal, is the <em>skyscraper sheaf</em>. We'll describe it by
-first describing the stalk at each point, and then putting an appropriate topology on it. Fix a
-point <span class="math">\(x_0 \in M\)</span>.  The stalk <span class="math">\(\mathcal{O}_{x_0}\)</span> at <span class="math">\(x_0\)</span> will be <span class="math">\(K\)</span> as a module over itself. The
-stalk at every other point is the zero module. As a set, our sheaf is the following.  </p>
-<div class="math">$$\mathcal{S}
-= K \sqcup \bigsqcup_{x \neq x_0} \{0\}$$</div>
-<p> The question is what topology do we put on this space. The
-<a href="https://en.wikipedia.org/wiki/Non-Hausdorff_manifold#Line_with_two_origins">line with two origins</a>
-provides a hint. What we do is take <span class="math">\(|K|\)</span> copies of the space <span class="math">\(M\)</span>, and if <span class="math">\(x \neq x_0\)</span>, we identify
-all of those <span class="math">\(x\)</span>'s, otherwise we do nothing. It's not too hard to check that this defines a sheaf
-over <span class="math">\(M\)</span> (the local homeomorphism property is the hardest to check, and relies on the fact that
-points are closed in Hausdorff spaces). In fact, if <span class="math">\(M = \mathbb{R}\)</span> and <span class="math">\(K = \mathbb{Z}/2\)</span>, then
-then skyscraper sheaf at <span class="math">\(0\)</span> <em>is</em> the line with two origins. The reason this is called the
-skyscraper sheaf is because only the stalk at <span class="math">\(x_0\)</span> is tall, the stalks everywhere are flat, which
-makes it look like a tall structure in an otherwise flat featureless landscape.</p>
-<p>We're really interested in is a variant of a skyscraper sheaf with two skyscrapers, i.e. the stalks
-at points <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span> are <span class="math">\(K\)</span>, and otherwise <span class="math">\(0\)</span>. The topology on this sheaf can be defined
-analogously. We'll come back to this example once we've defined sheaf cohomology.</p>
-<h3>The category of sheaves of <span class="math">\(K\)</span>-modules over a space</h3>
-<p>Just like in the case of a vector bundles over a manifold <span class="math">\(M\)</span>, where the <em>right</em> kind of map between
-vector bundles is a smooth map that is a linear map on each fibre, the <em>right</em> kind of map between
-two sheaves <span class="math">\(\mathcal{S}_1\)</span> and <span class="math">\(\mathcal{S}_2\)</span> on a space <span class="math">\(M\)</span> is a continuous map <span class="math">\(f\)</span> such that it
-satisfies the following properties.</p>
-<ol>
-<li><span class="math">\(\pi = \pi \circ f\)</span></li>
-<li><span class="math">\(f\)</span> restricted to any any stalk <span class="math">\(\mathcal{O}_x\)</span> is a <span class="math">\(K\)</span>-module homomorphism.</li>
-</ol>
-<p>Fixing a space <span class="math">\(M\)</span>, we get the category of sheaves of <span class="math">\(K\)</span>-modules over <span class="math">\(M\)</span>, whose objects are
-sheaves, and the morphisms are what we just defined, called sheaf homomorphisms. It follows from the
-fact that <span class="math">\(\pi\)</span> is a local homeomorphism that even sheaf homomorphisms are local homeomorphisms.
-This category turns out to be especially nice, sharing many characteristics with the category of
-abelian groups and more generally, the category of <span class="math">\(K\)</span>-modules, such as maps possessing kernels and
-cokernels, and possessing a version of the <a href="https://en.wikipedia.org/wiki/Isomorphism_theorems#First_isomorphism_theorem">First Isomorphism
-Theorem</a>.  This sort
-of category is called an abelian category, and this category is the appropriate category to do
-homological algebra in. Coming back to sheaves, the kernel of a sheaf homomorphism <span class="math">\(f: \mathcal{S}_1
-\to \mathcal{S}_2\)</span> is the set of all points which map to the zero element in the stalk. With a
-little bit of work, we can show the image of <span class="math">\(f\)</span> is a sheaf in its own right, and subsheaf of
-<span class="math">\(\mathcal{S}_2\)</span>, just like the kernel of <span class="math">\(f\)</span> is a subsheaf of <span class="math">\(\mathcal{S}_1\)</span> (the definition of a
-subsheaf is the most obvious one).</p>
-<p>With all these definitions in hand, we can talk about exact sequences of sheaves. Consider a
-sequence of sheaves and sheaf homomorphisms of the following kind.  </p>
-<div class="math">$$\cdots \xrightarrow{d_{i-2}}
-\mathcal{S}_{i-1} \xrightarrow{d_{i-1}} \mathcal{S}_{i} \xrightarrow{d_{i}} \mathcal{S}_{i+1}
-\xrightarrow{d_{i+1}} \cdots$$</div>
-<p> This sequence is exact if <span class="math">\(\mathrm{ker}(d_{i}) =
-\mathrm{im}(d_{i-1})\)</span>.</p>
-<p>The next thing we look at is the functor <span class="math">\(\Gamma\)</span> from the category of sheaves of <span class="math">\(K\)</span>-modules over
-<span class="math">\(M\)</span> to the category of <span class="math">\(K\)</span>-modules. For each sheaf <span class="math">\(\mathcal{S}\)</span>, the object <span class="math">\(\Gamma(\mathcal{S})\)</span>
-is the module of sections of <span class="math">\(\mathcal{S}\)</span>. A section of a sheaf <span class="math">\(\mathcal{S}\)</span> is a map <span class="math">\(s: M \to
-\mathcal{S}\)</span> such that <span class="math">\(\pi \circ s = \mathrm{id}\)</span>. Clearly, we can add two sections, and we can
-also multiply them by a scalar; we therefore have a <span class="math">\(K\)</span>-module. The functor <span class="math">\(\Gamma\)</span> acts on
-morphisms by composing them with the section map, i.e. <span class="math">\(\Gamma(f) = f \circ s\)</span>. The important
-question to ask here is whether the functor <span class="math">\(\Gamma\)</span> is exact, i.e. does it short exact sequences to
-short exact sequences. The answer is no. Consider the following short exact sequence.  </p>
-<div class="math">$$0
-\rightarrow \mathcal{S}_1 \xrightarrow{\alpha} \mathcal{S}_2\xrightarrow{\beta} \mathcal{S}_3
-\rightarrow 0 \tag{1}$$</div>
-<p> If we apply the functor <span class="math">\(\Gamma\)</span> to the sequence, we get something that is
-not completely exact.  </p>
-<div class="math">$$0 \rightarrow \Gamma(\mathcal{S}_1) \xrightarrow{\Gamma(\alpha)}
-\Gamma(\mathcal{S}_2) \xrightarrow{\Gamma(\beta)} \Gamma(\mathcal{S}_3) \rightarrow 0 \tag{2}$$</div>
-<p> This
-sequence is exact only exact at <span class="math">\(\Gamma(\mathcal{S}_1)\)</span> and <span class="math">\(\Gamma(\mathcal{S}_2)\)</span>.</p>
-<p>Suppose some <span class="math">\(s \in \Gamma(\mathcal{S}_1)\)</span> maps to <span class="math">\(0\)</span> in <span class="math">\(\Gamma(\mathcal{S}_2)\)</span>. That tells us
-that <span class="math">\(\Gamma(\alpha)(s) = 0\)</span>. But that by definition means that <span class="math">\(\alpha \circ s = 0\)</span>. But <span class="math">\(\alpha\)</span>
-is injective, which means <span class="math">\(s = 0\)</span>. This shows exactness at <span class="math">\(\Gamma(\mathcal{S}_1)\)</span>.</p>
-<p>Showing exactness at <span class="math">\(\Gamma(\mathcal{S}_2)\)</span> is a little more involved. Consider an element <span class="math">\(s \in
-\Gamma(\mathcal{S}_2)\)</span> which gets mapped to the zero section in <span class="math">\(\Gamma(\mathcal{S}_3)\)</span>. That means
-for all <span class="math">\(m \in M\)</span>, <span class="math">\(\beta(s(m)) = 0\)</span>.  By exactness at <span class="math">\(\mathcal{S}_2\)</span>, we can find for each <span class="math">\(m\)</span>, an
-element <span class="math">\(s'(m)\)</span> of <span class="math">\(\mathcal{S}_1\)</span> such that <span class="math">\(\alpha(s'(m)) = s(m)\)</span>.  Furthermore, because the
-original short exact sequence is exact at <span class="math">\(\mathcal{S}_1\)</span>, the element <span class="math">\(s'(m)\)</span> is uniquely defined
-(this is where the argument fails to work for <span class="math">\(\Gamma(\mathcal{S}_3)\)</span>). All we need to show now is
-that the map <span class="math">\(m \mapsto s'(m)\)</span> is a continuous map. This is where we use the fact that sheaf
-homomorphisms are local homeomorphisms. For any <span class="math">\(m\)</span>, pick a small enough neighbourhood <span class="math">\(U\)</span> around
-<span class="math">\(s'(m)\)</span> such that <span class="math">\(\alpha\)</span> is a local homeomorphism on <span class="math">\(U\)</span>. Then <span class="math">\(s'^{-1}(U)\)</span> is given by
-<span class="math">\(s^{-1}(\alpha(U))\)</span>, which is open since <span class="math">\(s\)</span> is a continuous section.</p>
-<p>Notice that the exactness of sequence <span class="math">\((1)\)</span> is a purely local property; it suffices to check whether
-the sequence on each stalk is exact. On the other hand, showing exactness at <span class="math">\(\Gamma(\mathcal{S}_3)\)</span>
-would be a global property. This is because given any section <span class="math">\(s \in \Gamma(\mathcal{S}_3)\)</span>, the
-best we can do is construct sections <span class="math">\(s_U\)</span> on open subsets <span class="math">\(U\)</span> of <span class="math">\(M\)</span>. It might so happen that these
-sections defined on different subsets of <span class="math">\(M\)</span> cannot be patched together consistently to get a
-continuous section. The cohomology of the sheaf will measure how badly the functor <span class="math">\(\Gamma\)</span> fails to
-be exact; to be more precise, the cohomology will tell us how extend sequence <span class="math">\((2)\)</span> to get an exact
-sequence. We'll leave the precise details of this for a later post, and satisfy ourselves with an
-example of when exactness fails to happen at <span class="math">\(\Gamma(\mathcal{S}_3)\)</span>.</p>
-<p>To show this, we will exhibit a surjective sheaf homomorphism <span class="math">\(f\)</span> such that <span class="math">\(\Gamma(f)\)</span> is not a
-surjective module map. Consider a connected space <span class="math">\(M\)</span>, and let <span class="math">\(\mathcal{S}_1\)</span> be the constant sheaf
-on <span class="math">\(M\)</span>. Recall that this means <span class="math">\(\mathcal{S}_1\)</span> is <span class="math">\(M \times K\)</span>, with the discrete topology on
-<span class="math">\(K\)</span>. Let <span class="math">\(\mathcal{S}_2\)</span> be the skyscraper sheaf on <span class="math">\(M\)</span> with two skyscrapers, which means the stalk
-is <span class="math">\(K\)</span> at points <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span> and zero otherwise.  On the stalk at point which is not <span class="math">\(x_0\)</span> or
-<span class="math">\(x_1\)</span>, the homomorphism is obviously the zero homomorphism. On the stalk at <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span>, we let
-the homomorphism be the identity homomorphism. It's clear that this sheaf homomorphism, call it <span class="math">\(f\)</span>
-is surjective. But observe that <span class="math">\(\Gamma(\mathcal{S}_1) = K\)</span>. That's because we picked <span class="math">\(M\)</span> to be a
-connected manifold, which means the section must the constant section. On the other hand,
-<span class="math">\(\Gamma(\mathcal{S}_2) = K \oplus K\)</span>, since the section can take any value independently at <span class="math">\(x_0\)</span>
-and <span class="math">\(x_1\)</span>. Which means <span class="math">\(\Gamma(f)\)</span> is a map from <span class="math">\(K\)</span> to <span class="math">\(K \oplus K\)</span>, which cannot be surjective in
-general.</p>
-<p>This tells us that exactness at <span class="math">\(\Gamma(\mathcal{S}_3)\)</span> is a global property, and the cohomology
-measures (in a loose sense) how the local property of exactness of <span class="math">\((1)\)</span> fails to translate to
-exactness of <span class="math">\((2)\)</span>.</p>
-<p>ADDENDUM: I will add links to similar expositions whenever I find them.</p>
-<ol>
-<li>Čech cohomology and the Mittag-Leffler problem: The Čech cohomology determines
-whether meromorphic functions defined on small open sets can be patched together to
-get a globally defined meromorphic function satisfying certain properties. 
-(<a href="https://toperkin.mysite.syr.edu/talks/sheaves_and_more_cohomology.pdf">Link</a> to article)</li>
-</ol>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
+        <div><p>I had been meaning to get started with GitLab's continuous integration
+to generate PDFs of my assignments and notes, rather then generating the
+PDFs offline and committing them to the repository as well, but I always
+kept delaying the migration because of the lack of sufficient documentation
+on the matter. This morning I finally got around to doing it, and I thought
+I'll document it for anyone who wishes to do the same in the future.</p>
+<h2>Outline of GitLab's continuous integration service</h2>
+<p>On receiving a commit to a repository hosted on GitLab, it
+checks whether the repository has a file named <code>.gitlab-ci.yml</code>
+in the root directory. This file contains the commands to be executed
+by whatever computer is running the continuous integration service.
+In GitLab's parlance, these are called <a href="https://docs.gitlab.com/runner/">Runners</a>.
+These runners can be any computer, from a server running in your room, to a short lived
+VM on the cloud. For the free tier, GitLab provides access to runners on 
+<a href="https://aws.amazon.com/">AWS</a>, but with the restriction of having only 2000
+minutes of compute time per month.</p>
+<p>For these free runners, there's no configuration to be done from our side; all we need
+to do is push a <code>.gitlab-ci.yml</code> to our repository, and GitLab takes care of
+running it on a runner. There is one thing to watch out for though. The free runners
+are usually short lived, and one can't install software on them, which means
+we can't do a <code>sudo apt install texlive-full</code> as a command that runs on the runner.
+Luckily, the runners do have 
+<a href="https://www.docker.com/">docker</a>[<a href="http://www.zdnet.com/article/what-is-docker-and-why-is-it-so-darn-popular/">2</a>]
+installed on them, which means we can use some image from which has all the
+necessary software (i.e. <code>texlive-full</code>) installed on it already.</p>
+<h2>Configuring the runner to compile LaTeX</h2>
+<p>A cursory google search for a suitable configuration turned up the following
+<a href="https://github.com/aufenthaltsraum/stuff/wiki/Using-GitLab-CI-for-Building-LaTeX">configuration</a>,
+which is rather rudimentary, but is good guide for creating
+our configuration.</p>
+<div class="highlight"><pre><span></span><span class="n">compile_pdf</span><span class="o">:</span>
+  <span class="n">image</span><span class="o">:</span> <span class="n">aergus</span><span class="o">/</span><span class="n">latex</span>
+  <span class="n">script</span><span class="o">:</span>
+    <span class="o">-</span> <span class="n">latexmk</span> <span class="o">-</span><span class="n">pdf</span> <span class="n">my_file</span><span class="o">.</span><span class="na">tex</span>
+  <span class="n">artifacts</span><span class="o">:</span>
+    <span class="n">paths</span><span class="o">:</span>
+      <span class="o">-</span> <span class="n">my_file</span><span class="o">.</span><span class="na">pdf</span>
+</pre></div>
 
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
 
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script></div>
+<p>Let's go over this line by line. The first line describes the name of the job that
+will be run. There can be several jobs described in a configuration file, and they
+will usually be run asynchronously unless some job is listed as a dependency of another.
+The next line describes what docker image to fetch: <code>aergus/latex</code> is Debian Testing
+with <code>texlive-full</code> already installed. The next two lines describe the script that
+will be run: these scripts are run from the root directory of the repository. In
+this case, that means <code>latexmk -pdf</code> is being run on <code>my_file.tex</code> which is
+at the root directory of the repository. It's possible to upload a shell script
+or a Makefile to the repository and run that instead (I ended up doing the latter).
+However, the files generated during the build process are discarded, which is not
+quite what I wanted. I would like to keep the generated PDFs; the artifacts line
+does exactly that. The artifacts can later be browsed or downloaded via the GitLab
+web interface.</p>
+<p>In my case however, the setup is a bit more complex. I do not keep all my TeX files
+in the root directory, but rather organize them by course and assignment number.
+So the TeX file for the fourth assignment for a topology course will have the following
+location: </p>
+<div class="highlight"><pre><span></span>Math/MA232\ Topology/assignments/04/assignment_04.tex
+</pre></div>
+
+
+<p>What I would like is to make sure the generated PDF for this TeX file is
+placed in the following location.</p>
+<div class="highlight"><pre><span></span>Math/MA232\ Topology/assignments/assignment_04.pdf
+</pre></div>
+
+
+<p>I'd also like my thesis to be compiled on each commit; the location
+of my thesis in the repository is the following.</p>
+<div class="highlight"><pre><span></span>Math/UM400\ Undergraduate\ Project/thesis/thesis.tex
+</pre></div>
+
+
+<p>I wrote up a <code>Makefile</code> that does all the compilation work, and places the PDFs
+in appropriate locations.</p>
+<div class="highlight"><pre><span></span><span class="n">assignments</span><span class="o">:</span>
+    <span class="n">cd</span> <span class="n">Math</span><span class="sr">/MA339\ Geometric\ Analysis/</span><span class="n">assignments</span><span class="o">;</span> <span class="o">\</span>
+    <span class="n">latexmk</span> <span class="o">-</span><span class="n">pdf</span> <span class="o">*/</span><span class="n">assignment_</span><span class="o">*.</span><span class="n">tex</span> 
+
+<span class="n">thesis</span><span class="o">:</span>
+    <span class="n">cd</span> <span class="n">Math</span><span class="sr">/UM400\ Undergraduate\ Project/</span><span class="n">thesis</span><span class="o">;</span> <span class="o">\</span>
+    <span class="n">latexmk</span> <span class="o">-</span><span class="n">pdf</span> <span class="n">thesis</span><span class="o">.</span><span class="na">tex</span>
+</pre></div>
+
+
+<p>And the <code>.gitlab-ci.yml</code> file I finally ended up using was this.</p>
+<div class="highlight"><pre><span></span>stages:
+  - build
+compile_pdf:
+  image: aergus/latex
+  script:
+    - make assignments
+    - make thesis
+  stage: build
+  artifacts:
+    paths:
+      - &quot;Math/MA339 Geometric Analysis/assignments/assignment_*.pdf&quot;
+      - &quot;Math/UM400 Undergraduate Project/thesis/thesis.pdf&quot;
+</pre></div>
+
+
+<p>Adding these two files to the root directory of the repository does the trick.
+One issue I came up against was the spaces in filenames shouldn't be escaped
+with a backslash, but rather the whole file name should be enclosed in quotes.</p>
+<p>The generated artifacts can be browsed by visiting the following link.</p>
+<div class="highlight"><pre><span></span>https://gitlab.com/&lt;username&gt;/&lt;repo-name&gt;/-/jobs/artifacts/master/browse?job=compile_pdf
+</pre></div>
+
+
+<p>It seems that compiling all the files after a commit takes up four to five minutes on 
+the runner, the majority of the time being spent fetching the docker container.
+That translates to roughly 400 compiles in a month, which is a reasonable enough
+limit, if one or two people are committing files to the repository, but might
+be a problem if a large group of people are committing a large number of files
+to the repository.</p>
+<p>The point of this whole exercise was to let me get rid of a LaTeX installation
+on the devices I carry to class to make notes, which is an extremely
+space constrained Nexus 7 tablet. All I now have installed on the tablet is git and
+Emacs, after uninstalling texlive (also, compiling PDFs locally on the tablet would
+take upwards of a minute on the under powered CPU it had).</p></div>
         <hr />
     </div>
 		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="/cohomology-local-global.html"><h2>Cohomology as a measure of local to global failure</h2></a>
+        <div class= "well small"> Mon 25 December 2017
+
+by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
+ 
+
+
+ </div>
+        <div class="summary"><h2>Motivation for cohomology</h2>
+<p>In most introductory algebraic topology courses, cohomology is rather poorly motivated. It's most
+commonly seen form in an algebraic topology course is singular cohomology, which arises as a the
+homology of the dual of the singular chain complex, but that doesn't really tell you why it's of …</p> <a class="btn btn-info xsmall" href="/cohomology-local-global.html">read more</a></div>
+    </div>	
+				
 <div class="pagination">
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
@@ -343,6 +257,7 @@ get a globally defined meromorphic function satisfying certain properties.
                 Categories
                 </li>
                 
+                <li><a href="/category/latex.html">LaTeX</a></li>
                 <li><a href="/category/mathematics.html">mathematics</a></li>
                    
             </ul>
