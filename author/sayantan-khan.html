@@ -64,8 +64,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="/latex-gitlab-ci.html"><h1>Setting up GitLab to automatically generate PDFs from committed LaTeX files</h1></a>
-Wed 17 January 2018
+            <a href="/bms-week.html"><h1>A week at Berlin Mathematical School</h1></a>
+Sat 24 February 2018
 
 by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
  
@@ -74,129 +74,170 @@ by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
  
         </div>
         
-        <div><p>I had been meaning to get started with GitLab's continuous integration
-to generate PDFs of my assignments and notes, rather then generating the
-PDFs offline and committing them to the repository as well, but I always
-kept delaying the migration because of the lack of sufficient documentation
-on the matter. This morning I finally got around to doing it, and I thought
-I'll document it for anyone who wishes to do the same in the future.</p>
-<h2>Outline of GitLab's continuous integration service</h2>
-<p>On receiving a commit to a repository hosted on GitLab, it
-checks whether the repository has a file named <code>.gitlab-ci.yml</code>
-in the root directory. This file contains the commands to be executed
-by whatever computer is running the continuous integration service.
-In GitLab's parlance, these are called <a href="https://docs.gitlab.com/runner/">Runners</a>.
-These runners can be any computer, from a server running in your room, to a short lived
-VM on the cloud. For the free tier, GitLab provides access to runners on 
-<a href="https://aws.amazon.com/">AWS</a>, but with the restriction of having only 2000
-minutes of compute time per month.</p>
-<p>For these free runners, there's no configuration to be done from our side; all we need
-to do is push a <code>.gitlab-ci.yml</code> to our repository, and GitLab takes care of
-running it on a runner. There is one thing to watch out for though. The free runners
-are usually short lived, and one can't install software on them, which means
-we can't do a <code>sudo apt install texlive-full</code> as a command that runs on the runner.
-Luckily, the runners do have 
-<a href="https://www.docker.com/">docker</a>[<a href="http://www.zdnet.com/article/what-is-docker-and-why-is-it-so-darn-popular/">2</a>]
-installed on them, which means we can use some image from which has all the
-necessary software (i.e. <code>texlive-full</code>) installed on it already.</p>
-<h2>Configuring the runner to compile LaTeX</h2>
-<p>A cursory google search for a suitable configuration turned up the following
-<a href="https://github.com/aufenthaltsraum/stuff/wiki/Using-GitLab-CI-for-Building-LaTeX">configuration</a>,
-which is rather rudimentary, but is good guide for creating
-our configuration.</p>
-<div class="highlight"><pre><span></span><span class="n">compile_pdf</span><span class="o">:</span>
-  <span class="n">image</span><span class="o">:</span> <span class="n">aergus</span><span class="o">/</span><span class="n">latex</span>
-  <span class="n">script</span><span class="o">:</span>
-    <span class="o">-</span> <span class="n">latexmk</span> <span class="o">-</span><span class="n">pdf</span> <span class="n">my_file</span><span class="o">.</span><span class="na">tex</span>
-  <span class="n">artifacts</span><span class="o">:</span>
-    <span class="n">paths</span><span class="o">:</span>
-      <span class="o">-</span> <span class="n">my_file</span><span class="o">.</span><span class="na">pdf</span>
-</pre></div>
+        <div><p>I spent the last week (18th to 24th February) at Berlin, courtesy Berlin Mathematical School,
+who invited me over for the BMS Days (where I had an interview for a PhD position), as well
+as the BMS Student Conference which immediately followed the BMS Days. I heard a lot of talks
+on very interesting stuff, some of which I want to outline here, just to have an account of it,
+if nothing else; this will also serve as a reminder of the areas and results I might want to follow
+up on some time in the future.</p>
+<h2>The math talks (in no particular order)<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup></h2>
+<p>I'll only write about some of the talk; although all of them were fairly interesting,
+some were more interesting than others. </p>
+<h3>The computational complexity of query answering under updates (Nicole Schweikardt, HU Berlin)</h3>
+<p>This talk outlined the idea of analyzing database systems from the point of view
+of computational complexity theory, that is to say, prove effective lower bounds on
+the time complexity of querying a database (and to be more specific, time complexity
+in terms of only the database size for a fixed query, as well as the in terms of the
+complexity of the query and the database size). The query language itself was modelled as
+a first order language with a fixed number of atomic predicates depending on the type 
+of the database (first order language here means that the atomic predicates maybe negated,
+conjuncted, and disjuncted, i.e. NOTed, ANDed, and ORed, and one is also allowed to use
+existential and universal qualifiers over elements of the database). This was the general
+framework: the results in the presentation however looked at the subclass of queries
+(the <em>Conjunctive Queries</em>) which
+only used AND of atomic propositions, and only used the existential qualifiers<sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup>.</p>
+<p>For a fixed query, Nicole described a good algorithm and a data structure for the
+database such that existence and enumeration of the entries satisfying the queries could
+be done reasonably fast, as well as updating the database. </p>
+<h3>Orbit Closures of Homogeneous Forms (Jesko Hüttenhain, TU Berlin)</h3>
+<p>This talk was motivated by the difference between the complexity class #<strong>P</strong> and the
+class <strong>NP</strong>, which the speaker roughly described as the difference in difficulty between
+computing the permanent and the determinant of a given matrix<sup id="fnref-3"><a class="footnote-ref" href="#fn-3">3</a></sup>. It's however only a belief
+and not really known whether the former problem is strictly harder than the latter. The speaker
+proposed a possible line of attack via algebraic geometry. Consider the determinant function on
+<span class="math">\(M_n(\mathbb{C})\)</span>. It is a homogeneous polynomial of degree <span class="math">\(n\)</span> in <span class="math">\(n^2\)</span> complex variables,
+and it's therefore a point in the space <span class="math">\(\mathbb{C}[x_1, \ldots, x_{n^2}]\)</span>. We can now look
+at the action of <span class="math">\(GL(n, \mathbb{C})\)</span> on this space defined in the following manner.
+</p>
+<div class="math">$$\sigma_A: \det(X) \mapsto \det(AX)$$</div>
+<p>
+The orbit defines a subset of <span class="math">\(\mathbb{C}[x_1, \ldots, x_{n^2}]\)</span>, and this subset essentially
+corresponds to all the polynomials which are as easy to compute as the determinant. Looking
+at the orbit of the permanent polynomial under the same action, we would get the set of polynomials
+which are as hard to compute as the permanent is. A way to show the permanent is harder to compute than
+the determinant would be to show that the two orbits are different. If one looks at the closure
+of the orbits, and shows that they are different, then one would have shown that even approximating
+the permanent is hard<sup id="fnref-4"><a class="footnote-ref" href="#fn-4">4</a></sup>.</p>
+<p>Jesko then stated one of his results, which characterized the boundary of one such orbit
+closure. He also mentioned that this approach to complexity theory might take a while to
+bear significant results, as the foundations of this area are being built up.</p>
+<h3>(Some aspects of) Convexity and curvature (Stephen Lynch, FU Berlin)</h3>
+<p>This talk was a presentation of Stephen's recent work (which is also on the 
+<a href="https://arxiv.org/abs/1709.09697">arXiv</a>). This work generalized convex embeddings
+of <span class="math">\(S^n\)</span> into <span class="math">\(\mathbb{R}^{n+1}\)</span> to higher co-dimension embeddings, where the notion
+of convexity does not make sense. This was done by replacing the condition of convexity
+by an inequality on the second fundamental form, which is exactly equivalent to convexity
+in the case of co-dimension <span class="math">\(1\)</span>. This sort of inequality, called the pinching condition,
+leads to the solution of the mean curvature flow existing for all time, the solution
+exhibited further rigidity in the sense that the evolution of time of the sphere is just
+homothety.</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn-1">
+<p>The complete list of BMS Student Conference talks is
+<a href="https://bmsstudconf.github.io/2018/talks.html">here</a> and the ones given
+at BMS Days are listed <a href="https://www.math-berlin.de/academics/bms-days">here</a>.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn-2">
+<p>This kind of restriction is quite reminiscent of monotone circuits, and I wondered
+whether there was any link between presented results, and lower bounds on monotone
+circuits: the speaker however had only chosen this subclass as a simpler problem to tackle
+before tackling the problem over the full first order logic. But maybe the results obtained
+for the full first order logic might not be as good as the ones of only conjunctive queries.
+Perhaps I should have a look at this problem again in the future: some sort of such obstruction
+might turn up, and if I were to be even more optimistic, perhaps a direct correspondence between
+monotone circuits and conjunctive queries, and general circuits and general queries.&#160;<a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn-3">
+<p>The former problem is quite hard, as even computing the permanent of a 0-1 matrix is #<strong>P</strong>-complete,
+and the latter problem is fairly easy, being in the class <strong>P</strong>.&#160;<a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn-4">
+<p>This sort of approach is a part of the nascent area of <a href="https://en.wikipedia.org/wiki/Geometric_complexity_theory">geometric complexity theory</a>.&#160;<a class="footnote-backref" href="#fnref-4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
 
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
 
-<p>Let's go over this line by line. The first line describes the name of the job that
-will be run. There can be several jobs described in a configuration file, and they
-will usually be run asynchronously unless some job is listed as a dependency of another.
-The next line describes what docker image to fetch: <code>aergus/latex</code> is Debian Testing
-with <code>texlive-full</code> already installed. The next two lines describe the script that
-will be run: these scripts are run from the root directory of the repository. In
-this case, that means <code>latexmk -pdf</code> is being run on <code>my_file.tex</code> which is
-at the root directory of the repository. It's possible to upload a shell script
-or a Makefile to the repository and run that instead (I ended up doing the latter).
-However, the files generated during the build process are discarded, which is not
-quite what I wanted. I would like to keep the generated PDFs; the artifacts line
-does exactly that. The artifacts can later be browsed or downloaded via the GitLab
-web interface.</p>
-<p>In my case however, the setup is a bit more complex. I do not keep all my TeX files
-in the root directory, but rather organize them by course and assignment number.
-So the TeX file for the fourth assignment for a topology course will have the following
-location: </p>
-<div class="highlight"><pre><span></span>Math/MA232\ Topology/assignments/04/assignment_04.tex
-</pre></div>
-
-
-<p>What I would like is to make sure the generated PDF for this TeX file is
-placed in the following location.</p>
-<div class="highlight"><pre><span></span>Math/MA232\ Topology/assignments/assignment_04.pdf
-</pre></div>
-
-
-<p>I'd also like my thesis to be compiled on each commit; the location
-of my thesis in the repository is the following.</p>
-<div class="highlight"><pre><span></span>Math/UM400\ Undergraduate\ Project/thesis/thesis.tex
-</pre></div>
-
-
-<p>I wrote up a <code>Makefile</code> that does all the compilation work, and places the PDFs
-in appropriate locations.</p>
-<div class="highlight"><pre><span></span><span class="n">assignments</span><span class="o">:</span>
-    <span class="n">cd</span> <span class="n">Math</span><span class="sr">/MA339\ Geometric\ Analysis/</span><span class="n">assignments</span><span class="o">;</span> <span class="o">\</span>
-    <span class="n">latexmk</span> <span class="o">-</span><span class="n">pdf</span> <span class="o">*/</span><span class="n">assignment_</span><span class="o">*.</span><span class="n">tex</span> 
-
-<span class="n">thesis</span><span class="o">:</span>
-    <span class="n">cd</span> <span class="n">Math</span><span class="sr">/UM400\ Undergraduate\ Project/</span><span class="n">thesis</span><span class="o">;</span> <span class="o">\</span>
-    <span class="n">latexmk</span> <span class="o">-</span><span class="n">pdf</span> <span class="n">thesis</span><span class="o">.</span><span class="na">tex</span>
-</pre></div>
-
-
-<p>And the <code>.gitlab-ci.yml</code> file I finally ended up using was this.</p>
-<div class="highlight"><pre><span></span>stages:
-  - build
-compile_pdf:
-  image: aergus/latex
-  script:
-    - make assignments
-    - make thesis
-  stage: build
-  artifacts:
-    paths:
-      - &quot;Math/MA339 Geometric Analysis/assignments/assignment_*.pdf&quot;
-      - &quot;Math/UM400 Undergraduate Project/thesis/thesis.pdf&quot;
-</pre></div>
-
-
-<p>Adding these two files to the root directory of the repository does the trick.
-One issue I came up against was the spaces in filenames shouldn't be escaped
-with a backslash, but rather the whole file name should be enclosed in quotes.</p>
-<p>The generated artifacts can be browsed by visiting the following link.</p>
-<div class="highlight"><pre><span></span>https://gitlab.com/&lt;username&gt;/&lt;repo-name&gt;/-/jobs/artifacts/master/browse?job=compile_pdf
-</pre></div>
-
-
-<p>It seems that compiling all the files after a commit takes up four to five minutes on 
-the runner, the majority of the time being spent fetching the docker container.
-That translates to roughly 400 compiles in a month, which is a reasonable enough
-limit, if one or two people are committing files to the repository, but might
-be a problem if a large group of people are committing a large number of files
-to the repository.</p>
-<p>The point of this whole exercise was to let me get rid of a LaTeX installation
-on the devices I carry to class to make notes, which is an extremely
-space constrained Nexus 7 tablet. All I now have installed on the tablet is git and
-Emacs, after uninstalling texlive (also, compiling PDFs locally on the tablet would
-take upwards of a minute on the under powered CPU it had).</p></div>
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script></div>
         <hr />
     </div>
 		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="/latex-gitlab-ci.html"><h2>Setting up GitLab to automatically generate PDFs from committed LaTeX files</h2></a>
+        <div class= "well small"> Wed 17 January 2018
+
+by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>I had been meaning to get started with GitLab's continuous integration
+to generate PDFs of my assignments and notes, rather then generating the
+PDFs offline and committing them to the repository as well, but I always
+kept delaying the migration because of the lack of sufficient documentation
+on the matter …</p> <a class="btn btn-info xsmall" href="/latex-gitlab-ci.html">read more</a></div>
+    </div>	
+				
 
  
         

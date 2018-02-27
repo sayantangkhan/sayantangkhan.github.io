@@ -1,5 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Sayantan Khan's Blog - mathematics</title><link href="/" rel="alternate"></link><link href="/feeds/mathematics.atom.xml" rel="self"></link><id>/</id><updated>2017-12-25T00:00:00+05:30</updated><entry><title>Cohomology as a measure of local to global failure</title><link href="/cohomology-local-global.html" rel="alternate"></link><published>2017-12-25T00:00:00+05:30</published><updated>2017-12-25T00:00:00+05:30</updated><author><name>Sayantan Khan</name></author><id>tag:None,2017-12-25:/cohomology-local-global.html</id><summary type="html">&lt;h2&gt;Motivation for cohomology&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Sayantan Khan's Blog - mathematics</title><link href="/" rel="alternate"></link><link href="/feeds/mathematics.atom.xml" rel="self"></link><id>/</id><updated>2018-02-24T00:00:00+05:30</updated><entry><title>A week at Berlin Mathematical School</title><link href="/bms-week.html" rel="alternate"></link><published>2018-02-24T00:00:00+05:30</published><updated>2018-02-24T00:00:00+05:30</updated><author><name>Sayantan Khan</name></author><id>tag:None,2018-02-24:/bms-week.html</id><summary type="html">&lt;p&gt;I spent the last week (18th to 24th February) at Berlin, courtesy Berlin Mathematical School,
+who invited me over for the BMS Days (where I had an interview for a PhD position), as well
+as the BMS Student Conference which immediately followed the BMS Days. I heard a lot of …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I spent the last week (18th to 24th February) at Berlin, courtesy Berlin Mathematical School,
+who invited me over for the BMS Days (where I had an interview for a PhD position), as well
+as the BMS Student Conference which immediately followed the BMS Days. I heard a lot of talks
+on very interesting stuff, some of which I want to outline here, just to have an account of it,
+if nothing else; this will also serve as a reminder of the areas and results I might want to follow
+up on some time in the future.&lt;/p&gt;
+&lt;h2&gt;The math talks (in no particular order)&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/h2&gt;
+&lt;p&gt;I'll only write about some of the talk; although all of them were fairly interesting,
+some were more interesting than others. &lt;/p&gt;
+&lt;h3&gt;The computational complexity of query answering under updates (Nicole Schweikardt, HU Berlin)&lt;/h3&gt;
+&lt;p&gt;This talk outlined the idea of analyzing database systems from the point of view
+of computational complexity theory, that is to say, prove effective lower bounds on
+the time complexity of querying a database (and to be more specific, time complexity
+in terms of only the database size for a fixed query, as well as the in terms of the
+complexity of the query and the database size). The query language itself was modelled as
+a first order language with a fixed number of atomic predicates depending on the type 
+of the database (first order language here means that the atomic predicates maybe negated,
+conjuncted, and disjuncted, i.e. NOTed, ANDed, and ORed, and one is also allowed to use
+existential and universal qualifiers over elements of the database). This was the general
+framework: the results in the presentation however looked at the subclass of queries
+(the &lt;em&gt;Conjunctive Queries&lt;/em&gt;) which
+only used AND of atomic propositions, and only used the existential qualifiers&lt;sup id="fnref-2"&gt;&lt;a class="footnote-ref" href="#fn-2"&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;For a fixed query, Nicole described a good algorithm and a data structure for the
+database such that existence and enumeration of the entries satisfying the queries could
+be done reasonably fast, as well as updating the database. &lt;/p&gt;
+&lt;h3&gt;Orbit Closures of Homogeneous Forms (Jesko Hüttenhain, TU Berlin)&lt;/h3&gt;
+&lt;p&gt;This talk was motivated by the difference between the complexity class #&lt;strong&gt;P&lt;/strong&gt; and the
+class &lt;strong&gt;NP&lt;/strong&gt;, which the speaker roughly described as the difference in difficulty between
+computing the permanent and the determinant of a given matrix&lt;sup id="fnref-3"&gt;&lt;a class="footnote-ref" href="#fn-3"&gt;3&lt;/a&gt;&lt;/sup&gt;. It's however only a belief
+and not really known whether the former problem is strictly harder than the latter. The speaker
+proposed a possible line of attack via algebraic geometry. Consider the determinant function on
+&lt;span class="math"&gt;\(M_n(\mathbb{C})\)&lt;/span&gt;. It is a homogeneous polynomial of degree &lt;span class="math"&gt;\(n\)&lt;/span&gt; in &lt;span class="math"&gt;\(n^2\)&lt;/span&gt; complex variables,
+and it's therefore a point in the space &lt;span class="math"&gt;\(\mathbb{C}[x_1, \ldots, x_{n^2}]\)&lt;/span&gt;. We can now look
+at the action of &lt;span class="math"&gt;\(GL(n, \mathbb{C})\)&lt;/span&gt; on this space defined in the following manner.
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\sigma_A: \det(X) \mapsto \det(AX)$$&lt;/div&gt;
+&lt;p&gt;
+The orbit defines a subset of &lt;span class="math"&gt;\(\mathbb{C}[x_1, \ldots, x_{n^2}]\)&lt;/span&gt;, and this subset essentially
+corresponds to all the polynomials which are as easy to compute as the determinant. Looking
+at the orbit of the permanent polynomial under the same action, we would get the set of polynomials
+which are as hard to compute as the permanent is. A way to show the permanent is harder to compute than
+the determinant would be to show that the two orbits are different. If one looks at the closure
+of the orbits, and shows that they are different, then one would have shown that even approximating
+the permanent is hard&lt;sup id="fnref-4"&gt;&lt;a class="footnote-ref" href="#fn-4"&gt;4&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;Jesko then stated one of his results, which characterized the boundary of one such orbit
+closure. He also mentioned that this approach to complexity theory might take a while to
+bear significant results, as the foundations of this area are being built up.&lt;/p&gt;
+&lt;h3&gt;(Some aspects of) Convexity and curvature (Stephen Lynch, FU Berlin)&lt;/h3&gt;
+&lt;p&gt;This talk was a presentation of Stephen's recent work (which is also on the 
+&lt;a href="https://arxiv.org/abs/1709.09697"&gt;arXiv&lt;/a&gt;). This work generalized convex embeddings
+of &lt;span class="math"&gt;\(S^n\)&lt;/span&gt; into &lt;span class="math"&gt;\(\mathbb{R}^{n+1}\)&lt;/span&gt; to higher co-dimension embeddings, where the notion
+of convexity does not make sense. This was done by replacing the condition of convexity
+by an inequality on the second fundamental form, which is exactly equivalent to convexity
+in the case of co-dimension &lt;span class="math"&gt;\(1\)&lt;/span&gt;. This sort of inequality, called the pinching condition,
+leads to the solution of the mean curvature flow existing for all time, the solution
+exhibited further rigidity in the sense that the evolution of time of the sphere is just
+homothety.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;
+&lt;p&gt;The complete list of BMS Student Conference talks is
+&lt;a href="https://bmsstudconf.github.io/2018/talks.html"&gt;here&lt;/a&gt; and the ones given
+at BMS Days are listed &lt;a href="https://www.math-berlin.de/academics/bms-days"&gt;here&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn-2"&gt;
+&lt;p&gt;This kind of restriction is quite reminiscent of monotone circuits, and I wondered
+whether there was any link between presented results, and lower bounds on monotone
+circuits: the speaker however had only chosen this subclass as a simpler problem to tackle
+before tackling the problem over the full first order logic. But maybe the results obtained
+for the full first order logic might not be as good as the ones of only conjunctive queries.
+Perhaps I should have a look at this problem again in the future: some sort of such obstruction
+might turn up, and if I were to be even more optimistic, perhaps a direct correspondence between
+monotone circuits and conjunctive queries, and general circuits and general queries.&amp;#160;&lt;a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn-3"&gt;
+&lt;p&gt;The former problem is quite hard, as even computing the permanent of a 0-1 matrix is #&lt;strong&gt;P&lt;/strong&gt;-complete,
+and the latter problem is fairly easy, being in the class &lt;strong&gt;P&lt;/strong&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn-4"&gt;
+&lt;p&gt;This sort of approach is a part of the nascent area of &lt;a href="https://en.wikipedia.org/wiki/Geometric_complexity_theory"&gt;geometric complexity theory&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref-4" title="Jump back to footnote 4 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="travel"></category><category term="math-talks"></category></entry><entry><title>Cohomology as a measure of local to global failure</title><link href="/cohomology-local-global.html" rel="alternate"></link><published>2017-12-25T00:00:00+05:30</published><updated>2017-12-25T00:00:00+05:30</updated><author><name>Sayantan Khan</name></author><id>tag:None,2017-12-25:/cohomology-local-global.html</id><summary type="html">&lt;h2&gt;Motivation for cohomology&lt;/h2&gt;
 &lt;p&gt;In most introductory algebraic topology courses, cohomology is rather poorly motivated. It's most
 commonly seen form in an algebraic topology course is singular cohomology, which arises as a the
 homology of the dual of the singular chain complex, but that doesn't really tell you why it's of …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Motivation for cohomology&lt;/h2&gt;
