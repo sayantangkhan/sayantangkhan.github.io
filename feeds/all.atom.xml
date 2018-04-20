@@ -1,5 +1,297 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Sayantan Khan's Blog</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2018-02-24T00:00:00+05:30</updated><entry><title>A week at Berlin Mathematical School</title><link href="/bms-week.html" rel="alternate"></link><published>2018-02-24T00:00:00+05:30</published><updated>2018-02-24T00:00:00+05:30</updated><author><name>Sayantan Khan</name></author><id>tag:None,2018-02-24:/bms-week.html</id><summary type="html">&lt;p&gt;I spent the last week (18th to 24th February) at Berlin, courtesy Berlin Mathematical School,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Sayantan Khan's Blog</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2018-04-20T00:00:00+05:30</updated><entry><title>Construction of Chern classes</title><link href="/chern-classes.html" rel="alternate"></link><published>2018-04-20T00:00:00+05:30</published><updated>2018-04-20T00:00:00+05:30</updated><author><name>Sayantan Khan</name></author><id>tag:None,2018-04-20:/chern-classes.html</id><summary type="html">&lt;h2&gt;Characteristic classes&lt;/h2&gt;
+&lt;p&gt;Given a manifold &lt;span class="math"&gt;\(M\)&lt;/span&gt;, one way to study vector bundles over &lt;span class="math"&gt;\(M\)&lt;/span&gt; is to use the theory of
+characteristic classes. A characteristic class is a way of assigning to each vector bundle over &lt;span class="math"&gt;\(M\)&lt;/span&gt;
+an element of the cohomology ring &lt;span class="math"&gt;\(H^{\ast}(M, G)\)&lt;/span&gt;. This assignment is not …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Characteristic classes&lt;/h2&gt;
+&lt;p&gt;Given a manifold &lt;span class="math"&gt;\(M\)&lt;/span&gt;, one way to study vector bundles over &lt;span class="math"&gt;\(M\)&lt;/span&gt; is to use the theory of
+characteristic classes. A characteristic class is a way of assigning to each vector bundle over &lt;span class="math"&gt;\(M\)&lt;/span&gt;
+an element of the cohomology ring &lt;span class="math"&gt;\(H^{\ast}(M, G)\)&lt;/span&gt;. This assignment is not just any arbitrary
+assignment; it has to satisfy a &lt;em&gt;naturality&lt;/em&gt; condition. If &lt;span class="math"&gt;\((F, N, \pi_2)\)&lt;/span&gt; is a vector
+bundle, &lt;span class="math"&gt;\(f: M \to N\)&lt;/span&gt; is a smooth map, (E, M, \pi_1) is the &lt;a href="https://en.wikipedia.org/wiki/Pullback_bundle"&gt;pullback bundle&lt;/a&gt;,
+and &lt;span class="math"&gt;\(c(E)\)&lt;/span&gt; and &lt;span class="math"&gt;\(c(F)\)&lt;/span&gt; are the cohomology classes assigned to &lt;span class="math"&gt;\(E\)&lt;/span&gt; and &lt;span class="math"&gt;\(F\)&lt;/span&gt; by the characteristic class
+&lt;span class="math"&gt;\(c\)&lt;/span&gt;, then the pullback of &lt;span class="math"&gt;\(c(F)\)&lt;/span&gt; along the map &lt;span class="math"&gt;\(f\)&lt;/span&gt; is &lt;span class="math"&gt;\(c(E)\)&lt;/span&gt;.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+c(E) = f^{\ast}(c(F))
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+The naturality condition is what makes characteristic classes so useful: it tells us that
+characteristic classes are an invariant of vector bundles over a manifold. If two vector
+bundles are isomorphic, they'll get assigned the same characteristic class.&lt;/p&gt;
+&lt;p&gt;The first step in studying characteristic classes is to construct interesting examples of them.
+Its definition is certainly of not much help in actually constructing any examples. In fact,
+constructing characteristic classes is not entirely trivial, and requires some work. We'll look
+at one way of constructing characteristic classes, called Chern classes. This construction
+is quite non-trivial, and requires the use of differential geometric machinery. The advantage of this
+construction however, is that it gives an explicit way of constructing characteristic classes over
+a lot of familiar manifolds.&lt;/p&gt;
+&lt;h2&gt;Connections on vector bundles&lt;/h2&gt;
+&lt;p&gt;Given a rank &lt;span class="math"&gt;\(k\)&lt;/span&gt; vector bundle &lt;span class="math"&gt;\((E, M)\)&lt;/span&gt;, a connection on the vector bundle is a bundle map &lt;span class="math"&gt;\(\nabla\)&lt;/span&gt; from
+&lt;span class="math"&gt;\(E\)&lt;/span&gt; to &lt;span class="math"&gt;\(E \otimes T^{\ast}M\)&lt;/span&gt; which satisfies the following condition for all smooth real-valued functions &lt;span class="math"&gt;\(f\)&lt;/span&gt;.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+\nabla(fv) = v \otimes df + f (\nabla v)
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+If we pick local coordinates and a trivialization around some point in &lt;span class="math"&gt;\(M\)&lt;/span&gt;, then the connection
+&lt;span class="math"&gt;\(\nabla\)&lt;/span&gt; can be described by a &lt;span class="math"&gt;\(k \times k\)&lt;/span&gt; matrix of &lt;span class="math"&gt;\(1\)&lt;/span&gt;-forms, which we'll denote
+&lt;span class="math"&gt;\(A\)&lt;/span&gt;, where the &lt;span class="math"&gt;\(i\)&lt;/span&gt;&lt;sup&gt;th&lt;/sup&gt; column
+denotes what &lt;span class="math"&gt;\(\nabla e_i\)&lt;/span&gt; goes to, where &lt;span class="math"&gt;\(\{e_i\}\)&lt;/span&gt; is the local frame for the vector bundle.
+The matrix &lt;span class="math"&gt;\(A\)&lt;/span&gt; is often called a &lt;a href="https://en.wikipedia.org/wiki/Connection_form"&gt;connection form&lt;/a&gt;.
+Using the matrix &lt;span class="math"&gt;\(A\)&lt;/span&gt;, we can construct another matrix, this one consisting of &lt;span class="math"&gt;\(2\)&lt;/span&gt;-forms, which we'll call
+the curvature form&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+\Omega = dA + A \wedge A
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+The curvature form will be the key tool we'll use to construct the Chern classes.&lt;/p&gt;
+&lt;h2&gt;Constructing globally defined forms using curvature&lt;/h2&gt;
+&lt;p&gt;The nice thing about the curvature form is that it transforms in a particularly
+nice manner when one changes the trivialization for the vector bundle. If &lt;span class="math"&gt;\(\Omega\)&lt;/span&gt;
+is the curvature matrix in the old trivialization, and the new trivialization is given
+by multiplying by an invertible matrix &lt;span class="math"&gt;\(g\)&lt;/span&gt;, then in the new trivialization, the curvature
+matrix is given by &lt;span class="math"&gt;\(g\Omega g^{-1}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Consider the trace of the curvature matrix defined on some open set. The trace will be
+a locally defined &lt;span class="math"&gt;\(2\)&lt;/span&gt;-form. Now recall that for any matrix &lt;span class="math"&gt;\(M\)&lt;/span&gt;, &lt;span class="math"&gt;\(\mathrm{tr}(M) = \mathrm{tr}(gMg^{-1})\)&lt;/span&gt;.
+This means that we can defined a "trace" of the curvature form globally (using a partition of unity argument),
+and this gives us a globally defined &lt;span class="math"&gt;\(2\)&lt;/span&gt;-form. In fact, this can be done for any homogeneous
+polynomial in the entries of a matrix
+which is conjugation invariant, e.g. the determinant. Doing this for the determinant will give
+us a globally defined &lt;span class="math"&gt;\(2k\)&lt;/span&gt;-form. We now have a way of constructing globally defined forms
+using the curvature form.&lt;/p&gt;
+&lt;p&gt;Let's take a pause here to recall our goal. We want to associate to each vector bundle over &lt;span class="math"&gt;\(M\)&lt;/span&gt;
+an element of &lt;span class="math"&gt;\(H^{\ast}(M)\)&lt;/span&gt;. What we have done so far is to associate to each vector bundle &lt;span class="math"&gt;\(E\)&lt;/span&gt;
+and a choice of connection &lt;span class="math"&gt;\(\nabla\)&lt;/span&gt; on that bundle a collection of differential forms. If we manage to show
+that the differential form is actually closed, we'll have an assignment of &lt;span class="math"&gt;\((E, \nabla)\)&lt;/span&gt; to an element
+of &lt;span class="math"&gt;\(H^{\ast}_{DR}(M)\)&lt;/span&gt;. Furthermore, if we show that the assignment to the cohomology class
+is independent of which connection we pick, we'll have constructed a characteristic class. In the following
+sections, we'll do both of the mentioned things, i.e. show that the globally defined forms are closed,
+and their cohomology class is independent of the connection chosen.&lt;/p&gt;
+&lt;h3&gt;The globally defined forms are closed&lt;/h3&gt;
+&lt;p&gt;To show that the globally defined forms are closed, we'll need a systematic way of taking
+their exterior derivative. The first step in that direction would be to simplify the expression
+for the connection form &lt;span class="math"&gt;\(A\)&lt;/span&gt; by picking a nice trivialization. In fact, we can pick a trivialization
+in which the connection matrix &lt;span class="math"&gt;\(A\)&lt;/span&gt; is &lt;span class="math"&gt;\(0\)&lt;/span&gt; at a point. The proof of this fact is outlined in these
+&lt;a href="http://www.math.iisc.ac.in/~vamsipingali/6Feb2018.pdf"&gt;notes&lt;/a&gt; (and some formulae used are derived in these
+&lt;a href="http://www.math.iisc.ac.in/~vamsipingali/1Feb2018.pdf"&gt;notes&lt;/a&gt;). We'll call this trivialization a &lt;em&gt;normal trivialization&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;This result already tells us that the &lt;span class="math"&gt;\(2\)&lt;/span&gt;-form defined by taking the trace of the curvature is
+closed. Pick a normal trivialization around &lt;span class="math"&gt;\(p\)&lt;/span&gt;; this makes &lt;span class="math"&gt;\(A\)&lt;/span&gt; vanish at &lt;span class="math"&gt;\(p\)&lt;/span&gt;. Then at that point, the curvature
+matrix is just &lt;span class="math"&gt;\(dA\)&lt;/span&gt;. The exterior derivative of the trace of this is the same as the trace of &lt;span class="math"&gt;\(d^2A\)&lt;/span&gt;
+(because the trace is a homogeneous degree &lt;span class="math"&gt;\(1\)&lt;/span&gt; polynomial in the entries of the matrix),
+which is &lt;span class="math"&gt;\(0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;To extend this idea to homogeneous polynomials of higher degrees, we need some way "linearizing" them,
+so that we can take their exterior derivative easily. We do this by &lt;em&gt;polarizing&lt;/em&gt; them. The polarization
+of a degree &lt;span class="math"&gt;\(j\)&lt;/span&gt; homogeneous polynomial &lt;span class="math"&gt;\(f\)&lt;/span&gt; in the entries of the matrix is a function &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; that takes &lt;span class="math"&gt;\(j\)&lt;/span&gt;
+matrix arguments, and outputs an element of the algebra over which the matrices are defined. The function &lt;span class="math"&gt;\(\phi\)&lt;/span&gt;
+is linear in each of its arguments, is symmetric in the order of its arguments, and is conjugation invariant, i.e.
+it satisfies the following identity for all invertible matrices &lt;span class="math"&gt;\(g\)&lt;/span&gt;.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+\phi(A_1, \ldots , A_j) = \phi(gA_1g^{-1}, \ldots , gA_jg^{-1})
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+Furthermore, &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; must also satisfy the following polarization identity for all matrices &lt;span class="math"&gt;\(A\)&lt;/span&gt;.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+\phi(A, \ldots , A) = f(A)
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+This last equality is why &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; is called the polarization of &lt;span class="math"&gt;\(f\)&lt;/span&gt;.
+Constructing the polarization of a homogeneous degree &lt;span class="math"&gt;\(j\)&lt;/span&gt; polynomial isn't too hard.
+The first step is to just construct a multilinear function that satisfies the polarization
+identity. One does that by taking each monomial in the expression for &lt;span class="math"&gt;\(f\)&lt;/span&gt;, and replacing
+the &lt;span class="math"&gt;\(i\)&lt;/span&gt;&lt;sup&gt;th&lt;/sup&gt; factor by the corresponding factor in the &lt;span class="math"&gt;\(i\)&lt;/span&gt;&lt;sup&gt;th&lt;/sup&gt; argument.&lt;/p&gt;
+&lt;p&gt;This is best illustrated by a simple example. Suppose we are working with &lt;span class="math"&gt;\(2 \times 2\)&lt;/span&gt; matrices,
+and the polynomial we want to polarize is the determinant polynomial. Its expression is given
+in the following manner.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+f(\{a_{ij}\}) = a_{11}a_{22} - a_{12}a_{21}
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+Its polarization &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; must have two arguments. We'll denote the entries of the first
+argument by superscript &lt;span class="math"&gt;\(1\)&lt;/span&gt; and the second by superscript &lt;span class="math"&gt;\(2\)&lt;/span&gt;. Then the first step would
+be two write the following expression.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+a^1_{11}a^2_{22} - a^1_{12}a^2_{21}
+\end{align*}&lt;/div&gt;
+&lt;p&gt;Whatever we get in the previous step certainly is multilinear in the arguments and satisfies the
+polarization identity. The next step is to symmetrize it. That can be easily done by taking
+all permutations of the arguments and taking an average over them. This continues to satisfy
+the polarization identity and is multilinear and symmetric. The only thing to do now is to make
+&lt;span class="math"&gt;\(\phi\)&lt;/span&gt; conjugation invariant. But as it turns out, &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; is already conjugation invariant,
+because &lt;span class="math"&gt;\(f\)&lt;/span&gt; is conjugation invariant. The proof of this fact is a little tricky,
+and is outlined in the next few paragraphs.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lemma.&lt;/strong&gt; If &lt;span class="math"&gt;\(f\)&lt;/span&gt; is a conjugation invariant degree &lt;span class="math"&gt;\(j\)&lt;/span&gt; polynomial in the entries 
+of a matrix, and &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; is its symmetric and multilinear polarization, then &lt;span class="math"&gt;\(\phi\)&lt;/span&gt;
+is also conjugation invariant (which we'll also call basis invariant).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proof:&lt;/strong&gt;     We'll prove this lemma by inducting on the number of distinct matrices in the arguments of
+    &lt;span class="math"&gt;\(\phi\)&lt;/span&gt;. Observe that &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; can have at most &lt;span class="math"&gt;\(j\)&lt;/span&gt; distinct matrices as arguments. What we'll show
+    is that the following equality holds, when &lt;span class="math"&gt;\(\left\{ A_1, A_2, \ldots, A_j\right\}\)&lt;/span&gt; contain at
+    most &lt;span class="math"&gt;\(m\)&lt;/span&gt; distinct matrices for each &lt;span class="math"&gt;\(1 \leq m \leq j\)&lt;/span&gt;.
+    &lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+      \phi\left(gA_1g^{-1}, gA_2g^{-1}, \ldots, gA_jg^{-1}\right)  = \phi\left(A_1, A_2, \ldots, A_j\right)
+    \end{align*}&lt;/div&gt;
+&lt;p&gt;
+    Let's start with the base case of &lt;span class="math"&gt;\(m=1\)&lt;/span&gt;. This follows from the hypothesis that &lt;span class="math"&gt;\(f\)&lt;/span&gt; is basis
+    invariant, since &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; with all identical arguments is just the function &lt;span class="math"&gt;\(f\)&lt;/span&gt;. Now suppose we
+    have shown the result for some &lt;span class="math"&gt;\(m &amp;lt; j\)&lt;/span&gt;. We now need to show &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; is basis invariant when
+    supplied with at most &lt;span class="math"&gt;\(m+1\)&lt;/span&gt; different arguments. Pick any set of &lt;span class="math"&gt;\(m+1\)&lt;/span&gt; matrices
+    &lt;span class="math"&gt;\(\left\{A_1, A_2, \ldots, A_{m+1}\right\}\)&lt;/span&gt;, and any invertible matrix &lt;span class="math"&gt;\(g\)&lt;/span&gt;. We want to show the
+    following equality (with some of arguments repeated possibly, if &lt;span class="math"&gt;\(m+1 &amp;lt; j\)&lt;/span&gt;).
+    &lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+      \phi\left(gA_1g^{-1}, gA_2g^{-1}, \ldots, gA_{m+1}g^{-1}\right)  = \phi\left(A_1, A_2, \ldots, A_{m+1}\right)
+    \end{align*}&lt;/div&gt;
+&lt;p&gt;
+    Consider the following expression, for &lt;span class="math"&gt;\(t \in \mathbb{C}\)&lt;/span&gt;.
+    &lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
+      \phi\left( A_1 + tA_{m+1}, A_1 + tA_{m+1}, \ldots, A_1 + tA_{m+1}, A_2, \ldots, A_m \right) \label{eq:1}
+    \end{align}&lt;/div&gt;
+&lt;p&gt;
+    Here, &lt;span class="math"&gt;\(A_1 + tA_{m+1}\)&lt;/span&gt; is repeated &lt;span class="math"&gt;\(j -m\)&lt;/span&gt; times. Since expression &lt;span class="math"&gt;\(\ref{eq:1}\)&lt;/span&gt; has at most &lt;span class="math"&gt;\(m\)&lt;/span&gt;
+    distinct arguments, we can use the induction hypothesis to conclude that expression \ref{eq:1}
+    would be the same if we conjugated all arguments with &lt;span class="math"&gt;\(g\)&lt;/span&gt;. In fact, expression \ref{eq:1} can be
+    expanded out to be written as a univariate polynomial &lt;span class="math"&gt;\(P\)&lt;/span&gt; in &lt;span class="math"&gt;\(t\)&lt;/span&gt;, with coefficients in &lt;span class="math"&gt;\(R\)&lt;/span&gt;. The
+    coefficient &lt;span class="math"&gt;\(c_j(P)\)&lt;/span&gt; of &lt;span class="math"&gt;\(t^j\)&lt;/span&gt; in the polynomial is the following.
+    &lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+      c_j(P) = \binom{j-m}{j} \phi\left( A_1, \ldots, A_1, A_{m+1}, \ldots, A_{m+1}, A_2, \ldots, A_m\right) 
+    \end{align*}&lt;/div&gt;
+&lt;p&gt;
+    Here &lt;span class="math"&gt;\(A_1\)&lt;/span&gt; is repeated &lt;span class="math"&gt;\(j-m - j\)&lt;/span&gt; times, and &lt;span class="math"&gt;\(A_{m+1}\)&lt;/span&gt; repeated &lt;span class="math"&gt;\(j\)&lt;/span&gt; times. Similarly, consider
+    the polynomial &lt;span class="math"&gt;\(P'\)&lt;/span&gt; one gets by expanding out the conjugated version of expression
+    \ref{eq:1}. The coefficient &lt;span class="math"&gt;\(c_j(P')\)&lt;/span&gt; of &lt;span class="math"&gt;\(t^j\)&lt;/span&gt; in &lt;span class="math"&gt;\(P'\)&lt;/span&gt; is given by a similar expression.
+    &lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+      c_j(P') = \binom{j-m}{j}
+      \phi\left( gA_1g^{-1}, \ldots, gA_1g^{-1}
+      , gA_{m+1}g^{-1}, \ldots, gA_{m+1}g^{-1}, gA_2g^{-1}, \ldots, gA_mg^{-1}\right) 
+    \end{align*}&lt;/div&gt;
+&lt;p&gt;
+    Recall again that by the induction hypothesis, the polynomials &lt;span class="math"&gt;\(P\)&lt;/span&gt; and &lt;span class="math"&gt;\(P'\)&lt;/span&gt; are the same. Which
+    means their coefficients must also be the same. But the coefficients being equal means that even
+    if &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; has &lt;span class="math"&gt;\(m+1\)&lt;/span&gt; different entries, it's still conjugation invariant, hence proving the
+    induction step, and the lemma. &lt;span class="math"&gt;\(\blacksquare\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The upshot of proving that every homogeneous polynomial can be polarized is that now we
+have an easy way of taking exterior derivative. If &lt;span class="math"&gt;\(f\)&lt;/span&gt; is the degree &lt;span class="math"&gt;\(j\)&lt;/span&gt; homogeneous polynomial, and &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; its
+polarization, then the exterior derivative of &lt;span class="math"&gt;\(f(\Omega)\)&lt;/span&gt; is given by the following expression.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+df(\Omega) = j \cdot \phi(d\Omega, \Omega, \Omega, \ldots , \Omega)
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+Using normal coordinates, and exploiting the multilinearity of &lt;span class="math"&gt;\(\phi\)&lt;/span&gt;, we see that every global
+&lt;span class="math"&gt;\(2\)&lt;/span&gt;-form obtained from the curvature form by applying the polynomial &lt;span class="math"&gt;\(f\)&lt;/span&gt; is actually closed,
+and hence an element of the cohomology ring. We thus have a way associating a vector bundle
+and a connection on it to an element in the cohomology ring. The next step is to show
+this assignment is independent of the connection chosen.&lt;/p&gt;
+&lt;h3&gt;Independence from choice of connection&lt;/h3&gt;
+&lt;p&gt;Given a homogeneous polynomial &lt;span class="math"&gt;\(f\)&lt;/span&gt;, and two connections &lt;span class="math"&gt;\(\nabla_0\)&lt;/span&gt; and &lt;span class="math"&gt;\(\nabla_1\)&lt;/span&gt; on the vector
+bundle, we need to show the associated forms &lt;span class="math"&gt;\(f(\Omega_0)\)&lt;/span&gt; and &lt;span class="math"&gt;\(f(\Omega_1)\)&lt;/span&gt; differ by an exact
+form. Consider the form &lt;span class="math"&gt;\(\eta_t = f((1-t)\Omega_0 + (t)\Omega_1)\)&lt;/span&gt;. This defines a path in the
+space of forms between f(\Omega_0) and &lt;span class="math"&gt;\(f(\Omega_1)\)&lt;/span&gt;. If we show &lt;span class="math"&gt;\(\frac{d}{dt} \eta_t\)&lt;/span&gt; is exact,
+that will show what we wanted to prove. In fact, the exterior derivative of the following
+form is precisely &lt;span class="math"&gt;\(\frac{d}{dt}\eta_t\)&lt;/span&gt;.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+j \phi \left( A_1 - A_0, \Omega_t, \Omega_t, \ldots, \Omega_t \right)
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+Here &lt;span class="math"&gt;\(A_i\)&lt;/span&gt; is the connection form of the connection &lt;span class="math"&gt;\(\nabla_i\)&lt;/span&gt;, and &lt;span class="math"&gt;\(\Omega_t\)&lt;/span&gt; the curvature
+form of the connection &lt;span class="math"&gt;\(\nabla_t\)&lt;/span&gt;. If one takes the exterior derivative of this expression, using
+the normal coordinates, one can see that it's the same as &lt;span class="math"&gt;\(\frac{d}{dt} \eta_t\)&lt;/span&gt;. This proves that 
+the choice of connection doesn't matter&lt;sup id="fnref-2"&gt;&lt;a class="footnote-ref" href="#fn-2"&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;h2&gt;The Chern class&lt;/h2&gt;
+&lt;p&gt;Now that we have seen how to construct characteristic classes using the curvature form, we'll
+construct a specific example, these are the ones that are called the Chern classes. Let
+&lt;span class="math"&gt;\(E\)&lt;/span&gt; be a rank &lt;span class="math"&gt;\(k\)&lt;/span&gt; vector bundle, and let &lt;span class="math"&gt;\(\Omega\)&lt;/span&gt; be the curvature of a chosen connection on &lt;span class="math"&gt;\(E\)&lt;/span&gt;.
+Consider the following polynomial in &lt;span class="math"&gt;\(t\)&lt;/span&gt;, where &lt;span class="math"&gt;\(t \in \mathbb{R}\)&lt;/span&gt;.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+\det(t\Omega + I) = \sum_{i=1}^{k} f_i(\Omega) t^i
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+Each of the &lt;span class="math"&gt;\(f_i(\Omega)\)&lt;/span&gt; are homogeneous degree &lt;span class="math"&gt;\(i\)&lt;/span&gt; polynomials in &lt;span class="math"&gt;\(\Omega\)&lt;/span&gt;. Because
+the left hand side is conjugation invariant, so is each of the &lt;span class="math"&gt;\(f_i(\Omega)\)&lt;/span&gt;. That means
+each &lt;span class="math"&gt;\(f_i(\Omega)\)&lt;/span&gt; defines an element (of degree &lt;span class="math"&gt;\(2i\)&lt;/span&gt;) in the cohomology ring of the base space &lt;span class="math"&gt;\(M\)&lt;/span&gt;.
+The &lt;span class="math"&gt;\(i\)&lt;/span&gt;&lt;sup&gt;th&lt;/sup&gt; Chern class of the vector bundle &lt;span class="math"&gt;\(E\)&lt;/span&gt; is defined to be &lt;span class="math"&gt;\(f_i(\Omega)\)&lt;/span&gt;. The previous part 
+shows that this is well defined independent of the connection chosen.&lt;/p&gt;
+&lt;p&gt;The Chern classes satisfy several nice properties, including a product formula
+for the Whitney sum of two vector bundles, naturality, etc. The Wikipedia &lt;a href="https://en.wikipedia.org/wiki/Chern_class#Construction_of_Chern_classes"&gt;page&lt;/a&gt;
+provides a good description, as well as references for further reading.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;
+&lt;p&gt;The reason why this is called the curvature form is that in the case of the Levi-Civita
+connection on a Riemannian manifold, this definition reduces to the standard Riemann curvature
+endomorphism. &lt;a href="https://en.wikipedia.org/wiki/Curvature_form#Curvature_form_in_a_vector_bundle"&gt;See this&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn-2"&gt;
+&lt;p&gt;This proof of independence from the connection was taken from the problem set &lt;a href="http://math.iisc.ac.in/~vamsipingali/HW43392018.pdf"&gt;here&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="differential-geometry"></category><category term="vector-bundles"></category></entry><entry><title>A week at Berlin Mathematical School</title><link href="/bms-week.html" rel="alternate"></link><published>2018-02-24T00:00:00+05:30</published><updated>2018-02-24T00:00:00+05:30</updated><author><name>Sayantan Khan</name></author><id>tag:None,2018-02-24:/bms-week.html</id><summary type="html">&lt;p&gt;I spent the last week (18th to 24th February) at Berlin, courtesy Berlin Mathematical School,
 who invited me over for the BMS Days (where I had an interview for a PhD position), as well
 as the BMS Student Conference which immediately followed the BMS Days. I heard a lot of …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I spent the last week (18th to 24th February) at Berlin, courtesy Berlin Mathematical School,
 who invited me over for the BMS Days (where I had an interview for a PhD position), as well
