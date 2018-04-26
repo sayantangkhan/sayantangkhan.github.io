@@ -19,12 +19,12 @@ The naturality condition is what makes characteristic classes so useful: it tell
 characteristic classes are an invariant of vector bundles over a manifold. If two vector
 bundles are isomorphic, they'll get assigned the same characteristic class.&lt;/p&gt;
 &lt;p&gt;The first step in studying characteristic classes is to construct interesting examples of them.
-Its definition is certainly of not much help in actually constructing any examples. In fact,
+Its definition is certainly not of much help in actually constructing any examples. In fact,
 constructing characteristic classes is not entirely trivial, and requires some work. We'll look
 at one way of constructing characteristic classes, called Chern classes. This construction
 is quite non-trivial, and requires the use of differential geometric machinery. The advantage of this
 construction however, is that it gives an explicit way of constructing characteristic classes over
-a lot of familiar manifolds.&lt;/p&gt;
+a lot of familiar vector bundles.&lt;/p&gt;
 &lt;h2&gt;Connections on vector bundles&lt;/h2&gt;
 &lt;p&gt;Given a rank &lt;span class="math"&gt;\(k\)&lt;/span&gt; vector bundle &lt;span class="math"&gt;\((E, M)\)&lt;/span&gt;, a connection on the vector bundle is a bundle map &lt;span class="math"&gt;\(\nabla\)&lt;/span&gt; from
 &lt;span class="math"&gt;\(E\)&lt;/span&gt; to &lt;span class="math"&gt;\(E \otimes T^{\ast}M\)&lt;/span&gt; which satisfies the following condition for all smooth real-valued functions &lt;span class="math"&gt;\(f\)&lt;/span&gt;.
