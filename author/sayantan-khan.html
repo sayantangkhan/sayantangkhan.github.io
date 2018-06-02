@@ -64,8 +64,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="/chern-classes.html"><h1>Construction of Chern classes</h1></a>
-Fri 20 April 2018
+            <a href="/update-summer-2018.html"><h1>Summer 2018 update</h1></a>
+Sat 02 June 2018
 
 by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
  
@@ -74,299 +74,82 @@ by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
  
         </div>
         
-        <div><h2>Characteristic classes</h2>
-<p>Given a manifold <span class="math">\(M\)</span>, one way to study vector bundles over <span class="math">\(M\)</span> is to use the theory of
-characteristic classes. A characteristic class is a way of assigning to each vector bundle over <span class="math">\(M\)</span>
-an element of the cohomology ring <span class="math">\(H^{\ast}(M, G)\)</span>. This assignment is not just any arbitrary
-assignment; it has to satisfy a <em>naturality</em> condition. If <span class="math">\((F, N, \pi_2)\)</span> is a vector
-bundle, <span class="math">\(f: M \to N\)</span> is a smooth map, (E, M, \pi_1) is the <a href="https://en.wikipedia.org/wiki/Pullback_bundle">pullback bundle</a>,
-and <span class="math">\(c(E)\)</span> and <span class="math">\(c(F)\)</span> are the cohomology classes assigned to <span class="math">\(E\)</span> and <span class="math">\(F\)</span> by the characteristic class
-<span class="math">\(c\)</span>, then the pullback of <span class="math">\(c(F)\)</span> along the map <span class="math">\(f\)</span> is <span class="math">\(c(E)\)</span>.
-</p>
-<div class="math">\begin{align*}
-c(E) = f^{\ast}(c(F))
-\end{align*}</div>
-<p>
-The naturality condition is what makes characteristic classes so useful: it tells us that
-characteristic classes are an invariant of vector bundles over a manifold. If two vector
-bundles are isomorphic, they'll get assigned the same characteristic class.</p>
-<p>The first step in studying characteristic classes is to construct interesting examples of them.
-Its definition is certainly not of much help in actually constructing any examples. In fact,
-constructing characteristic classes is not entirely trivial, and requires some work. We'll look
-at one way of constructing characteristic classes, called Chern classes. This construction
-is quite non-trivial, and requires the use of differential geometric machinery. The advantage of this
-construction however, is that it gives an explicit way of constructing characteristic classes over
-a lot of familiar vector bundles.</p>
-<h2>Connections on vector bundles</h2>
-<p>Given a rank <span class="math">\(k\)</span> vector bundle <span class="math">\((E, M)\)</span>, a connection on the vector bundle is a bundle map <span class="math">\(\nabla\)</span> from
-<span class="math">\(E\)</span> to <span class="math">\(E \otimes T^{\ast}M\)</span> which satisfies the following condition for all smooth real-valued functions <span class="math">\(f\)</span>.
-</p>
-<div class="math">\begin{align*}
-\nabla(fv) = v \otimes df + f (\nabla v)
-\end{align*}</div>
-<p>
-If we pick local coordinates and a trivialization around some point in <span class="math">\(M\)</span>, then the connection
-<span class="math">\(\nabla\)</span> can be described by a <span class="math">\(k \times k\)</span> matrix of <span class="math">\(1\)</span>-forms, which we'll denote
-<span class="math">\(A\)</span>, where the <span class="math">\(i\)</span><sup>th</sup> column
-denotes what <span class="math">\(\nabla e_i\)</span> goes to, where <span class="math">\(\{e_i\}\)</span> is the local frame for the vector bundle.
-The matrix <span class="math">\(A\)</span> is often called a <a href="https://en.wikipedia.org/wiki/Connection_form">connection form</a>.
-Using the matrix <span class="math">\(A\)</span>, we can construct another matrix, this one consisting of <span class="math">\(2\)</span>-forms, which we'll call
-the curvature form<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup>.
-</p>
-<div class="math">\begin{align*}
-\Omega = dA + A \wedge A
-\end{align*}</div>
-<p>
-The curvature form will be the key tool we'll use to construct the Chern classes.</p>
-<h2>Constructing globally defined forms using curvature</h2>
-<p>The nice thing about the curvature form is that it transforms in a particularly
-nice manner when one changes the trivialization for the vector bundle. If <span class="math">\(\Omega\)</span>
-is the curvature matrix in the old trivialization, and the new trivialization is given
-by multiplying by an invertible matrix <span class="math">\(g\)</span>, then in the new trivialization, the curvature
-matrix is given by <span class="math">\(g\Omega g^{-1}\)</span>.</p>
-<p>Consider the trace of the curvature matrix defined on some open set. The trace will be
-a locally defined <span class="math">\(2\)</span>-form. Now recall that for any matrix <span class="math">\(M\)</span>, <span class="math">\(\mathrm{tr}(M) = \mathrm{tr}(gMg^{-1})\)</span>.
-This means that we can defined a "trace" of the curvature form globally (using a partition of unity argument),
-and this gives us a globally defined <span class="math">\(2\)</span>-form. In fact, this can be done for any homogeneous
-polynomial in the entries of a matrix
-which is conjugation invariant, e.g. the determinant. Doing this for the determinant will give
-us a globally defined <span class="math">\(2k\)</span>-form. We now have a way of constructing globally defined forms
-using the curvature form.</p>
-<p>Let's take a pause here to recall our goal. We want to associate to each vector bundle over <span class="math">\(M\)</span>
-an element of <span class="math">\(H^{\ast}(M)\)</span>. What we have done so far is to associate to each vector bundle <span class="math">\(E\)</span>
-and a choice of connection <span class="math">\(\nabla\)</span> on that bundle a collection of differential forms. If we manage to show
-that the differential form is actually closed, we'll have an assignment of <span class="math">\((E, \nabla)\)</span> to an element
-of <span class="math">\(H^{\ast}_{DR}(M)\)</span>. Furthermore, if we show that the assignment to the cohomology class
-is independent of which connection we pick, we'll have constructed a characteristic class. In the following
-sections, we'll do both of the mentioned things, i.e. show that the globally defined forms are closed,
-and their cohomology class is independent of the connection chosen.</p>
-<h3>The globally defined forms are closed</h3>
-<p>To show that the globally defined forms are closed, we'll need a systematic way of taking
-their exterior derivative. The first step in that direction would be to simplify the expression
-for the connection form <span class="math">\(A\)</span> by picking a nice trivialization. In fact, we can pick a trivialization
-in which the connection matrix <span class="math">\(A\)</span> is <span class="math">\(0\)</span> at a point. The proof of this fact is outlined in these
-<a href="http://www.math.iisc.ac.in/~vamsipingali/6Feb2018.pdf">notes</a> (and some formulae used are derived in these
-<a href="http://www.math.iisc.ac.in/~vamsipingali/1Feb2018.pdf">notes</a>). We'll call this trivialization a <em>normal trivialization</em>.</p>
-<p>This result already tells us that the <span class="math">\(2\)</span>-form defined by taking the trace of the curvature is
-closed. Pick a normal trivialization around <span class="math">\(p\)</span>; this makes <span class="math">\(A\)</span> vanish at <span class="math">\(p\)</span>. Then at that point, the curvature
-matrix is just <span class="math">\(dA\)</span>. The exterior derivative of the trace of this is the same as the trace of <span class="math">\(d^2A\)</span>
-(because the trace is a homogeneous degree <span class="math">\(1\)</span> polynomial in the entries of the matrix),
-which is <span class="math">\(0\)</span>.</p>
-<p>To extend this idea to homogeneous polynomials of higher degrees, we need some way "linearizing" them,
-so that we can take their exterior derivative easily. We do this by <em>polarizing</em> them. The polarization
-of a degree <span class="math">\(j\)</span> homogeneous polynomial <span class="math">\(f\)</span> in the entries of the matrix is a function <span class="math">\(\phi\)</span> that takes <span class="math">\(j\)</span>
-matrix arguments, and outputs an element of the algebra over which the matrices are defined. The function <span class="math">\(\phi\)</span>
-is linear in each of its arguments, is symmetric in the order of its arguments, and is conjugation invariant, i.e.
-it satisfies the following identity for all invertible matrices <span class="math">\(g\)</span>.
-</p>
-<div class="math">\begin{align*}
-\phi(A_1, \ldots , A_j) = \phi(gA_1g^{-1}, \ldots , gA_jg^{-1})
-\end{align*}</div>
-<p>
-Furthermore, <span class="math">\(\phi\)</span> must also satisfy the following polarization identity for all matrices <span class="math">\(A\)</span>.
-</p>
-<div class="math">\begin{align*}
-\phi(A, \ldots , A) = f(A)
-\end{align*}</div>
-<p>
-This last equality is why <span class="math">\(\phi\)</span> is called the polarization of <span class="math">\(f\)</span>.
-Constructing the polarization of a homogeneous degree <span class="math">\(j\)</span> polynomial isn't too hard.
-The first step is to just construct a multilinear function that satisfies the polarization
-identity. One does that by taking each monomial in the expression for <span class="math">\(f\)</span>, and replacing
-the <span class="math">\(i\)</span><sup>th</sup> factor by the corresponding factor in the <span class="math">\(i\)</span><sup>th</sup> argument.</p>
-<p>This is best illustrated by a simple example. Suppose we are working with <span class="math">\(2 \times 2\)</span> matrices,
-and the polynomial we want to polarize is the determinant polynomial. Its expression is given
-in the following manner.
-</p>
-<div class="math">\begin{align*}
-f(\{a_{ij}\}) = a_{11}a_{22} - a_{12}a_{21}
-\end{align*}</div>
-<p>
-Its polarization <span class="math">\(\phi\)</span> must have two arguments. We'll denote the entries of the first
-argument by superscript <span class="math">\(1\)</span> and the second by superscript <span class="math">\(2\)</span>. Then the first step would
-be two write the following expression.
-</p>
-<div class="math">\begin{align*}
-a^1_{11}a^2_{22} - a^1_{12}a^2_{21}
-\end{align*}</div>
-<p>Whatever we get in the previous step certainly is multilinear in the arguments and satisfies the
-polarization identity. The next step is to symmetrize it. That can be easily done by taking
-all permutations of the arguments and taking an average over them. This continues to satisfy
-the polarization identity and is multilinear and symmetric. The only thing to do now is to make
-<span class="math">\(\phi\)</span> conjugation invariant. But as it turns out, <span class="math">\(\phi\)</span> is already conjugation invariant,
-because <span class="math">\(f\)</span> is conjugation invariant. The proof of this fact is a little tricky,
-and is outlined in the next few paragraphs.</p>
-<p><strong>Lemma.</strong> If <span class="math">\(f\)</span> is a conjugation invariant degree <span class="math">\(j\)</span> polynomial in the entries 
-of a matrix, and <span class="math">\(\phi\)</span> is its symmetric and multilinear polarization, then <span class="math">\(\phi\)</span>
-is also conjugation invariant (which we'll also call basis invariant).</p>
-<p><strong>Proof:</strong>     We'll prove this lemma by inducting on the number of distinct matrices in the arguments of
-    <span class="math">\(\phi\)</span>. Observe that <span class="math">\(\phi\)</span> can have at most <span class="math">\(j\)</span> distinct matrices as arguments. What we'll show
-    is that the following equality holds, when <span class="math">\(\left\{ A_1, A_2, \ldots, A_j\right\}\)</span> contain at
-    most <span class="math">\(m\)</span> distinct matrices for each <span class="math">\(1 \leq m \leq j\)</span>.
-    </p>
-<div class="math">\begin{align*}
-      \phi\left(gA_1g^{-1}, gA_2g^{-1}, \ldots, gA_jg^{-1}\right)  = \phi\left(A_1, A_2, \ldots, A_j\right)
-    \end{align*}</div>
-<p>
-    Let's start with the base case of <span class="math">\(m=1\)</span>. This follows from the hypothesis that <span class="math">\(f\)</span> is basis
-    invariant, since <span class="math">\(\phi\)</span> with all identical arguments is just the function <span class="math">\(f\)</span>. Now suppose we
-    have shown the result for some <span class="math">\(m &lt; j\)</span>. We now need to show <span class="math">\(\phi\)</span> is basis invariant when
-    supplied with at most <span class="math">\(m+1\)</span> different arguments. Pick any set of <span class="math">\(m+1\)</span> matrices
-    <span class="math">\(\left\{A_1, A_2, \ldots, A_{m+1}\right\}\)</span>, and any invertible matrix <span class="math">\(g\)</span>. We want to show the
-    following equality (with some of arguments repeated possibly, if <span class="math">\(m+1 &lt; j\)</span>).
-    </p>
-<div class="math">\begin{align*}
-      \phi\left(gA_1g^{-1}, gA_2g^{-1}, \ldots, gA_{m+1}g^{-1}\right)  = \phi\left(A_1, A_2, \ldots, A_{m+1}\right)
-    \end{align*}</div>
-<p>
-    Consider the following expression, for <span class="math">\(t \in \mathbb{C}\)</span>.
-    </p>
-<div class="math">\begin{align}
-      \phi\left( A_1 + tA_{m+1}, A_1 + tA_{m+1}, \ldots, A_1 + tA_{m+1}, A_2, \ldots, A_m \right) \label{eq:1}
-    \end{align}</div>
-<p>
-    Here, <span class="math">\(A_1 + tA_{m+1}\)</span> is repeated <span class="math">\(j -m\)</span> times. Since expression <span class="math">\(\ref{eq:1}\)</span> has at most <span class="math">\(m\)</span>
-    distinct arguments, we can use the induction hypothesis to conclude that expression \ref{eq:1}
-    would be the same if we conjugated all arguments with <span class="math">\(g\)</span>. In fact, expression \ref{eq:1} can be
-    expanded out to be written as a univariate polynomial <span class="math">\(P\)</span> in <span class="math">\(t\)</span>, with coefficients in <span class="math">\(R\)</span>. The
-    coefficient <span class="math">\(c_j(P)\)</span> of <span class="math">\(t^j\)</span> in the polynomial is the following.
-    </p>
-<div class="math">\begin{align*}
-      c_j(P) = \binom{j-m}{j} \phi\left( A_1, \ldots, A_1, A_{m+1}, \ldots, A_{m+1}, A_2, \ldots, A_m\right) 
-    \end{align*}</div>
-<p>
-    Here <span class="math">\(A_1\)</span> is repeated <span class="math">\(j-m - j\)</span> times, and <span class="math">\(A_{m+1}\)</span> repeated <span class="math">\(j\)</span> times. Similarly, consider
-    the polynomial <span class="math">\(P'\)</span> one gets by expanding out the conjugated version of expression
-    \ref{eq:1}. The coefficient <span class="math">\(c_j(P')\)</span> of <span class="math">\(t^j\)</span> in <span class="math">\(P'\)</span> is given by a similar expression.
-    </p>
-<div class="math">\begin{align*}
-      c_j(P') = \binom{j-m}{j}
-      \phi\left( gA_1g^{-1}, \ldots, gA_1g^{-1}
-      , gA_{m+1}g^{-1}, \ldots, gA_{m+1}g^{-1}, gA_2g^{-1}, \ldots, gA_mg^{-1}\right) 
-    \end{align*}</div>
-<p>
-    Recall again that by the induction hypothesis, the polynomials <span class="math">\(P\)</span> and <span class="math">\(P'\)</span> are the same. Which
-    means their coefficients must also be the same. But the coefficients being equal means that even
-    if <span class="math">\(\phi\)</span> has <span class="math">\(m+1\)</span> different entries, it's still conjugation invariant, hence proving the
-    induction step, and the lemma. <span class="math">\(\blacksquare\)</span></p>
-<p>The upshot of proving that every homogeneous polynomial can be polarized is that now we
-have an easy way of taking exterior derivative. If <span class="math">\(f\)</span> is the degree <span class="math">\(j\)</span> homogeneous polynomial, and <span class="math">\(\phi\)</span> its
-polarization, then the exterior derivative of <span class="math">\(f(\Omega)\)</span> is given by the following expression.
-</p>
-<div class="math">\begin{align*}
-df(\Omega) = j \cdot \phi(d\Omega, \Omega, \Omega, \ldots , \Omega)
-\end{align*}</div>
-<p>
-Using normal coordinates, and exploiting the multilinearity of <span class="math">\(\phi\)</span>, we see that every global
-<span class="math">\(2\)</span>-form obtained from the curvature form by applying the polynomial <span class="math">\(f\)</span> is actually closed,
-and hence an element of the cohomology ring. We thus have a way associating a vector bundle
-and a connection on it to an element in the cohomology ring. The next step is to show
-this assignment is independent of the connection chosen.</p>
-<h3>Independence from choice of connection</h3>
-<p>Given a homogeneous polynomial <span class="math">\(f\)</span>, and two connections <span class="math">\(\nabla_0\)</span> and <span class="math">\(\nabla_1\)</span> on the vector
-bundle, we need to show the associated forms <span class="math">\(f(\Omega_0)\)</span> and <span class="math">\(f(\Omega_1)\)</span> differ by an exact
-form. Consider the form <span class="math">\(\eta_t = f((1-t)\Omega_0 + (t)\Omega_1)\)</span>. This defines a path in the
-space of forms between f(\Omega_0) and <span class="math">\(f(\Omega_1)\)</span>. If we show <span class="math">\(\frac{d}{dt} \eta_t\)</span> is exact,
-that will show what we wanted to prove. In fact, the exterior derivative of the following
-form is precisely <span class="math">\(\frac{d}{dt}\eta_t\)</span>.
-</p>
-<div class="math">\begin{align*}
-j \phi \left( A_1 - A_0, \Omega_t, \Omega_t, \ldots, \Omega_t \right)
-\end{align*}</div>
-<p>
-Here <span class="math">\(A_i\)</span> is the connection form of the connection <span class="math">\(\nabla_i\)</span>, and <span class="math">\(\Omega_t\)</span> the curvature
-form of the connection <span class="math">\(\nabla_t\)</span>. If one takes the exterior derivative of this expression, using
-the normal coordinates, one can see that it's the same as <span class="math">\(\frac{d}{dt} \eta_t\)</span>. This proves that 
-the choice of connection doesn't matter<sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup>.</p>
-<h2>The Chern class</h2>
-<p>Now that we have seen how to construct characteristic classes using the curvature form, we'll
-construct a specific example, these are the ones that are called the Chern classes. Let
-<span class="math">\(E\)</span> be a rank <span class="math">\(k\)</span> vector bundle, and let <span class="math">\(\Omega\)</span> be the curvature of a chosen connection on <span class="math">\(E\)</span>.
-Consider the following polynomial in <span class="math">\(t\)</span>, where <span class="math">\(t \in \mathbb{R}\)</span>.
-</p>
-<div class="math">\begin{align*}
-\det(t\Omega + I) = \sum_{i=1}^{k} f_i(\Omega) t^i
-\end{align*}</div>
-<p>
-Each of the <span class="math">\(f_i(\Omega)\)</span> are homogeneous degree <span class="math">\(i\)</span> polynomials in <span class="math">\(\Omega\)</span>. Because
-the left hand side is conjugation invariant, so is each of the <span class="math">\(f_i(\Omega)\)</span>. That means
-each <span class="math">\(f_i(\Omega)\)</span> defines an element (of degree <span class="math">\(2i\)</span>) in the cohomology ring of the base space <span class="math">\(M\)</span>.
-The <span class="math">\(i\)</span><sup>th</sup> Chern class of the vector bundle <span class="math">\(E\)</span> is defined to be <span class="math">\(f_i(\Omega)\)</span>. The previous part 
-shows that this is well defined independent of the connection chosen.</p>
-<p>The Chern classes satisfy several nice properties, including a product formula
-for the Whitney sum of two vector bundles, naturality, etc. The Wikipedia <a href="https://en.wikipedia.org/wiki/Chern_class#Construction_of_Chern_classes">page</a>
-provides a good description, as well as references for further reading.</p>
-<div class="footnote">
-<hr>
-<ol>
-<li id="fn-1">
-<p>The reason why this is called the curvature form is that in the case of the Levi-Civita
-connection on a Riemannian manifold, this definition reduces to the standard Riemann curvature
-endomorphism. <a href="https://en.wikipedia.org/wiki/Curvature_form#Curvature_form_in_a_vector_bundle">See this</a>.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-<li id="fn-2">
-<p>This proof of independence from the connection was taken from the problem set <a href="http://math.iisc.ac.in/~vamsipingali/HW43392018.pdf">here</a>.&#160;<a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script></div>
+        <div><p>I'm getting lazy. I thought I would be posting more often once the summer holidays started
+but May came and went with nary a post. In my defence, I was fairly busy, dealing with
+the usual bureaucratic nonsense that comes with leaving your institution for good and moving
+to another country. I also started learning algebraic geometry seriously, and will continue to
+focus on it for a major part of the summer. Doing only math gets boring really quick though,
+so I'll interleave the math sessions with some coding. I started learning <a href="https://www.rust-lang.org">Rust</a>,
+and got sidetracked for a while by Emacs. But before I talk about Rust and Emacs, I'll quickly
+outline my math plans for the summer.</p>
+<h3>Math in Summer 2018</h3>
+<p>Given that I'll probably be doing more differential geometry at UMichigan, I figured I'd take
+a break from that in the summer. In fact, I decided to stay as far as I can from analysis as well;
+in fact, anything that involves taking derivatives, or dealing with inequalities. I considered
+studying combinatorics, number theory or algebraic geometry, none of which I know anything about. I was also initially
+encouraged by the fact that they seem as far from analysis as possible. That, of course, was astonishing
+naïveté and ignorance on my part, because <a href="https://en.wikipedia.org/wiki/Generating_function">generating functions</a> 
+crop up everywhere in combinatorics, and sooner or later, one would have to show one of these
+things converges in some small ball in the complex plane, and then we would be back to doing analysis.
+That left number theory and algebraic geometry. Analytic number theory was out of the question, so the choice
+essentially boiled down to algebraic number theory or algebraic geometry. The <a href="https://en.wikipedia.org/wiki/Algebraic_number_theory">Wikipedia page</a>
+for algebraic
+number theory had one picture, and that was a picture of a textbook. The <a href="https://en.wikipedia.org/wiki/Algebraic_geometry">page</a> for 
+algebraic geometry had three, and they were all images of algebraic varieties. That essentially made my decision.</p>
+<p>I started reading Fulton's <a href="www.math.lsa.umich.edu/~wfulton/CurveBook.pdf">book</a> on algebraic curves and assumed
+that would be enough. However, I learnt of an algebraic geometry summer school happening in IISER Pune, and signed
+up for it immediately. But that necessitated a change of pace as they require the attendees to have studied the first chapter of Hartshorne's book
+in excruciating detail. Currently, I'm reading both Fulton and Hartshorne
+simultaneously and I'll probably also resume doing the exercises in Atiyah-Macdonald's commutative algebra book.</p>
+<p>My personal goal is to build up some sort of Rosetta stone like glossary for translating stuff from algebraic
+to differential geometry and vice versa. I'll write more about it once I've made some progress. The long term
+goal is to learn complex algebraic geometry, where I'll be able to use techniques from both differential and
+algebraic geometry. But this will probably take some time, perhaps a year or longer.</p>
+<h3>Rust and Emacs</h3>
+<p>I've been hearing about Rust a lot these days, especially after the release of Firefox Quantum, which
+apparently has large parts written in Rust. I thought it would be nice to pick a low level language
+like Rust. It's certainly more suitable than Python for writing always running daemons, given that
+each individual Python program spins up VM that takes up 20 to 30 megabytes for simple tasks like
+scanning log files or fetching mail.</p>
+<p>So far, I've learnt the basics of Rust's <a href="https://doc.rust-lang.org/book/second-edition/ch04-00-understanding-ownership.html">ownership model</a>,
+and I seem to get the basic idea, although I'll only know that for sure if I use it build something fairly
+complex. I'm racking my brains thinking about what to write: I've considered writing a compression program,
+which might be fun, but I'm afraid it might be a bit too ambitious. I guess I'll figure it out sooner or later.</p>
+<p>As I mentioned earlier, I got sidetracked for a while by Emacs when I was setting it up as a Rust
+environment. As it often happens, instead of just using Emacs as a tool to write code in, I started
+playing around with it instead. Of course, the fact that Emacs essentially is a Lisp environment
+only got me more distracted. I learnt some Emacs Lisp from this really well written <a href="https://www.gnu.org/software/emacs/manual/eintr.html">book</a> 
+and it was rather fun. In fact, just a few days ago, I sent out a <a href="https://github.com/rakanalh/emacs-dashboard/pull/70">pull request</a> 
+extending an Emacs package I use. I'll be thrilled if it gets accepted. Emacs is really nice this way because
+there's practically no barrier between using the editor to examining and changing the source code of the various components
+that make up the editor. I cannot imagine doing the same in Vim. I'm really glad I switched.</p>
+<h3>Conclusion</h3>
+<p>That's it for the summer update. I'll post more (and I hope with greater frequency), hopefully stuff related to algebraic
+geometry and Rust (and maybe even Emacs).</p></div>
         <hr />
     </div>
 		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="/chern-classes.html"><h2>Construction of Chern classes</h2></a>
+        <div class= "well small"> Fri 20 April 2018
+
+by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
+ 
+
+
+ </div>
+        <div class="summary"><h2>Characteristic classes</h2>
+<p>Given a manifold <span class="math">\(M\)</span>, one way to study vector bundles over <span class="math">\(M\)</span> is to use the theory of
+characteristic classes. A characteristic class is a way of assigning to each vector bundle over <span class="math">\(M\)</span>
+an element of the cohomology ring <span class="math">\(H^{\ast}(M, G)\)</span>. This assignment is not …</p> <a class="btn btn-info xsmall" href="/chern-classes.html">read more</a></div>
+    </div>	
+				
 
  
         
@@ -471,6 +254,7 @@ homology of the dual of the singular chain complex, but that doesn't really tell
                 
                 <li><a href="/category/latex.html">LaTeX</a></li>
                 <li><a href="/category/mathematics.html">mathematics</a></li>
+                <li><a href="/category/personal.html">personal</a></li>
                    
             </ul>
             </div>
