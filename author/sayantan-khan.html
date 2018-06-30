@@ -64,8 +64,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="/update-summer-2018.html"><h1>Summer 2018 update</h1></a>
-Sat 02 June 2018
+            <a href="/algebraic-cotangent-space.html"><h1>An algebraic definition of the cotangent space</h1></a>
+Sat 30 June 2018
 
 by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
  
@@ -74,61 +74,235 @@ by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
  
         </div>
         
-        <div><p>I'm getting lazy. I thought I would be posting more often once the summer holidays started
-but May came and went with nary a post. In my defence, I was fairly busy, dealing with
-the usual bureaucratic nonsense that comes with leaving your institution for good and moving
-to another country. I also started learning algebraic geometry seriously, and will continue to
-focus on it for a major part of the summer. Doing only math gets boring really quick though,
-so I'll interleave the math sessions with some coding. I started learning <a href="https://www.rust-lang.org">Rust</a>,
-and got sidetracked for a while by Emacs. But before I talk about Rust and Emacs, I'll quickly
-outline my math plans for the summer.</p>
-<h3>Math in Summer 2018</h3>
-<p>Given that I'll probably be doing more differential geometry at UMichigan, I figured I'd take
-a break from that in the summer. In fact, I decided to stay as far as I can from analysis as well;
-in fact, anything that involves taking derivatives, or dealing with inequalities. I considered
-studying combinatorics, number theory or algebraic geometry, none of which I know anything about. I was also initially
-encouraged by the fact that they seem as far from analysis as possible. That, of course, was astonishing
-naïveté and ignorance on my part, because <a href="https://en.wikipedia.org/wiki/Generating_function">generating functions</a> 
-crop up everywhere in combinatorics, and sooner or later, one would have to show one of these
-things converges in some small ball in the complex plane, and then we would be back to doing analysis.
-That left number theory and algebraic geometry. Analytic number theory was out of the question, so the choice
-essentially boiled down to algebraic number theory or algebraic geometry. The <a href="https://en.wikipedia.org/wiki/Algebraic_number_theory">Wikipedia page</a>
-for algebraic
-number theory had one picture, and that was a picture of a textbook. The <a href="https://en.wikipedia.org/wiki/Algebraic_geometry">page</a> for 
-algebraic geometry had three, and they were all images of algebraic varieties. That essentially made my decision.</p>
-<p>I started reading Fulton's <a href="www.math.lsa.umich.edu/~wfulton/CurveBook.pdf">book</a> on algebraic curves and assumed
-that would be enough. However, I learnt of an algebraic geometry summer school happening in IISER Pune, and signed
-up for it immediately. But that necessitated a change of pace as they require the attendees to have studied the first chapter of Hartshorne's book
-in excruciating detail. Currently, I'm reading both Fulton and Hartshorne
-simultaneously and I'll probably also resume doing the exercises in Atiyah-Macdonald's commutative algebra book.</p>
-<p>My personal goal is to build up some sort of Rosetta stone like glossary for translating stuff from algebraic
-to differential geometry and vice versa. I'll write more about it once I've made some progress. The long term
-goal is to learn complex algebraic geometry, where I'll be able to use techniques from both differential and
-algebraic geometry. But this will probably take some time, perhaps a year or longer.</p>
-<h3>Rust and Emacs</h3>
-<p>I've been hearing about Rust a lot these days, especially after the release of Firefox Quantum, which
-apparently has large parts written in Rust. I thought it would be nice to pick a low level language
-like Rust. It's certainly more suitable than Python for writing always running daemons, given that
-each individual Python program spins up VM that takes up 20 to 30 megabytes for simple tasks like
-scanning log files or fetching mail.</p>
-<p>So far, I've learnt the basics of Rust's <a href="https://doc.rust-lang.org/book/second-edition/ch04-00-understanding-ownership.html">ownership model</a>,
-and I seem to get the basic idea, although I'll only know that for sure if I use it build something fairly
-complex. I'm racking my brains thinking about what to write: I've considered writing a compression program,
-which might be fun, but I'm afraid it might be a bit too ambitious. I guess I'll figure it out sooner or later.</p>
-<p>As I mentioned earlier, I got sidetracked for a while by Emacs when I was setting it up as a Rust
-environment. As it often happens, instead of just using Emacs as a tool to write code in, I started
-playing around with it instead. Of course, the fact that Emacs essentially is a Lisp environment
-only got me more distracted. I learnt some Emacs Lisp from this really well written <a href="https://www.gnu.org/software/emacs/manual/eintr.html">book</a> 
-and it was rather fun. In fact, just a few days ago, I sent out a <a href="https://github.com/rakanalh/emacs-dashboard/pull/70">pull request</a> 
-extending an Emacs package I use. I'll be thrilled if it gets accepted. Emacs is really nice this way because
-there's practically no barrier between using the editor to examining and changing the source code of the various components
-that make up the editor. I cannot imagine doing the same in Vim. I'm really glad I switched.</p>
-<h3>Conclusion</h3>
-<p>That's it for the summer update. I'll post more (and I hope with greater frequency), hopefully stuff related to algebraic
-geometry and Rust (and maybe even Emacs).</p></div>
+        <div><p>I'm almost a week into the algebraic geometry workshop now, and I've learnt a
+lot.  I've learnt a few things about varieties, and also a bit of commutative
+algebra, but the most important takeaway for me from the first week was the
+sheaf theoretic way of looking at smooth manifolds (and also algebraic
+varieties). I'll talk a bit about this approach of looking at things, and then
+outline a definition of cotangent space using this formalism, and see how that
+lets us define a cotangent space on algebraic varieties. Finally, we'll have some sanity
+checks on the defined cotangent space to see if some properties carry over to
+the category of algebraic varieties.</p>
+<h2>The sheaf of regular functions on a topological space</h2>
+<p>Let's consider a specific example: consider some smooth manifold <span class="math">\(M\)</span>. For any
+open subset <span class="math">\(U\)</span>, consider the set <span class="math">\(\mathcal{O}(U)\)</span> of all smooth functions from
+<span class="math">\(U\)</span> to <span class="math">\(\mathbb{R}\)</span>.  We have such a collection for each open subset of <span class="math">\(M\)</span>. But
+that's not all - we have relations between the various <span class="math">\(\mathcal{O}(U)\)</span>. If <span class="math">\(U
+\subset V\)</span>, then there's a natural map from <span class="math">\(\mathcal{O}(V)\)</span> to
+<span class="math">\(\mathcal{O}(U)\)</span>, which is the restriction map. Now recall that we are working
+with smooth functions: one property of smoothness is that it's a local
+property. To put it more concretely, if we have <em>any</em> map from an open set <span class="math">\(U\)</span>
+to <span class="math">\(\mathbb{R}\)</span> such that its restriction to each open subset <span class="math">\(U_i\)</span> is smooth,
+where <span class="math">\(\{U_i\}\)</span> is some collection of open subsets that covers <span class="math">\(U\)</span>, then we know
+that <span class="math">\(U\)</span> is actually smooth. Phrasing this in terms of the <span class="math">\(\mathcal{O}(U)\)</span>
+formalism, it just means that if the restriction of a function <span class="math">\(f\)</span> to each <span class="math">\(U_i\)</span>
+is contained in <span class="math">\(\mathcal{O}(U_i)\)</span>, then <span class="math">\(f\)</span> is actually in <span class="math">\(\mathcal{O}(U)\)</span>.</p>
+<p>These two properties make the collection <span class="math">\(\{\mathcal{O}(U)\}\)</span> into
+a sheaf. Furthermore, the set <span class="math">\(\mathcal{O}(U)\)</span> can be given the structure
+of an algebra, because the maps are all into a ring, and hence the functions can
+be added and multiplied pointwise, and multiplied by elements of the ring
+<span class="math">\(R\)</span>. And if we vary the space <span class="math">\(X\)</span>, the ring <span class="math">\(R\)</span>, and the sets <span class="math">\(\mathcal{O}(U)\)</span>,
+we end up getting various familiar spaces and maps. For instance, if we keep <span class="math">\(X\)</span>
+as a manifold, and <span class="math">\(R\)</span> as <span class="math">\(\mathbb{R}\)</span>, but require <span class="math">\(\mathcal{O}(U)\)</span> to the
+collection of <span class="math">\(C^1\)</span> functions, we end up getting a <span class="math">\(C^1\)</span> manifold. If we set <span class="math">\(X\)</span>
+as a some affine variety over a field <span class="math">\(k\)</span>, set <span class="math">\(R\)</span> as <span class="math">\(k\)</span>, and set
+<span class="math">\(\mathcal{O}(U)\)</span> as the ratio of polynomials where the denominator does not
+vanish on the set <span class="math">\(U\)</span>, we get the regular functions of affine varieties.</p>
+<p>Sheaves are a nice way of capturing functions which satisfy some property
+<em>locally</em>, whether it is being smooth, being holomorphic, or being ratios of
+polynomials.</p>
+<h2>Sheaves capture local properties</h2>
+<p>Consider a topological space <span class="math">\(X\)</span> and the sheaf of regular functions
+<span class="math">\(\mathcal{O}\)</span> to a field <span class="math">\(k\)</span>, and some point <span class="math">\(p \in X\)</span>.  With the sheaves, we
+have a way of looking at the <em>germ</em> of any function <span class="math">\(f\)</span> at the point <span class="math">\(p\)</span>.  It's
+clear that the germ of <span class="math">\(f\)</span> will capture all the local information of <span class="math">\(f\)</span> at that
+point.  For instance, when the regular functions are smooth functions, the germ
+of <span class="math">\(f\)</span> will contain the information about all the derivatives of <span class="math">\(f\)</span>. If the
+regular functions are holomorphic functions, the germ contains even <em>global</em>
+information about the function because of analytic continuation.  The collection
+of the germs of all the functions defined around <span class="math">\(p\)</span>, called the stalk at <span class="math">\(p\)</span>, is
+again a <span class="math">\(k\)</span>-algebra. It is much more, in fact. It's a local ring (which we'll
+call <span class="math">\(\mathcal{O}_p\)</span>), whose only maximal ideal is the set of germs of all the functions
+which vanish at <span class="math">\(p\)</span>.</p>
+<p>Another way of getting local information at the point <span class="math">\(p\)</span> is to look at tangent vectors
+at the point <span class="math">\(p\)</span>. What do tangent vectors mean in this context though? A tangent vector
+<span class="math">\(v\)</span> at <span class="math">\(p\)</span> is a <span class="math">\(k\)</span>-linear map from the set of all functions defined in some open set
+around <span class="math">\(p\)</span> to <span class="math">\(k\)</span> such that for any two functions <span class="math">\(f\)</span> and <span class="math">\(g\)</span>, the
+product rule holds.
+</p>
+<div class="math">\begin{align*}
+v(fg) = f(p) \cdot v(g) + v(f) \cdot g(p)
+\end{align*}</div>
+<p>
+It's not quite clear from the definition whether the action of the tangent vector
+on a function <span class="math">\(f\)</span> depends only the germ of <span class="math">\(f\)</span>. In fact, even the relation between
+the tangent space, and the local ring at <span class="math">\(p\)</span> is not very clear from this definition.
+We need some way to link the two notions. And that's where the cotangent space comes
+in. We shall define the cotangent space in purely algebraic terms, i.e. in terms of the
+local ring, and then show that the space of tangent vectors <span class="math">\(T_p\)</span> is actually the dual of
+the cotangent space, thus exhibiting the link between the local ring at <span class="math">\(p\)</span>, to the
+tangent space at <span class="math">\(p\)</span>.</p>
+<h3>Construction of the algebraic cotangent space</h3>
+<p>Let <span class="math">\(\mathfrak{m}\)</span> be the maximal ideal of <span class="math">\(\mathcal{O}_p\)</span>. It consists of the
+germs of all the functions which vanish at <span class="math">\(p\)</span>. We define the cotangent space at
+<span class="math">\(p\)</span> to be the set <span class="math">\(\frac{\mathfrak{m}}{\mathfrak{m}^2}\)</span> considered as a <span class="math">\(k\)</span>
+vector space. I won't outline the motivation behind picking this as the
+cotangent space, because I myself am not completely sure why, so let's take for
+granted that this is a reasonable candidate for the definition of cotangent
+space. We need to show that <span class="math">\(T_p\)</span> is the dual of the space
+<span class="math">\(\frac{\mathfrak{m}}{\mathfrak{m}^2}\)</span>.</p>
+<p>First we'll show every element of <span class="math">\(T_p\)</span> is indeed a linear functional acting on
+<span class="math">\(\frac{\mathfrak{m}}{\mathfrak{m}^2}\)</span>. Take any element <span class="math">\(v \in T_p\)</span>. It acts
+on an element <span class="math">\(m + \mathfrak{m}^2\)</span>, and returns <span class="math">\(v(m)\)</span>. This map is well defined,
+because for any other representative <span class="math">\(m'\)</span>, <span class="math">\(m - m' \in \mathfrak{m}^2\)</span>, i.e. it is
+of the form <span class="math">\(m_1 m_2\)</span> for <span class="math">\(m_1\)</span> and <span class="math">\(m_2\)</span> in <span class="math">\(\mathfrak{m}\)</span>. Using the identity
+for tangent vectors, <span class="math">\(v(m_1m_2)\)</span> is given by <span class="math">\(m_1(p)v(m_2) + v(m_1)m_2(p)\)</span>, and
+both the terms are <span class="math">\(0\)</span>, since elements of <span class="math">\(\mathfrak{m}\)</span> evaluate to <span class="math">\(0\)</span> at <span class="math">\(p\)</span>.</p>
+<p>Now we'll show any linear functional <span class="math">\(w\)</span> acting on
+<span class="math">\(\frac{\mathfrak{m}}{\mathfrak{m}^2}\)</span> gives a tangent vector <span class="math">\(t_w\)</span>. We define
+the action of <span class="math">\(t_w\)</span> on any function <span class="math">\(f\)</span> as the value of the functional <span class="math">\(w\)</span> on
+the function <span class="math">\(\overline{f}(x) = f(x) - f(p)\)</span>. The function <span class="math">\(\overline{f}\)</span> vanishes at <span class="math">\(0\)</span>, and hence it
+belongs to <span class="math">\(\mathfrak{m}\)</span>. All we need to do is check whether it satisfies the
+product rule.
+</p>
+<div class="math">\begin{align*}
+t_w(f(x)g(x)) &amp;= w(\overline{f(x)g(x)}) \\
+&amp;= w(f(x)g(x) - f(p)g(p)) \\
+&amp;= w(f(x)g(x) - f(x)g(p) + f(x)g(p) - f(p)g(p)) \\
+&amp;= w(f(x)(g(x) - g(p))) + g(p) w(f(x) - f(p)) \\
+&amp;= w((f(x) - f(p))(g(x) - g(p)) + f(p)(g(x) - g(p))) + g(p) w(f(x) - f(p)) \\
+&amp;= 0 + f(p)t_w(g) + t_w(f)g(p)
+\end{align*}</div>
+<p>This proves the duality, and gives us a link between the tangent space and the local ring.
+In the case of smooth manifolds, this tells us that the cotangent space defined using the local
+ring is really the same as the cotangent space defined in the usual differential geometric way.
+What isn't immediately clear is how the cotangent bundle is defined, and this is something I'll
+come back to later. The advantage of this construction is that the same construction goes through
+for algebraic varieties. Whether this is a useful notion or not in the case of algebraic varieties
+is a question that needs to be answered. But before that, we should do a sanity check. In the case
+of smooth manifolds, we had the dimension of the cotangent space at every point to be the dimension
+of the manifold. It's reasonable to expect that this also happens in the case of algebraic manifolds.
+And that is indeed the case, and we'll see a simple proof of the fact.</p>
+<h3>Dimension of cotangent space is the same as the dimension of algebraic variety</h3>
+<p>Before we prove the result, let's qualify the statement a little more. First of
+all, it suffices to prove the result for affine varieties, since both the
+cotangent space and the dimension of the variety are essentially local
+properties. Secondly, varieties can have bad points, i.e. singularities, where
+they intersect themselves, or there's a sharp bend of some sort (e.g. the
+variety in <span class="math">\(\mathbb{A}^2_{\mathbb{C}}\)</span> defined by <span class="math">\(X^3 - Y^2\)</span>). We want to avoid
+those points. Thankfully, there's a nice algebraic description of the
+non-singular points. A point <span class="math">\(p\)</span> is non-singular if the local ring
+<span class="math">\(\mathcal{O}_p\)</span> at <span class="math">\(p\)</span> is regular, i.e. the maximal ideal is generated by <span class="math">\(d\)</span>
+elements, where <span class="math">\(d\)</span> is the dimension of the variety. With this algebraic description in hand,
+our task now reduces to proving the following proposition.</p>
+<p><strong>Proposition.</strong> Suppose <span class="math">\(A\)</span> is a Noetherian <span class="math">\(k\)</span>-algebra, which is also a local ring whose
+maximal ideal <span class="math">\(\mathfrak{m}\)</span> is generated by <span class="math">\(d\)</span> elements <span class="math">\(\{f_1, \ldots, f_d\}\)</span>, where <span class="math">\(d\)</span>
+is the Krull dimension of the <span class="math">\(k\)</span>-algebra. Then the dimension of the <span class="math">\(k\)</span>-vector space
+<span class="math">\(\frac{\mathfrak{m}}{\mathfrak{m}^2}\)</span> is also <span class="math">\(d\)</span>.</p>
+<p><strong>Proof.</strong> Consider any element <span class="math">\(g\)</span> in the ideal <span class="math">\(\mathfrak{m}\)</span>. Since it's Noetherian and local, we can
+write <span class="math">\(g\)</span> in the following manner,
+</p>
+<div class="math">\begin{align*}
+g = \sum_j c_j (f_1)^{p_{1j}} \cdots (f_d)^{p_{dj}}
+\end{align*}</div>
+<p>
+where <span class="math">\(c_j\)</span> don't belong to the ideal <span class="math">\(\mathfrak{m}\)</span>, and for all <span class="math">\(j\)</span>, some <span class="math">\(p_{ij}\)</span> some greater
+than <span class="math">\(0\)</span>. Quotienting by <span class="math">\(\mathfrak{m}^2\)</span>, all the terms with the higher powers of <span class="math">\(f_i\)</span> become <span class="math">\(0\)</span>,
+and the representative in the quotient looks like the following.
+</p>
+<div class="math">\begin{align*}
+\overline{g} = \sum_{i}^{d} c_i f_i
+\end{align*}</div>
+<p>
+With this expression, it's easy to see what the map to the space <span class="math">\(k^d\)</span> is. Send <span class="math">\(\overline{g}\)</span> to the vector
+<span class="math">\((c_1(p), c_2(p), \ldots, c_d(p))\)</span>. But is this map well defined? What if we also have another
+representative <span class="math">\(\overline{g}' = \sum c_i'f_i\)</span>. But in that case, each of <span class="math">\(c_i - c_i'\)</span> must belong
+to <span class="math">\(\mathfrak{m}\)</span>, hence <span class="math">\(c_i(p) = c_i'(p)\)</span>.</p>
+<p>Let's now construct a map from <span class="math">\(k^d\)</span> to <span class="math">\(\frac{\mathfrak{m}}{\mathfrak{m}^2}\)</span>. Send the vector
+<span class="math">\((c_1, \ldots, c_d)\)</span> to the element <span class="math">\(\sum c_i f_i\)</span>. It's easy to see this map is well defined,
+and the inverse of the previous map. This proves the result.
+<span class="math">\(\blacksquare\)</span></p>
+<p>The cotangent space manages to pass at least this rudimentary sanity check, which makes it a little easier
+to believe that this is the right notion of the cotangent space on a variety.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script></div>
         <hr />
     </div>
 		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="/update-summer-2018.html"><h2>Summer 2018 update</h2></a>
+        <div class= "well small"> Sat 02 June 2018
+
+by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>I'm getting lazy. I thought I would be posting more often once the summer holidays started
+but May came and went with nary a post. In my defence, I was fairly busy, dealing with
+the usual bureaucratic nonsense that comes with leaving your institution for good and moving
+to another …</p> <a class="btn btn-info xsmall" href="/update-summer-2018.html">read more</a></div>
+    </div>	
+				
 
  
         
