@@ -64,8 +64,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="/algebraic-cotangent-space.html"><h1>An algebraic definition of the cotangent space</h1></a>
-Sat 30 June 2018
+            <a href="/overloaded-word.html"><h1>The most overloaded word in math</h1></a>
+Sun 14 October 2018
 
 by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
  
@@ -74,156 +74,88 @@ by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
  
         </div>
         
-        <div><p>I'm almost a week into the algebraic geometry workshop now, and I've learnt a
-lot.  I've learnt a few things about varieties, and also a bit of commutative
-algebra, but the most important takeaway for me from the first week was the
-sheaf theoretic way of looking at smooth manifolds (and also algebraic
-varieties). I'll talk a bit about this approach of looking at things, and then
-outline a definition of cotangent space using this formalism, and see how that
-lets us define a cotangent space on algebraic varieties. Finally, we'll have some sanity
-checks on the defined cotangent space to see if some properties carry over to
-the category of algebraic varieties.</p>
-<h2>The sheaf of regular functions on a topological space</h2>
-<p>Let's consider a specific example: consider some smooth manifold <span class="math">\(M\)</span>. For any
-open subset <span class="math">\(U\)</span>, consider the set <span class="math">\(\mathcal{O}(U)\)</span> of all smooth functions from
-<span class="math">\(U\)</span> to <span class="math">\(\mathbb{R}\)</span>.  We have such a collection for each open subset of <span class="math">\(M\)</span>. But
-that's not all - we have relations between the various <span class="math">\(\mathcal{O}(U)\)</span>. If <span class="math">\(U
-\subset V\)</span>, then there's a natural map from <span class="math">\(\mathcal{O}(V)\)</span> to
-<span class="math">\(\mathcal{O}(U)\)</span>, which is the restriction map. Now recall that we are working
-with smooth functions: one property of smoothness is that it's a local
-property. To put it more concretely, if we have <em>any</em> map from an open set <span class="math">\(U\)</span>
-to <span class="math">\(\mathbb{R}\)</span> such that its restriction to each open subset <span class="math">\(U_i\)</span> is smooth,
-where <span class="math">\(\{U_i\}\)</span> is some collection of open subsets that covers <span class="math">\(U\)</span>, then we know
-that <span class="math">\(U\)</span> is actually smooth. Phrasing this in terms of the <span class="math">\(\mathcal{O}(U)\)</span>
-formalism, it just means that if the restriction of a function <span class="math">\(f\)</span> to each <span class="math">\(U_i\)</span>
-is contained in <span class="math">\(\mathcal{O}(U_i)\)</span>, then <span class="math">\(f\)</span> is actually in <span class="math">\(\mathcal{O}(U)\)</span>.</p>
-<p>These two properties make the collection <span class="math">\(\{\mathcal{O}(U)\}\)</span> into
-a sheaf. Furthermore, the set <span class="math">\(\mathcal{O}(U)\)</span> can be given the structure
-of an algebra, because the maps are all into a ring, and hence the functions can
-be added and multiplied pointwise, and multiplied by elements of the ring
-<span class="math">\(R\)</span>. And if we vary the space <span class="math">\(X\)</span>, the ring <span class="math">\(R\)</span>, and the sets <span class="math">\(\mathcal{O}(U)\)</span>,
-we end up getting various familiar spaces and maps. For instance, if we keep <span class="math">\(X\)</span>
-as a manifold, and <span class="math">\(R\)</span> as <span class="math">\(\mathbb{R}\)</span>, but require <span class="math">\(\mathcal{O}(U)\)</span> to the
-collection of <span class="math">\(C^1\)</span> functions, we end up getting a <span class="math">\(C^1\)</span> manifold. If we set <span class="math">\(X\)</span>
-as a some affine variety over a field <span class="math">\(k\)</span>, set <span class="math">\(R\)</span> as <span class="math">\(k\)</span>, and set
-<span class="math">\(\mathcal{O}(U)\)</span> as the ratio of polynomials where the denominator does not
-vanish on the set <span class="math">\(U\)</span>, we get the regular functions of affine varieties.</p>
-<p>Sheaves are a nice way of capturing functions which satisfy some property
-<em>locally</em>, whether it is being smooth, being holomorphic, or being ratios of
-polynomials.</p>
-<h2>Sheaves capture local properties</h2>
-<p>Consider a topological space <span class="math">\(X\)</span> and the sheaf of regular functions
-<span class="math">\(\mathcal{O}\)</span> to a field <span class="math">\(k\)</span>, and some point <span class="math">\(p \in X\)</span>.  With the sheaves, we
-have a way of looking at the <em>germ</em> of any function <span class="math">\(f\)</span> at the point <span class="math">\(p\)</span>.  It's
-clear that the germ of <span class="math">\(f\)</span> will capture all the local information of <span class="math">\(f\)</span> at that
-point.  For instance, when the regular functions are smooth functions, the germ
-of <span class="math">\(f\)</span> will contain the information about all the derivatives of <span class="math">\(f\)</span>. If the
-regular functions are holomorphic functions, the germ contains even <em>global</em>
-information about the function because of analytic continuation.  The collection
-of the germs of all the functions defined around <span class="math">\(p\)</span>, called the stalk at <span class="math">\(p\)</span>, is
-again a <span class="math">\(k\)</span>-algebra. It is much more, in fact. It's a local ring (which we'll
-call <span class="math">\(\mathcal{O}_p\)</span>), whose only maximal ideal is the set of germs of all the functions
-which vanish at <span class="math">\(p\)</span>.</p>
-<p>Another way of getting local information at the point <span class="math">\(p\)</span> is to look at tangent vectors
-at the point <span class="math">\(p\)</span>. What do tangent vectors mean in this context though? A tangent vector
-<span class="math">\(v\)</span> at <span class="math">\(p\)</span> is a <span class="math">\(k\)</span>-linear map from the set of all functions defined in some open set
-around <span class="math">\(p\)</span> to <span class="math">\(k\)</span> such that for any two functions <span class="math">\(f\)</span> and <span class="math">\(g\)</span>, the
-product rule holds.
-</p>
-<div class="math">\begin{align*}
-v(fg) = f(p) \cdot v(g) + v(f) \cdot g(p)
-\end{align*}</div>
-<p>
-It's not quite clear from the definition whether the action of the tangent vector
-on a function <span class="math">\(f\)</span> depends only the germ of <span class="math">\(f\)</span>. In fact, even the relation between
-the tangent space, and the local ring at <span class="math">\(p\)</span> is not very clear from this definition.
-We need some way to link the two notions. And that's where the cotangent space comes
-in. We shall define the cotangent space in purely algebraic terms, i.e. in terms of the
-local ring, and then show that the space of tangent vectors <span class="math">\(T_p\)</span> is actually the dual of
-the cotangent space, thus exhibiting the link between the local ring at <span class="math">\(p\)</span>, to the
-tangent space at <span class="math">\(p\)</span>.</p>
-<h3>Construction of the algebraic cotangent space</h3>
-<p>Let <span class="math">\(\mathfrak{m}\)</span> be the maximal ideal of <span class="math">\(\mathcal{O}_p\)</span>. It consists of the
-germs of all the functions which vanish at <span class="math">\(p\)</span>. We define the cotangent space at
-<span class="math">\(p\)</span> to be the set <span class="math">\(\frac{\mathfrak{m}}{\mathfrak{m}^2}\)</span> considered as a <span class="math">\(k\)</span>
-vector space. I won't outline the motivation behind picking this as the
-cotangent space, because I myself am not completely sure why, so let's take for
-granted that this is a reasonable candidate for the definition of cotangent
-space. We need to show that <span class="math">\(T_p\)</span> is the dual of the space
-<span class="math">\(\frac{\mathfrak{m}}{\mathfrak{m}^2}\)</span>.</p>
-<p>First we'll show every element of <span class="math">\(T_p\)</span> is indeed a linear functional acting on
-<span class="math">\(\frac{\mathfrak{m}}{\mathfrak{m}^2}\)</span>. Take any element <span class="math">\(v \in T_p\)</span>. It acts
-on an element <span class="math">\(m + \mathfrak{m}^2\)</span>, and returns <span class="math">\(v(m)\)</span>. This map is well defined,
-because for any other representative <span class="math">\(m'\)</span>, <span class="math">\(m - m' \in \mathfrak{m}^2\)</span>, i.e. it is
-of the form <span class="math">\(m_1 m_2\)</span> for <span class="math">\(m_1\)</span> and <span class="math">\(m_2\)</span> in <span class="math">\(\mathfrak{m}\)</span>. Using the identity
-for tangent vectors, <span class="math">\(v(m_1m_2)\)</span> is given by <span class="math">\(m_1(p)v(m_2) + v(m_1)m_2(p)\)</span>, and
-both the terms are <span class="math">\(0\)</span>, since elements of <span class="math">\(\mathfrak{m}\)</span> evaluate to <span class="math">\(0\)</span> at <span class="math">\(p\)</span>.</p>
-<p>Now we'll show any linear functional <span class="math">\(w\)</span> acting on
-<span class="math">\(\frac{\mathfrak{m}}{\mathfrak{m}^2}\)</span> gives a tangent vector <span class="math">\(t_w\)</span>. We define
-the action of <span class="math">\(t_w\)</span> on any function <span class="math">\(f\)</span> as the value of the functional <span class="math">\(w\)</span> on
-the function <span class="math">\(\overline{f}(x) = f(x) - f(p)\)</span>. The function <span class="math">\(\overline{f}\)</span> vanishes at <span class="math">\(0\)</span>, and hence it
-belongs to <span class="math">\(\mathfrak{m}\)</span>. All we need to do is check whether it satisfies the
-product rule.
-</p>
-<div class="math">\begin{align*}
-t_w(f(x)g(x)) &amp;= w(\overline{f(x)g(x)}) \\
-&amp;= w(f(x)g(x) - f(p)g(p)) \\
-&amp;= w(f(x)g(x) - f(x)g(p) + f(x)g(p) - f(p)g(p)) \\
-&amp;= w(f(x)(g(x) - g(p))) + g(p) w(f(x) - f(p)) \\
-&amp;= w((f(x) - f(p))(g(x) - g(p)) + f(p)(g(x) - g(p))) + g(p) w(f(x) - f(p)) \\
-&amp;= 0 + f(p)t_w(g) + t_w(f)g(p)
-\end{align*}</div>
-<p>This proves the duality, and gives us a link between the tangent space and the local ring.
-In the case of smooth manifolds, this tells us that the cotangent space defined using the local
-ring is really the same as the cotangent space defined in the usual differential geometric way.
-What isn't immediately clear is how the cotangent bundle is defined, and this is something I'll
-come back to later. The advantage of this construction is that the same construction goes through
-for algebraic varieties. Whether this is a useful notion or not in the case of algebraic varieties
-is a question that needs to be answered. But before that, we should do a sanity check. In the case
-of smooth manifolds, we had the dimension of the cotangent space at every point to be the dimension
-of the manifold. It's reasonable to expect that this also happens in the case of algebraic manifolds.
-And that is indeed the case, and we'll see a simple proof of the fact.</p>
-<h3>Dimension of cotangent space is the same as the dimension of algebraic variety</h3>
-<p>Before we prove the result, let's qualify the statement a little more. First of
-all, it suffices to prove the result for affine varieties, since both the
-cotangent space and the dimension of the variety are essentially local
-properties. Secondly, varieties can have bad points, i.e. singularities, where
-they intersect themselves, or there's a sharp bend of some sort (e.g. the
-variety in <span class="math">\(\mathbb{A}^2_{\mathbb{C}}\)</span> defined by <span class="math">\(X^3 - Y^2\)</span>). We want to avoid
-those points. Thankfully, there's a nice algebraic description of the
-non-singular points. A point <span class="math">\(p\)</span> is non-singular if the local ring
-<span class="math">\(\mathcal{O}_p\)</span> at <span class="math">\(p\)</span> is regular, i.e. the maximal ideal is generated by <span class="math">\(d\)</span>
-elements, where <span class="math">\(d\)</span> is the dimension of the variety. With this algebraic description in hand,
-our task now reduces to proving the following proposition.</p>
-<p><strong>Proposition.</strong> Suppose <span class="math">\(A\)</span> is a Noetherian <span class="math">\(k\)</span>-algebra, which is also a local ring whose
-maximal ideal <span class="math">\(\mathfrak{m}\)</span> is generated by <span class="math">\(d\)</span> elements <span class="math">\(\{f_1, \ldots, f_d\}\)</span>, where <span class="math">\(d\)</span>
-is the Krull dimension of the <span class="math">\(k\)</span>-algebra. Then the dimension of the <span class="math">\(k\)</span>-vector space
-<span class="math">\(\frac{\mathfrak{m}}{\mathfrak{m}^2}\)</span> is also <span class="math">\(d\)</span>.</p>
-<p><strong>Proof.</strong> Consider any element <span class="math">\(g\)</span> in the ideal <span class="math">\(\mathfrak{m}\)</span>. Since it's Noetherian and local, we can
-write <span class="math">\(g\)</span> in the following manner,
-</p>
-<div class="math">\begin{align*}
-g = \sum_j c_j (f_1)^{p_{1j}} \cdots (f_d)^{p_{dj}}
-\end{align*}</div>
-<p>
-where <span class="math">\(c_j\)</span> don't belong to the ideal <span class="math">\(\mathfrak{m}\)</span>, and for all <span class="math">\(j\)</span>, some <span class="math">\(p_{ij}\)</span> some greater
-than <span class="math">\(0\)</span>. Quotienting by <span class="math">\(\mathfrak{m}^2\)</span>, all the terms with the higher powers of <span class="math">\(f_i\)</span> become <span class="math">\(0\)</span>,
-and the representative in the quotient looks like the following.
-</p>
-<div class="math">\begin{align*}
-\overline{g} = \sum_{i}^{d} c_i f_i
-\end{align*}</div>
-<p>
-With this expression, it's easy to see what the map to the space <span class="math">\(k^d\)</span> is. Send <span class="math">\(\overline{g}\)</span> to the vector
-<span class="math">\((c_1(p), c_2(p), \ldots, c_d(p))\)</span>. But is this map well defined? What if we also have another
-representative <span class="math">\(\overline{g}' = \sum c_i'f_i\)</span>. But in that case, each of <span class="math">\(c_i - c_i'\)</span> must belong
-to <span class="math">\(\mathfrak{m}\)</span>, hence <span class="math">\(c_i(p) = c_i'(p)\)</span>.</p>
-<p>Let's now construct a map from <span class="math">\(k^d\)</span> to <span class="math">\(\frac{\mathfrak{m}}{\mathfrak{m}^2}\)</span>. Send the vector
-<span class="math">\((c_1, \ldots, c_d)\)</span> to the element <span class="math">\(\sum c_i f_i\)</span>. It's easy to see this map is well defined,
-and the inverse of the previous map. This proves the result.
-<span class="math">\(\blacksquare\)</span></p>
-<p>The cotangent space manages to pass at least this rudimentary sanity check, which makes it a little easier
-to believe that this is the right notion of the cotangent space on a variety.</p>
+        <div><p>Last Wednesday, the conversation in my office veered towards the words we hated the most in
+math. Not surprisingly, the list included the usual suspects like <em>normal</em>, <em>simple</em>, and <em>regular</em>.
+It's probably the same reason that these words also make it to the top five of <a href="https://mathoverflow.net/questions/7389/what-are-the-most-overloaded-words-in-mathematics">this MathOverflow
+post</a>. These
+words are overloaded to the point of meaning something different to mathematicians working in
+different areas of math. On the other hand, we all agreed that some overloading of words was
+actually fairly useful: for instance, it makes sense to call a normal covering space normal since it
+actually corresponds to a normal subgroup of the fundamental group.  That means calling a cover
+normal and calling a subgroup normal isn't really a bad thing, since it shows that those two notions
+are related.</p>
+<p>We thought we'd do something similar for all the possible meanings of the word normal: we'd define
+an equivalence relation between two different meanings if there is some result, deep or otherwise,
+that links the two notions. Then the number of equivalence classes we get would be a much better
+metric of the overloaded-ness of the word <em>normal</em>.</p>
+<p>Here's a list of the meanings of <em>normal</em> (taken from Wikipedia), along with some additions.</p>
+<ul>
+<li><strong>Normal subgroup</strong>: A subgroup which is invariant under conjugation action.</li>
+<li><strong>Normal cover</strong>: A covering space whose deck transformation group acts transitively.</li>
+<li><strong>Normal field extension</strong>: A field extension such that every irreducible polynomial in the base
+   field splits into linear factor, or is irreducible.</li>
+</ul>
+<p>These three uses of normal are really the same, since they all talk about an associated subgroup
+being a normal subgroup. In the case of the normal cover, the fundamental group of the cover is a
+normal subgroup of the fundamental group of the base space. When it comes to field extensions,
+consider the following field extension: <span class="math">\(E \subset F \subset G\)</span>, where <span class="math">\(G\)</span> is Galois over <span class="math">\(E\)</span>.  In
+this case, <span class="math">\(F\)</span> is a normal extension iff it corresponds to a normal subgroup of <span class="math">\(\mathrm{Gal}(E/G)\)</span>.</p>
+<p>A few different meanings of the word normal(ize) show up often in algebraic geometry.</p>
+<ul>
+<li><strong>Normal domain</strong>: An integral domain which is integrally closed in its field of fractions.</li>
+<li><strong>Normal varieties</strong>: A variety <span class="math">\(X\)</span> such that any finite birational map from any variety <span class="math">\(Y\)</span> to
+  <span class="math">\(X\)</span> is an isomorphism.</li>
+<li><strong>Noether normalization</strong>: The Noether normalization lemma states that for any finitely generated
+  <span class="math">\(k\)</span>-algebra <span class="math">\(A\)</span>, there exist <span class="math">\(\{y_1, \ldots, y_d\} \in A\)</span> such that <span class="math">\(A\)</span> is a finitely generated
+  module over <span class="math">\(k[y_1, \ldots, y_d]\)</span>.</li>
+</ul>
+<p>These seemingly different notions actually are somewhat equivalent. As it turns out, a variety is
+normal if the local ring at every point is integrally closed. And while normal varieties are
+varieties which have maps from "nice" varieties, a geometric interpretation of Noether normalization
+is that every <span class="math">\(d\)</span>-dimensional affine variety is a ramified cover of <span class="math">\(\mathbb{A}^d\)</span>, which is a "nice"
+variety.</p>
+<p>Another meaning of the word normal comes from the geometric notion of being perpendicular. This
+gives us a lot of different meanings of the word normal which we can collapse to one equivalence
+class.</p>
+<ul>
+<li><strong>Normal bundle</strong>: The normal bundle of an embedded submanifold is the vector bundle such that the
+  fibre over each point consists of vectors perpendicular to the tangent space.</li>
+<li><strong>Normal coordinates</strong>: Given a vector bundle with an affine connection, the normal coordinates
+  around a point are coordinates such that the Christoffel symbols of the connection vanish at the
+  point.</li>
+<li><strong>(Ortho)normal basis</strong>: A basis of an inner product space such that each vector is of norm <span class="math">\(1\)</span> and
+  every pair is perpendicular.</li>
+<li><strong>Normal operator</strong>: An operator which commutes with its Hermitian conjugate.</li>
+<li><strong>Normal modes</strong>: (Taken from wikipedia) A normal mode of an oscillating system is a pattern of
+  motion in which all parts of the system move sinusoidally with the same frequency and with a fixed
+  phase relation.</li>
+</ul>
+<p>Normal bundle literally comes from the original meaning of the word normal in the sense of being
+perpendicular. Normal coordinates also come from the same source: in the case of the Levi-Civita
+connection, one gets a set of normal coordinates by applying the exponential map to an orthonormal
+basis of the tangent space.</p>
+<p>The reason why a normal operator is called a normal operator is that we know from the spectral
+theorem that its eigenvalues form an orthonormal basis. That is also the source of normal modes. The
+"normal" in normal modes comes from the fact that the vibrations are the eigenvectors of a certain
+differential operator, which happens to be self-adjoint, hence normal. That means all the normal
+modes literally form an orthonormal basis of solutions to the associated PDE.</p>
+<p>The above words were some of the different cases of the usage of the word <em>normal</em> that we were able
+to collapse.  And below are the ones we couldn't collapse to anything else, so they sit all by
+themselves (for now) in their own equivalence class.</p>
+<ul>
+<li><strong>Normal family</strong>: A pre-compact family of holomorphic functions.</li>
+<li><strong>Normal space</strong>: A topological space which satisfies the <span class="math">\(T_4\)</span> axiom. <a href="http://brownsharpie.courtneygibbons.org/comic/i-used-to-confuse-regular-and-normal/">Here's a bad pun</a> involving this.</li>
+<li><strong>Normal forms</strong>: These are a whole class of ways to write matrices of linear operators in a nice form,
+  e.g. Jordan normal form, Smith normal form, etc.</li>
+<li><strong>Normal distribution</strong>: The distribution that most sums of random variables converge to, thanks to the
+  Central limit theorem.</li>
+<li><strong>Normal forms part deux</strong>: All the normal forms that crop up in formal language theory and
+  computability, e.g. conjunctive normal form, disjunctive normal form, Chomsky normal form, etc.</li>
+</ul>
+<p>We started off with 18 different meanings of the word <em>normal</em>, and now, after constructing the
+equivalence relation, we are left with only 8 different equivalence classes (maybe fewer, if someone
+discovers some deep result linking normal operators to normal subgroups). That makes one think: maybe
+it's not so ab<em>normal</em> for mathematicians to overuse normal after all.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -282,6 +214,27 @@ to believe that this is the right notion of the cotangent space on a variety.</p
         <hr />
     </div>
 		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="/algebraic-cotangent-space.html"><h2>An algebraic definition of the cotangent space</h2></a>
+        <div class= "well small"> Sat 30 June 2018
+
+by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>I'm almost a week into the algebraic geometry workshop now, and I've learnt a
+lot.  I've learnt a few things about varieties, and also a bit of commutative
+algebra, but the most important takeaway for me from the first week was the
+sheaf theoretic way of looking at smooth manifolds …</p> <a class="btn btn-info xsmall" href="/algebraic-cotangent-space.html">read more</a></div>
+    </div>	
+				
 
  
         

@@ -1,5 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Sayantan Khan's Blog - mathematics</title><link href="/" rel="alternate"></link><link href="/feeds/mathematics.atom.xml" rel="self"></link><id>/</id><updated>2018-06-30T00:00:00+05:30</updated><entry><title>An algebraic definition of the cotangent space</title><link href="/algebraic-cotangent-space.html" rel="alternate"></link><published>2018-06-30T00:00:00+05:30</published><updated>2018-06-30T00:00:00+05:30</updated><author><name>Sayantan Khan</name></author><id>tag:None,2018-06-30:/algebraic-cotangent-space.html</id><summary type="html">&lt;p&gt;I'm almost a week into the algebraic geometry workshop now, and I've learnt a
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Sayantan Khan's Blog - mathematics</title><link href="/" rel="alternate"></link><link href="/feeds/mathematics.atom.xml" rel="self"></link><id>/</id><updated>2018-10-14T00:00:00+05:30</updated><entry><title>The most overloaded word in math</title><link href="/overloaded-word.html" rel="alternate"></link><published>2018-10-14T00:00:00+05:30</published><updated>2018-10-14T00:00:00+05:30</updated><author><name>Sayantan Khan</name></author><id>tag:None,2018-10-14:/overloaded-word.html</id><summary type="html">&lt;p&gt;Last Wednesday, the conversation in my office veered towards the words we hated the most in
+math. Not surprisingly, the list included the usual suspects like &lt;em&gt;normal&lt;/em&gt;, &lt;em&gt;simple&lt;/em&gt;, and &lt;em&gt;regular&lt;/em&gt;.
+It's probably the same reason that these words also make it to the top five of &lt;a href="https://mathoverflow.net/questions/7389/what-are-the-most-overloaded-words-in-mathematics"&gt;this MathOverflow
+post&lt;/a&gt;. These …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Last Wednesday, the conversation in my office veered towards the words we hated the most in
+math. Not surprisingly, the list included the usual suspects like &lt;em&gt;normal&lt;/em&gt;, &lt;em&gt;simple&lt;/em&gt;, and &lt;em&gt;regular&lt;/em&gt;.
+It's probably the same reason that these words also make it to the top five of &lt;a href="https://mathoverflow.net/questions/7389/what-are-the-most-overloaded-words-in-mathematics"&gt;this MathOverflow
+post&lt;/a&gt;. These
+words are overloaded to the point of meaning something different to mathematicians working in
+different areas of math. On the other hand, we all agreed that some overloading of words was
+actually fairly useful: for instance, it makes sense to call a normal covering space normal since it
+actually corresponds to a normal subgroup of the fundamental group.  That means calling a cover
+normal and calling a subgroup normal isn't really a bad thing, since it shows that those two notions
+are related.&lt;/p&gt;
+&lt;p&gt;We thought we'd do something similar for all the possible meanings of the word normal: we'd define
+an equivalence relation between two different meanings if there is some result, deep or otherwise,
+that links the two notions. Then the number of equivalence classes we get would be a much better
+metric of the overloaded-ness of the word &lt;em&gt;normal&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Here's a list of the meanings of &lt;em&gt;normal&lt;/em&gt; (taken from Wikipedia), along with some additions.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Normal subgroup&lt;/strong&gt;: A subgroup which is invariant under conjugation action.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Normal cover&lt;/strong&gt;: A covering space whose deck transformation group acts transitively.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Normal field extension&lt;/strong&gt;: A field extension such that every irreducible polynomial in the base
+   field splits into linear factor, or is irreducible.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These three uses of normal are really the same, since they all talk about an associated subgroup
+being a normal subgroup. In the case of the normal cover, the fundamental group of the cover is a
+normal subgroup of the fundamental group of the base space. When it comes to field extensions,
+consider the following field extension: &lt;span class="math"&gt;\(E \subset F \subset G\)&lt;/span&gt;, where &lt;span class="math"&gt;\(G\)&lt;/span&gt; is Galois over &lt;span class="math"&gt;\(E\)&lt;/span&gt;.  In
+this case, &lt;span class="math"&gt;\(F\)&lt;/span&gt; is a normal extension iff it corresponds to a normal subgroup of &lt;span class="math"&gt;\(\mathrm{Gal}(E/G)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;A few different meanings of the word normal(ize) show up often in algebraic geometry.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Normal domain&lt;/strong&gt;: An integral domain which is integrally closed in its field of fractions.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Normal varieties&lt;/strong&gt;: A variety &lt;span class="math"&gt;\(X\)&lt;/span&gt; such that any finite birational map from any variety &lt;span class="math"&gt;\(Y\)&lt;/span&gt; to
+  &lt;span class="math"&gt;\(X\)&lt;/span&gt; is an isomorphism.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Noether normalization&lt;/strong&gt;: The Noether normalization lemma states that for any finitely generated
+  &lt;span class="math"&gt;\(k\)&lt;/span&gt;-algebra &lt;span class="math"&gt;\(A\)&lt;/span&gt;, there exist &lt;span class="math"&gt;\(\{y_1, \ldots, y_d\} \in A\)&lt;/span&gt; such that &lt;span class="math"&gt;\(A\)&lt;/span&gt; is a finitely generated
+  module over &lt;span class="math"&gt;\(k[y_1, \ldots, y_d]\)&lt;/span&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These seemingly different notions actually are somewhat equivalent. As it turns out, a variety is
+normal if the local ring at every point is integrally closed. And while normal varieties are
+varieties which have maps from "nice" varieties, a geometric interpretation of Noether normalization
+is that every &lt;span class="math"&gt;\(d\)&lt;/span&gt;-dimensional affine variety is a ramified cover of &lt;span class="math"&gt;\(\mathbb{A}^d\)&lt;/span&gt;, which is a "nice"
+variety.&lt;/p&gt;
+&lt;p&gt;Another meaning of the word normal comes from the geometric notion of being perpendicular. This
+gives us a lot of different meanings of the word normal which we can collapse to one equivalence
+class.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Normal bundle&lt;/strong&gt;: The normal bundle of an embedded submanifold is the vector bundle such that the
+  fibre over each point consists of vectors perpendicular to the tangent space.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Normal coordinates&lt;/strong&gt;: Given a vector bundle with an affine connection, the normal coordinates
+  around a point are coordinates such that the Christoffel symbols of the connection vanish at the
+  point.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;(Ortho)normal basis&lt;/strong&gt;: A basis of an inner product space such that each vector is of norm &lt;span class="math"&gt;\(1\)&lt;/span&gt; and
+  every pair is perpendicular.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Normal operator&lt;/strong&gt;: An operator which commutes with its Hermitian conjugate.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Normal modes&lt;/strong&gt;: (Taken from wikipedia) A normal mode of an oscillating system is a pattern of
+  motion in which all parts of the system move sinusoidally with the same frequency and with a fixed
+  phase relation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Normal bundle literally comes from the original meaning of the word normal in the sense of being
+perpendicular. Normal coordinates also come from the same source: in the case of the Levi-Civita
+connection, one gets a set of normal coordinates by applying the exponential map to an orthonormal
+basis of the tangent space.&lt;/p&gt;
+&lt;p&gt;The reason why a normal operator is called a normal operator is that we know from the spectral
+theorem that its eigenvalues form an orthonormal basis. That is also the source of normal modes. The
+"normal" in normal modes comes from the fact that the vibrations are the eigenvectors of a certain
+differential operator, which happens to be self-adjoint, hence normal. That means all the normal
+modes literally form an orthonormal basis of solutions to the associated PDE.&lt;/p&gt;
+&lt;p&gt;The above words were some of the different cases of the usage of the word &lt;em&gt;normal&lt;/em&gt; that we were able
+to collapse.  And below are the ones we couldn't collapse to anything else, so they sit all by
+themselves (for now) in their own equivalence class.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Normal family&lt;/strong&gt;: A pre-compact family of holomorphic functions.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Normal space&lt;/strong&gt;: A topological space which satisfies the &lt;span class="math"&gt;\(T_4\)&lt;/span&gt; axiom. &lt;a href="http://brownsharpie.courtneygibbons.org/comic/i-used-to-confuse-regular-and-normal/"&gt;Here's a bad pun&lt;/a&gt; involving this.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Normal forms&lt;/strong&gt;: These are a whole class of ways to write matrices of linear operators in a nice form,
+  e.g. Jordan normal form, Smith normal form, etc.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Normal distribution&lt;/strong&gt;: The distribution that most sums of random variables converge to, thanks to the
+  Central limit theorem.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Normal forms part deux&lt;/strong&gt;: All the normal forms that crop up in formal language theory and
+  computability, e.g. conjunctive normal form, disjunctive normal form, Chomsky normal form, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We started off with 18 different meanings of the word &lt;em&gt;normal&lt;/em&gt;, and now, after constructing the
+equivalence relation, we are left with only 8 different equivalence classes (maybe fewer, if someone
+discovers some deep result linking normal operators to normal subgroups). That makes one think: maybe
+it's not so ab&lt;em&gt;normal&lt;/em&gt; for mathematicians to overuse normal after all.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="nomenclature"></category></entry><entry><title>An algebraic definition of the cotangent space</title><link href="/algebraic-cotangent-space.html" rel="alternate"></link><published>2018-06-30T00:00:00+05:30</published><updated>2018-06-30T00:00:00+05:30</updated><author><name>Sayantan Khan</name></author><id>tag:None,2018-06-30:/algebraic-cotangent-space.html</id><summary type="html">&lt;p&gt;I'm almost a week into the algebraic geometry workshop now, and I've learnt a
 lot.  I've learnt a few things about varieties, and also a bit of commutative
 algebra, but the most important takeaway for me from the first week was the
 sheaf theoretic way of looking at smooth manifolds …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I'm almost a week into the algebraic geometry workshop now, and I've learnt a
