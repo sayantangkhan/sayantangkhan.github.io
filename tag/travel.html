@@ -80,7 +80,7 @@ as the BMS Student Conference which immediately followed the BMS Days. I heard a
 on very interesting stuff, some of which I want to outline here, just to have an account of it,
 if nothing else; this will also serve as a reminder of the areas and results I might want to follow
 up on some time in the future.</p>
-<h2>The math talks (in no particular order)<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup></h2>
+<h2>The math talks (in no particular order)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></h2>
 <p>I'll only write about some of the talk; although all of them were fairly interesting,
 some were more interesting than others. </p>
 <h3>The computational complexity of query answering under updates (Nicole Schweikardt, HU Berlin)</h3>
@@ -95,14 +95,14 @@ conjuncted, and disjuncted, i.e. NOTed, ANDed, and ORed, and one is also allowed
 existential and universal qualifiers over elements of the database). This was the general
 framework: the results in the presentation however looked at the subclass of queries
 (the <em>Conjunctive Queries</em>) which
-only used AND of atomic propositions, and only used the existential qualifiers<sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup>.</p>
+only used AND of atomic propositions, and only used the existential qualifiers<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>.</p>
 <p>For a fixed query, Nicole described a good algorithm and a data structure for the
 database such that existence and enumeration of the entries satisfying the queries could
 be done reasonably fast, as well as updating the database. </p>
 <h3>Orbit Closures of Homogeneous Forms (Jesko Hüttenhain, TU Berlin)</h3>
 <p>This talk was motivated by the difference between the complexity class #<strong>P</strong> and the
 class <strong>NP</strong>, which the speaker roughly described as the difference in difficulty between
-computing the permanent and the determinant of a given matrix<sup id="fnref-3"><a class="footnote-ref" href="#fn-3">3</a></sup>. It's however only a belief
+computing the permanent and the determinant of a given matrix<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup>. It's however only a belief
 and not really known whether the former problem is strictly harder than the latter. The speaker
 proposed a possible line of attack via algebraic geometry. Consider the determinant function on
 <span class="math">\(M_n(\mathbb{C})\)</span>. It is a homogeneous polynomial of degree <span class="math">\(n\)</span> in <span class="math">\(n^2\)</span> complex variables,
@@ -117,7 +117,7 @@ at the orbit of the permanent polynomial under the same action, we would get the
 which are as hard to compute as the permanent is. A way to show the permanent is harder to compute than
 the determinant would be to show that the two orbits are different. If one looks at the closure
 of the orbits, and shows that they are different, then one would have shown that even approximating
-the permanent is hard<sup id="fnref-4"><a class="footnote-ref" href="#fn-4">4</a></sup>.</p>
+the permanent is hard<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup>.</p>
 <p>Jesko then stated one of his results, which characterized the boundary of one such orbit
 closure. He also mentioned that this approach to complexity theory might take a while to
 bear significant results, as the foundations of this area are being built up.</p>
@@ -134,12 +134,12 @@ homothety.</p>
 <div class="footnote">
 <hr>
 <ol>
-<li id="fn-1">
+<li id="fn:1">
 <p>The complete list of BMS Student Conference talks is
 <a href="https://bmsstudconf.github.io/2018/talks.html">here</a> and the ones given
-at BMS Days are listed <a href="https://www.math-berlin.de/academics/bms-days">here</a>.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+at BMS Days are listed <a href="https://www.math-berlin.de/academics/bms-days">here</a>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
-<li id="fn-2">
+<li id="fn:2">
 <p>This kind of restriction is quite reminiscent of monotone circuits, and I wondered
 whether there was any link between presented results, and lower bounds on monotone
 circuits: the speaker however had only chosen this subclass as a simpler problem to tackle
@@ -147,14 +147,14 @@ before tackling the problem over the full first order logic. But maybe the resul
 for the full first order logic might not be as good as the ones of only conjunctive queries.
 Perhaps I should have a look at this problem again in the future: some sort of such obstruction
 might turn up, and if I were to be even more optimistic, perhaps a direct correspondence between
-monotone circuits and conjunctive queries, and general circuits and general queries.&#160;<a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+monotone circuits and conjunctive queries, and general circuits and general queries.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
-<li id="fn-3">
+<li id="fn:3">
 <p>The former problem is quite hard, as even computing the permanent of a 0-1 matrix is #<strong>P</strong>-complete,
-and the latter problem is fairly easy, being in the class <strong>P</strong>.&#160;<a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+and the latter problem is fairly easy, being in the class <strong>P</strong>.&#160;<a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
-<li id="fn-4">
-<p>This sort of approach is a part of the nascent area of <a href="https://en.wikipedia.org/wiki/Geometric_complexity_theory">geometric complexity theory</a>.&#160;<a class="footnote-backref" href="#fnref-4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<li id="fn:4">
+<p>This sort of approach is a part of the nascent area of <a href="https://en.wikipedia.org/wiki/Geometric_complexity_theory">geometric complexity theory</a>.&#160;<a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

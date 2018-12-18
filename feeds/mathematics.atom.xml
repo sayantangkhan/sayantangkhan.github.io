@@ -1,5 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Sayantan Khan's Blog - mathematics</title><link href="/" rel="alternate"></link><link href="/feeds/mathematics.atom.xml" rel="self"></link><id>/</id><updated>2018-10-14T00:00:00+05:30</updated><entry><title>The most overloaded word in math</title><link href="/overloaded-word.html" rel="alternate"></link><published>2018-10-14T00:00:00+05:30</published><updated>2018-10-14T00:00:00+05:30</updated><author><name>Sayantan Khan</name></author><id>tag:None,2018-10-14:/overloaded-word.html</id><summary type="html">&lt;p&gt;Last Wednesday, the conversation in my office veered towards the words we hated the most in
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Sayantan Khan's Blog - mathematics</title><link href="/" rel="alternate"></link><link href="/feeds/mathematics.atom.xml" rel="self"></link><id>/</id><updated>2018-12-18T00:00:00+05:30</updated><entry><title>What is an "a priori estimate"?</title><link href="/a-priori-estimates.html" rel="alternate"></link><published>2018-12-18T00:00:00+05:30</published><updated>2018-12-18T00:00:00+05:30</updated><author><name>Sayantan Khan</name></author><id>tag:None,2018-12-18:/a-priori-estimates.html</id><summary type="html">&lt;p&gt;One of the things a math major learns in their first proof based course is that one must
+prove existence of objects before going on to prove any properties about them. After a few years,
+this becomes almost second nature, and most pure mathematicians are wary of making claims about …&lt;/p&gt;</summary><content type="html">&lt;p&gt;One of the things a math major learns in their first proof based course is that one must
+prove existence of objects before going on to prove any properties about them. After a few years,
+this becomes almost second nature, and most pure mathematicians are wary of making claims about any
+object without first proving its existence. In practice, physicists and applied mathematicians
+aren't held back by such restrictions: they often assume the existence of, say, a solution to a PDE,
+and prove results about the solutions, e.g. prove bounds on the size, smoothness, etc. and it often
+turns out that the solutions do exist, and satisfy those properties. A priori estimates are the
+bounds on the solution one gets before one actually knows the solution exists. Under certain conditions,
+one can then use these bounds on the solution to show that a solution exists. Informally, the chain of
+logic looks something like the following.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+(\text{Solution exists} \implies \text{Solution bounded by } C ) \implies \text{Solution exists}
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+The first implication is the a priori estimate, and the second implication follows from a general
+fixed point theorem. We'll see how it works out in practice, but before we see a real example, we'll
+see a pseudo-example from algebra which looks similar to an a priori estimate.&lt;/p&gt;
+&lt;h3&gt;Normality is local&lt;/h3&gt;
+&lt;p&gt;Let &lt;span class="math"&gt;\(R\)&lt;/span&gt; be a normal ring. This means that &lt;span class="math"&gt;\(R\)&lt;/span&gt; is an integral domain such that for any &lt;span class="math"&gt;\(\theta \in \text{Frac}(R)\)&lt;/span&gt;,
+if &lt;span class="math"&gt;\(\theta\)&lt;/span&gt; is a root of a monic polynomial in &lt;span class="math"&gt;\(R[x]\)&lt;/span&gt;, then &lt;span class="math"&gt;\(\theta\)&lt;/span&gt; actually belongs to &lt;span class="math"&gt;\(R\)&lt;/span&gt;. We want to prove
+the following result.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem:&lt;/strong&gt; If &lt;span class="math"&gt;\(R\)&lt;/span&gt; is a normal ring, and &lt;span class="math"&gt;\(f\)&lt;/span&gt; is a non-zero element of &lt;span class="math"&gt;\(R\)&lt;/span&gt;, then the localization &lt;span class="math"&gt;\(f^{-1}R\)&lt;/span&gt;
+is also normal.&lt;/p&gt;
+&lt;p&gt;Suppose &lt;span class="math"&gt;\(\theta\)&lt;/span&gt; is some element in &lt;span class="math"&gt;\(\text{Frac}(f^{-1}R)\)&lt;/span&gt; which satisfies a monic polynomial
+in &lt;span class="math"&gt;\(f^{-1}R[x]\)&lt;/span&gt;. Notice that &lt;span class="math"&gt;\(\text{Frac}(f^{-1}R) = \text{Frac}(R)\)&lt;/span&gt;, so &lt;span class="math"&gt;\(\theta\)&lt;/span&gt; can be thought
+of belonging to &lt;span class="math"&gt;\(\text{Frac}(R)\)&lt;/span&gt;. Elements of &lt;span class="math"&gt;\(f^{-1}R\)&lt;/span&gt; are of the form &lt;span class="math"&gt;\(\frac{r}{f^k}\)&lt;/span&gt;, where &lt;span class="math"&gt;\(r \in R\)&lt;/span&gt;,
+and we can also assume &lt;span class="math"&gt;\(k\)&lt;/span&gt; is the minimal exponent, i.e. &lt;span class="math"&gt;\(r\)&lt;/span&gt; is not a multiple of &lt;span class="math"&gt;\(f\)&lt;/span&gt; in &lt;span class="math"&gt;\(R\)&lt;/span&gt;. One can think
+of the exponent &lt;span class="math"&gt;\(k\)&lt;/span&gt; as a kind of norm on elements of &lt;span class="math"&gt;\(f^{-1}R\)&lt;/span&gt;. Let &lt;span class="math"&gt;\(\theta\)&lt;/span&gt; be a root of the following
+monic polynomial.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+x^n + \frac{r_{n-1}}{f^{k_{n-1}}}x^{n-1} + \cdots + \frac{r_{1}}{f^{k_{1}}}x + \frac{r_{0}}{f^{k_{0}}}
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+We need to show that this equation has a solution in &lt;span class="math"&gt;\(f^{-1}R\)&lt;/span&gt;, in particular, &lt;span class="math"&gt;\(\theta \in f^{-1}\)&lt;/span&gt;.
+In the spirit of a priori estimates, let's assume that &lt;span class="math"&gt;\(\theta\)&lt;/span&gt; is a solution that actually lies
+in &lt;span class="math"&gt;\(f^{-1}R\)&lt;/span&gt;. We'll try to get a bound on the norm of &lt;span class="math"&gt;\(\theta\)&lt;/span&gt;, i.e. an a priori estimate. Let &lt;span class="math"&gt;\(\theta\)&lt;/span&gt;
+be of the form &lt;span class="math"&gt;\(\frac{\alpha}{f^k}\)&lt;/span&gt;. We want to plug &lt;span class="math"&gt;\(\frac{\alpha}{f^k}\)&lt;/span&gt; into the given polynomial and get
+a monic polynomial in &lt;span class="math"&gt;\(R[\alpha]\)&lt;/span&gt;, since &lt;span class="math"&gt;\(R\)&lt;/span&gt; is normal. If we plug in &lt;span class="math"&gt;\(\frac{\alpha}{f^k}\)&lt;/span&gt;, we get the following.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+    \frac{1}{f^{nk}}\alpha^{n} + \frac{r_{n-1}}{f^{k_{n-1} +nk - k}} \alpha^{n-1} +
+    \frac{r_{n-2}}{f^{k_{n-2} +nk - 2k}} \alpha^{n-2} + \cdots +  \frac{r_{1}}{f^{k_{1} +nk - (n-1)k}} \alpha^{1} +
+    \frac{r_0}{f^{k_0}} = 0
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+If we want to clear denominators, and still retain a monic polynomial, our &lt;span class="math"&gt;\(k\)&lt;/span&gt; must satisfy the following inequalities
+for all &lt;span class="math"&gt;\(1 \leq j \leq n\)&lt;/span&gt;.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+    k \geq \frac{k_{n-j}}{j}
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+These inequalities are our a priori estimates. We assumed that the solution existed, and we then bounded its norm below
+by a fixed quantity. Now we need to show that this implies a solution exists. Notice that after clearing the denominator,
+we get a monic polynomial in &lt;span class="math"&gt;\(R[x]\)&lt;/span&gt; which is satisfies by &lt;span class="math"&gt;\(\alpha = f^k \theta\)&lt;/span&gt; which belongs to &lt;span class="math"&gt;\(\text{Frac}(R)\)&lt;/span&gt;. Since
+&lt;span class="math"&gt;\(R\)&lt;/span&gt; is normal, &lt;span class="math"&gt;\(\alpha \in R\)&lt;/span&gt;, and hence &lt;span class="math"&gt;\(\theta = \frac{\alpha}{f^k}\)&lt;/span&gt; is in &lt;span class="math"&gt;\(f^{-1}R\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;This pseudo-example served two purposes: the first one was elucidate the key idea behind using a priori estimates without
+getting bogged into analytic technicalities. The second purpose was to illustrate that the idea of boundedness implying
+existence might be a very broad principle that applies in a lot of contexts. Now we'll see an actual example of
+using an priori estimate. This is Example 2 from Chapter 9 of Evans' &lt;em&gt;Partial Differential Equations&lt;/em&gt;.&lt;/p&gt;
+&lt;h3&gt;A quasilinear elliptic PDE&lt;/h3&gt;
+&lt;p&gt;Consider a region &lt;span class="math"&gt;\(U\)&lt;/span&gt; in &lt;span class="math"&gt;\(\mathbb{R}^n\)&lt;/span&gt; with a smooth boundary &lt;span class="math"&gt;\(\partial U\)&lt;/span&gt;. We want to solve
+the following PDE.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+    - \Delta u + \mu u = -b(Du)
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+Additionally, we have that &lt;span class="math"&gt;\(u\)&lt;/span&gt; must be &lt;span class="math"&gt;\(0\)&lt;/span&gt; on the
+boundary. In the above equation, &lt;span class="math"&gt;\(\Delta\)&lt;/span&gt; is the Laplacian, &lt;span class="math"&gt;\(\mu\)&lt;/span&gt; some number greater than &lt;span class="math"&gt;\(0\)&lt;/span&gt;, &lt;span class="math"&gt;\(b\)&lt;/span&gt;
+is a Lipschitz function, and &lt;span class="math"&gt;\(D\)&lt;/span&gt; is a first order partial differential operator. We want to show
+that for a large enough &lt;span class="math"&gt;\(\mu\)&lt;/span&gt; there exists a solution &lt;span class="math"&gt;\(u \in H^2(U) \cap H^1_0(U)\)&lt;/span&gt;, where &lt;span class="math"&gt;\(H^2\)&lt;/span&gt; and
+&lt;span class="math"&gt;\(H^1_0\)&lt;/span&gt; are the appropriate Sobolev spaces (if you don't know what Sobolev spaces are, think of
+these spaces as functions whose derivatives are bounded).&lt;/p&gt;
+&lt;p&gt;For any &lt;span class="math"&gt;\(w \in H^1_0(U)\)&lt;/span&gt;, define &lt;span class="math"&gt;\(f_w\)&lt;/span&gt; to be the function &lt;span class="math"&gt;\(-b(Dw)\)&lt;/span&gt;. Since &lt;span class="math"&gt;\(b\)&lt;/span&gt; is Lipschitz, &lt;span class="math"&gt;\(f_w\)&lt;/span&gt; is in &lt;span class="math"&gt;\(L^2\)&lt;/span&gt;.
+If we plug in &lt;span class="math"&gt;\(f_w\)&lt;/span&gt; instead of &lt;span class="math"&gt;\(-b(Du)\)&lt;/span&gt; in the PDE, we have the following linear PDE (after fixing &lt;span class="math"&gt;\(w\)&lt;/span&gt;).
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+    - \Delta u + \mu u = f_w
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+By general PDE theory, linear elliptic PDEs have unique
+solutions. Let the solution we get be denoted by &lt;span class="math"&gt;\(u_w\)&lt;/span&gt;.  By more general nonsense (i.e. elliptic
+regularity and similar statements), we have that &lt;span class="math"&gt;\(u_w\)&lt;/span&gt; is in &lt;span class="math"&gt;\(H^2(U)\)&lt;/span&gt;.  We thus have a map that
+takes &lt;span class="math"&gt;\(w \in H^1_0(U)\)&lt;/span&gt; to a &lt;span class="math"&gt;\(u_w\)&lt;/span&gt; in &lt;span class="math"&gt;\(H^2\)&lt;/span&gt;. This can also be thought of as a non-linear continuous
+map from &lt;span class="math"&gt;\(H^1_0(U)\)&lt;/span&gt; to &lt;span class="math"&gt;\(H^1_0(U)\)&lt;/span&gt;. We call this map &lt;span class="math"&gt;\(A\)&lt;/span&gt;, and we can bound the &lt;span class="math"&gt;\(H^2\)&lt;/span&gt; norm of &lt;span class="math"&gt;\(A\)&lt;/span&gt;. The
+Rellich lemma tells us that &lt;span class="math"&gt;\(A\)&lt;/span&gt; takes bounded sets to pre-compact sets in &lt;span class="math"&gt;\(H^1_0\)&lt;/span&gt;. After some more
+analysis, which we'll skip, we can show that for a large enough &lt;span class="math"&gt;\(\mu\)&lt;/span&gt;, the following set is bounded.
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align*}
+SFP = \{ w \in H^1_0(U)\ |\ w = \lambda A(w) \text{ for some $\lambda \in [0,1]$} \}
+\end{align*}&lt;/div&gt;
+&lt;p&gt;
+Observe that any &lt;span class="math"&gt;\(w\)&lt;/span&gt; such that &lt;span class="math"&gt;\(w = A(w)\)&lt;/span&gt; will be a solution of our original PDE. That means
+we would like to show that &lt;span class="math"&gt;\(A\)&lt;/span&gt; has fixed points. What we have from our analysis so far is
+that the set of scaled fixed points &lt;span class="math"&gt;\(SFP\)&lt;/span&gt; is bounded. This is our a priori estimate. The second
+step is applying Schaefer's fixed point theorem to the map &lt;span class="math"&gt;\(A\)&lt;/span&gt;, which requires the set &lt;span class="math"&gt;\(SFP\)&lt;/span&gt; be bounded,
+and gives us that the map &lt;span class="math"&gt;\(A\)&lt;/span&gt; has a fixed point, and hence our original PDE has a solution.&lt;/p&gt;
+&lt;p&gt;In both the examples, the idea of the proof was guided by the following principle: pretend a solution exists to get
+bounds, and after obtaining those bounds, show that a solution actually exists.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="analysis"></category></entry><entry><title>The most overloaded word in math</title><link href="/overloaded-word.html" rel="alternate"></link><published>2018-10-14T00:00:00+05:30</published><updated>2018-10-14T00:00:00+05:30</updated><author><name>Sayantan Khan</name></author><id>tag:None,2018-10-14:/overloaded-word.html</id><summary type="html">&lt;p&gt;Last Wednesday, the conversation in my office veered towards the words we hated the most in
 math. Not surprisingly, the list included the usual suspects like &lt;em&gt;normal&lt;/em&gt;, &lt;em&gt;simple&lt;/em&gt;, and &lt;em&gt;regular&lt;/em&gt;.
 It's probably the same reason that these words also make it to the top five of &lt;a href="https://mathoverflow.net/questions/7389/what-are-the-most-overloaded-words-in-mathematics"&gt;this MathOverflow
 post&lt;/a&gt;. These …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Last Wednesday, the conversation in my office veered towards the words we hated the most in
@@ -385,7 +543,7 @@ If we pick local coordinates and a trivialization around some point in &lt;span 
 denotes what &lt;span class="math"&gt;\(\nabla e_i\)&lt;/span&gt; goes to, where &lt;span class="math"&gt;\(\{e_i\}\)&lt;/span&gt; is the local frame for the vector bundle.
 The matrix &lt;span class="math"&gt;\(A\)&lt;/span&gt; is often called a &lt;a href="https://en.wikipedia.org/wiki/Connection_form"&gt;connection form&lt;/a&gt;.
 Using the matrix &lt;span class="math"&gt;\(A\)&lt;/span&gt;, we can construct another matrix, this one consisting of &lt;span class="math"&gt;\(2\)&lt;/span&gt;-forms, which we'll call
-the curvature form&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;.
+the curvature form&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;.
 &lt;/p&gt;
 &lt;div class="math"&gt;\begin{align*}
 \Omega = dA + A \wedge A
@@ -551,7 +709,7 @@ j \phi \left( A_1 - A_0, \Omega_t, \Omega_t, \ldots, \Omega_t \right)
 Here &lt;span class="math"&gt;\(A_i\)&lt;/span&gt; is the connection form of the connection &lt;span class="math"&gt;\(\nabla_i\)&lt;/span&gt;, and &lt;span class="math"&gt;\(\Omega_t\)&lt;/span&gt; the curvature
 form of the connection &lt;span class="math"&gt;\(\nabla_t\)&lt;/span&gt;. If one takes the exterior derivative of this expression, using
 the normal coordinates, one can see that it's the same as &lt;span class="math"&gt;\(\frac{d}{dt} \eta_t\)&lt;/span&gt;. This proves that 
-the choice of connection doesn't matter&lt;sup id="fnref-2"&gt;&lt;a class="footnote-ref" href="#fn-2"&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+the choice of connection doesn't matter&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 &lt;h2&gt;The Chern class&lt;/h2&gt;
 &lt;p&gt;Now that we have seen how to construct characteristic classes using the curvature form, we'll
 construct a specific example, these are the ones that are called the Chern classes. Let
@@ -573,13 +731,13 @@ provides a good description, as well as references for further reading.&lt;/p&gt
 &lt;div class="footnote"&gt;
 &lt;hr&gt;
 &lt;ol&gt;
-&lt;li id="fn-1"&gt;
+&lt;li id="fn:1"&gt;
 &lt;p&gt;The reason why this is called the curvature form is that in the case of the Levi-Civita
 connection on a Riemannian manifold, this definition reduces to the standard Riemann curvature
-endomorphism. &lt;a href="https://en.wikipedia.org/wiki/Curvature_form#Curvature_form_in_a_vector_bundle"&gt;See this&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+endomorphism. &lt;a href="https://en.wikipedia.org/wiki/Curvature_form#Curvature_form_in_a_vector_bundle"&gt;See this&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li id="fn-2"&gt;
-&lt;p&gt;This proof of independence from the connection was taken from the problem set &lt;a href="http://math.iisc.ac.in/~vamsipingali/HW43392018.pdf"&gt;here&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;This proof of independence from the connection was taken from the problem set &lt;a href="http://math.iisc.ac.in/~vamsipingali/HW43392018.pdf"&gt;here&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -645,7 +803,7 @@ as the BMS Student Conference which immediately followed the BMS Days. I heard a
 on very interesting stuff, some of which I want to outline here, just to have an account of it,
 if nothing else; this will also serve as a reminder of the areas and results I might want to follow
 up on some time in the future.&lt;/p&gt;
-&lt;h2&gt;The math talks (in no particular order)&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/h2&gt;
+&lt;h2&gt;The math talks (in no particular order)&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/h2&gt;
 &lt;p&gt;I'll only write about some of the talk; although all of them were fairly interesting,
 some were more interesting than others. &lt;/p&gt;
 &lt;h3&gt;The computational complexity of query answering under updates (Nicole Schweikardt, HU Berlin)&lt;/h3&gt;
@@ -660,14 +818,14 @@ conjuncted, and disjuncted, i.e. NOTed, ANDed, and ORed, and one is also allowed
 existential and universal qualifiers over elements of the database). This was the general
 framework: the results in the presentation however looked at the subclass of queries
 (the &lt;em&gt;Conjunctive Queries&lt;/em&gt;) which
-only used AND of atomic propositions, and only used the existential qualifiers&lt;sup id="fnref-2"&gt;&lt;a class="footnote-ref" href="#fn-2"&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+only used AND of atomic propositions, and only used the existential qualifiers&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 &lt;p&gt;For a fixed query, Nicole described a good algorithm and a data structure for the
 database such that existence and enumeration of the entries satisfying the queries could
 be done reasonably fast, as well as updating the database. &lt;/p&gt;
 &lt;h3&gt;Orbit Closures of Homogeneous Forms (Jesko Hüttenhain, TU Berlin)&lt;/h3&gt;
 &lt;p&gt;This talk was motivated by the difference between the complexity class #&lt;strong&gt;P&lt;/strong&gt; and the
 class &lt;strong&gt;NP&lt;/strong&gt;, which the speaker roughly described as the difference in difficulty between
-computing the permanent and the determinant of a given matrix&lt;sup id="fnref-3"&gt;&lt;a class="footnote-ref" href="#fn-3"&gt;3&lt;/a&gt;&lt;/sup&gt;. It's however only a belief
+computing the permanent and the determinant of a given matrix&lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3" rel="footnote"&gt;3&lt;/a&gt;&lt;/sup&gt;. It's however only a belief
 and not really known whether the former problem is strictly harder than the latter. The speaker
 proposed a possible line of attack via algebraic geometry. Consider the determinant function on
 &lt;span class="math"&gt;\(M_n(\mathbb{C})\)&lt;/span&gt;. It is a homogeneous polynomial of degree &lt;span class="math"&gt;\(n\)&lt;/span&gt; in &lt;span class="math"&gt;\(n^2\)&lt;/span&gt; complex variables,
@@ -682,7 +840,7 @@ at the orbit of the permanent polynomial under the same action, we would get the
 which are as hard to compute as the permanent is. A way to show the permanent is harder to compute than
 the determinant would be to show that the two orbits are different. If one looks at the closure
 of the orbits, and shows that they are different, then one would have shown that even approximating
-the permanent is hard&lt;sup id="fnref-4"&gt;&lt;a class="footnote-ref" href="#fn-4"&gt;4&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+the permanent is hard&lt;sup id="fnref:4"&gt;&lt;a class="footnote-ref" href="#fn:4" rel="footnote"&gt;4&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 &lt;p&gt;Jesko then stated one of his results, which characterized the boundary of one such orbit
 closure. He also mentioned that this approach to complexity theory might take a while to
 bear significant results, as the foundations of this area are being built up.&lt;/p&gt;
@@ -699,12 +857,12 @@ homothety.&lt;/p&gt;
 &lt;div class="footnote"&gt;
 &lt;hr&gt;
 &lt;ol&gt;
-&lt;li id="fn-1"&gt;
+&lt;li id="fn:1"&gt;
 &lt;p&gt;The complete list of BMS Student Conference talks is
 &lt;a href="https://bmsstudconf.github.io/2018/talks.html"&gt;here&lt;/a&gt; and the ones given
-at BMS Days are listed &lt;a href="https://www.math-berlin.de/academics/bms-days"&gt;here&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+at BMS Days are listed &lt;a href="https://www.math-berlin.de/academics/bms-days"&gt;here&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li id="fn-2"&gt;
+&lt;li id="fn:2"&gt;
 &lt;p&gt;This kind of restriction is quite reminiscent of monotone circuits, and I wondered
 whether there was any link between presented results, and lower bounds on monotone
 circuits: the speaker however had only chosen this subclass as a simpler problem to tackle
@@ -712,14 +870,14 @@ before tackling the problem over the full first order logic. But maybe the resul
 for the full first order logic might not be as good as the ones of only conjunctive queries.
 Perhaps I should have a look at this problem again in the future: some sort of such obstruction
 might turn up, and if I were to be even more optimistic, perhaps a direct correspondence between
-monotone circuits and conjunctive queries, and general circuits and general queries.&amp;#160;&lt;a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+monotone circuits and conjunctive queries, and general circuits and general queries.&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li id="fn-3"&gt;
+&lt;li id="fn:3"&gt;
 &lt;p&gt;The former problem is quite hard, as even computing the permanent of a 0-1 matrix is #&lt;strong&gt;P&lt;/strong&gt;-complete,
-and the latter problem is fairly easy, being in the class &lt;strong&gt;P&lt;/strong&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref-3" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+and the latter problem is fairly easy, being in the class &lt;strong&gt;P&lt;/strong&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li id="fn-4"&gt;
-&lt;p&gt;This sort of approach is a part of the nascent area of &lt;a href="https://en.wikipedia.org/wiki/Geometric_complexity_theory"&gt;geometric complexity theory&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref-4" title="Jump back to footnote 4 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;li id="fn:4"&gt;
+&lt;p&gt;This sort of approach is a part of the nascent area of &lt;a href="https://en.wikipedia.org/wiki/Geometric_complexity_theory"&gt;geometric complexity theory&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;

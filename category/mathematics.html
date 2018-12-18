@@ -64,8 +64,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="/overloaded-word.html"><h1>The most overloaded word in math</h1></a>
-Sun 14 October 2018
+            <a href="/a-priori-estimates.html"><h1>What is an "a priori estimate"?</h1></a>
+Tue 18 December 2018
 
 by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
  
@@ -74,88 +74,108 @@ by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
  
         </div>
         
-        <div><p>Last Wednesday, the conversation in my office veered towards the words we hated the most in
-math. Not surprisingly, the list included the usual suspects like <em>normal</em>, <em>simple</em>, and <em>regular</em>.
-It's probably the same reason that these words also make it to the top five of <a href="https://mathoverflow.net/questions/7389/what-are-the-most-overloaded-words-in-mathematics">this MathOverflow
-post</a>. These
-words are overloaded to the point of meaning something different to mathematicians working in
-different areas of math. On the other hand, we all agreed that some overloading of words was
-actually fairly useful: for instance, it makes sense to call a normal covering space normal since it
-actually corresponds to a normal subgroup of the fundamental group.  That means calling a cover
-normal and calling a subgroup normal isn't really a bad thing, since it shows that those two notions
-are related.</p>
-<p>We thought we'd do something similar for all the possible meanings of the word normal: we'd define
-an equivalence relation between two different meanings if there is some result, deep or otherwise,
-that links the two notions. Then the number of equivalence classes we get would be a much better
-metric of the overloaded-ness of the word <em>normal</em>.</p>
-<p>Here's a list of the meanings of <em>normal</em> (taken from Wikipedia), along with some additions.</p>
-<ul>
-<li><strong>Normal subgroup</strong>: A subgroup which is invariant under conjugation action.</li>
-<li><strong>Normal cover</strong>: A covering space whose deck transformation group acts transitively.</li>
-<li><strong>Normal field extension</strong>: A field extension such that every irreducible polynomial in the base
-   field splits into linear factor, or is irreducible.</li>
-</ul>
-<p>These three uses of normal are really the same, since they all talk about an associated subgroup
-being a normal subgroup. In the case of the normal cover, the fundamental group of the cover is a
-normal subgroup of the fundamental group of the base space. When it comes to field extensions,
-consider the following field extension: <span class="math">\(E \subset F \subset G\)</span>, where <span class="math">\(G\)</span> is Galois over <span class="math">\(E\)</span>.  In
-this case, <span class="math">\(F\)</span> is a normal extension iff it corresponds to a normal subgroup of <span class="math">\(\mathrm{Gal}(E/G)\)</span>.</p>
-<p>A few different meanings of the word normal(ize) show up often in algebraic geometry.</p>
-<ul>
-<li><strong>Normal domain</strong>: An integral domain which is integrally closed in its field of fractions.</li>
-<li><strong>Normal varieties</strong>: A variety <span class="math">\(X\)</span> such that any finite birational map from any variety <span class="math">\(Y\)</span> to
-  <span class="math">\(X\)</span> is an isomorphism.</li>
-<li><strong>Noether normalization</strong>: The Noether normalization lemma states that for any finitely generated
-  <span class="math">\(k\)</span>-algebra <span class="math">\(A\)</span>, there exist <span class="math">\(\{y_1, \ldots, y_d\} \in A\)</span> such that <span class="math">\(A\)</span> is a finitely generated
-  module over <span class="math">\(k[y_1, \ldots, y_d]\)</span>.</li>
-</ul>
-<p>These seemingly different notions actually are somewhat equivalent. As it turns out, a variety is
-normal if the local ring at every point is integrally closed. And while normal varieties are
-varieties which have maps from "nice" varieties, a geometric interpretation of Noether normalization
-is that every <span class="math">\(d\)</span>-dimensional affine variety is a ramified cover of <span class="math">\(\mathbb{A}^d\)</span>, which is a "nice"
-variety.</p>
-<p>Another meaning of the word normal comes from the geometric notion of being perpendicular. This
-gives us a lot of different meanings of the word normal which we can collapse to one equivalence
-class.</p>
-<ul>
-<li><strong>Normal bundle</strong>: The normal bundle of an embedded submanifold is the vector bundle such that the
-  fibre over each point consists of vectors perpendicular to the tangent space.</li>
-<li><strong>Normal coordinates</strong>: Given a vector bundle with an affine connection, the normal coordinates
-  around a point are coordinates such that the Christoffel symbols of the connection vanish at the
-  point.</li>
-<li><strong>(Ortho)normal basis</strong>: A basis of an inner product space such that each vector is of norm <span class="math">\(1\)</span> and
-  every pair is perpendicular.</li>
-<li><strong>Normal operator</strong>: An operator which commutes with its Hermitian conjugate.</li>
-<li><strong>Normal modes</strong>: (Taken from wikipedia) A normal mode of an oscillating system is a pattern of
-  motion in which all parts of the system move sinusoidally with the same frequency and with a fixed
-  phase relation.</li>
-</ul>
-<p>Normal bundle literally comes from the original meaning of the word normal in the sense of being
-perpendicular. Normal coordinates also come from the same source: in the case of the Levi-Civita
-connection, one gets a set of normal coordinates by applying the exponential map to an orthonormal
-basis of the tangent space.</p>
-<p>The reason why a normal operator is called a normal operator is that we know from the spectral
-theorem that its eigenvalues form an orthonormal basis. That is also the source of normal modes. The
-"normal" in normal modes comes from the fact that the vibrations are the eigenvectors of a certain
-differential operator, which happens to be self-adjoint, hence normal. That means all the normal
-modes literally form an orthonormal basis of solutions to the associated PDE.</p>
-<p>The above words were some of the different cases of the usage of the word <em>normal</em> that we were able
-to collapse.  And below are the ones we couldn't collapse to anything else, so they sit all by
-themselves (for now) in their own equivalence class.</p>
-<ul>
-<li><strong>Normal family</strong>: A pre-compact family of holomorphic functions.</li>
-<li><strong>Normal space</strong>: A topological space which satisfies the <span class="math">\(T_4\)</span> axiom. <a href="http://brownsharpie.courtneygibbons.org/comic/i-used-to-confuse-regular-and-normal/">Here's a bad pun</a> involving this.</li>
-<li><strong>Normal forms</strong>: These are a whole class of ways to write matrices of linear operators in a nice form,
-  e.g. Jordan normal form, Smith normal form, etc.</li>
-<li><strong>Normal distribution</strong>: The distribution that most sums of random variables converge to, thanks to the
-  Central limit theorem.</li>
-<li><strong>Normal forms part deux</strong>: All the normal forms that crop up in formal language theory and
-  computability, e.g. conjunctive normal form, disjunctive normal form, Chomsky normal form, etc.</li>
-</ul>
-<p>We started off with 18 different meanings of the word <em>normal</em>, and now, after constructing the
-equivalence relation, we are left with only 8 different equivalence classes (maybe fewer, if someone
-discovers some deep result linking normal operators to normal subgroups). That makes one think: maybe
-it's not so ab<em>normal</em> for mathematicians to overuse normal after all.</p>
+        <div><p>One of the things a math major learns in their first proof based course is that one must
+prove existence of objects before going on to prove any properties about them. After a few years,
+this becomes almost second nature, and most pure mathematicians are wary of making claims about any
+object without first proving its existence. In practice, physicists and applied mathematicians
+aren't held back by such restrictions: they often assume the existence of, say, a solution to a PDE,
+and prove results about the solutions, e.g. prove bounds on the size, smoothness, etc. and it often
+turns out that the solutions do exist, and satisfy those properties. A priori estimates are the
+bounds on the solution one gets before one actually knows the solution exists. Under certain conditions,
+one can then use these bounds on the solution to show that a solution exists. Informally, the chain of
+logic looks something like the following.
+</p>
+<div class="math">\begin{align*}
+(\text{Solution exists} \implies \text{Solution bounded by } C ) \implies \text{Solution exists}
+\end{align*}</div>
+<p>
+The first implication is the a priori estimate, and the second implication follows from a general
+fixed point theorem. We'll see how it works out in practice, but before we see a real example, we'll
+see a pseudo-example from algebra which looks similar to an a priori estimate.</p>
+<h3>Normality is local</h3>
+<p>Let <span class="math">\(R\)</span> be a normal ring. This means that <span class="math">\(R\)</span> is an integral domain such that for any <span class="math">\(\theta \in \text{Frac}(R)\)</span>,
+if <span class="math">\(\theta\)</span> is a root of a monic polynomial in <span class="math">\(R[x]\)</span>, then <span class="math">\(\theta\)</span> actually belongs to <span class="math">\(R\)</span>. We want to prove
+the following result.</p>
+<p><strong>Theorem:</strong> If <span class="math">\(R\)</span> is a normal ring, and <span class="math">\(f\)</span> is a non-zero element of <span class="math">\(R\)</span>, then the localization <span class="math">\(f^{-1}R\)</span>
+is also normal.</p>
+<p>Suppose <span class="math">\(\theta\)</span> is some element in <span class="math">\(\text{Frac}(f^{-1}R)\)</span> which satisfies a monic polynomial
+in <span class="math">\(f^{-1}R[x]\)</span>. Notice that <span class="math">\(\text{Frac}(f^{-1}R) = \text{Frac}(R)\)</span>, so <span class="math">\(\theta\)</span> can be thought
+of belonging to <span class="math">\(\text{Frac}(R)\)</span>. Elements of <span class="math">\(f^{-1}R\)</span> are of the form <span class="math">\(\frac{r}{f^k}\)</span>, where <span class="math">\(r \in R\)</span>,
+and we can also assume <span class="math">\(k\)</span> is the minimal exponent, i.e. <span class="math">\(r\)</span> is not a multiple of <span class="math">\(f\)</span> in <span class="math">\(R\)</span>. One can think
+of the exponent <span class="math">\(k\)</span> as a kind of norm on elements of <span class="math">\(f^{-1}R\)</span>. Let <span class="math">\(\theta\)</span> be a root of the following
+monic polynomial.
+</p>
+<div class="math">\begin{align*}
+x^n + \frac{r_{n-1}}{f^{k_{n-1}}}x^{n-1} + \cdots + \frac{r_{1}}{f^{k_{1}}}x + \frac{r_{0}}{f^{k_{0}}}
+\end{align*}</div>
+<p>
+We need to show that this equation has a solution in <span class="math">\(f^{-1}R\)</span>, in particular, <span class="math">\(\theta \in f^{-1}\)</span>.
+In the spirit of a priori estimates, let's assume that <span class="math">\(\theta\)</span> is a solution that actually lies
+in <span class="math">\(f^{-1}R\)</span>. We'll try to get a bound on the norm of <span class="math">\(\theta\)</span>, i.e. an a priori estimate. Let <span class="math">\(\theta\)</span>
+be of the form <span class="math">\(\frac{\alpha}{f^k}\)</span>. We want to plug <span class="math">\(\frac{\alpha}{f^k}\)</span> into the given polynomial and get
+a monic polynomial in <span class="math">\(R[\alpha]\)</span>, since <span class="math">\(R\)</span> is normal. If we plug in <span class="math">\(\frac{\alpha}{f^k}\)</span>, we get the following.
+</p>
+<div class="math">\begin{align*}
+    \frac{1}{f^{nk}}\alpha^{n} + \frac{r_{n-1}}{f^{k_{n-1} +nk - k}} \alpha^{n-1} +
+    \frac{r_{n-2}}{f^{k_{n-2} +nk - 2k}} \alpha^{n-2} + \cdots +  \frac{r_{1}}{f^{k_{1} +nk - (n-1)k}} \alpha^{1} +
+    \frac{r_0}{f^{k_0}} = 0
+\end{align*}</div>
+<p>
+If we want to clear denominators, and still retain a monic polynomial, our <span class="math">\(k\)</span> must satisfy the following inequalities
+for all <span class="math">\(1 \leq j \leq n\)</span>.
+</p>
+<div class="math">\begin{align*}
+    k \geq \frac{k_{n-j}}{j}
+\end{align*}</div>
+<p>
+These inequalities are our a priori estimates. We assumed that the solution existed, and we then bounded its norm below
+by a fixed quantity. Now we need to show that this implies a solution exists. Notice that after clearing the denominator,
+we get a monic polynomial in <span class="math">\(R[x]\)</span> which is satisfies by <span class="math">\(\alpha = f^k \theta\)</span> which belongs to <span class="math">\(\text{Frac}(R)\)</span>. Since
+<span class="math">\(R\)</span> is normal, <span class="math">\(\alpha \in R\)</span>, and hence <span class="math">\(\theta = \frac{\alpha}{f^k}\)</span> is in <span class="math">\(f^{-1}R\)</span>.</p>
+<p>This pseudo-example served two purposes: the first one was elucidate the key idea behind using a priori estimates without
+getting bogged into analytic technicalities. The second purpose was to illustrate that the idea of boundedness implying
+existence might be a very broad principle that applies in a lot of contexts. Now we'll see an actual example of
+using an priori estimate. This is Example 2 from Chapter 9 of Evans' <em>Partial Differential Equations</em>.</p>
+<h3>A quasilinear elliptic PDE</h3>
+<p>Consider a region <span class="math">\(U\)</span> in <span class="math">\(\mathbb{R}^n\)</span> with a smooth boundary <span class="math">\(\partial U\)</span>. We want to solve
+the following PDE.
+</p>
+<div class="math">\begin{align*}
+    - \Delta u + \mu u = -b(Du)
+\end{align*}</div>
+<p>
+Additionally, we have that <span class="math">\(u\)</span> must be <span class="math">\(0\)</span> on the
+boundary. In the above equation, <span class="math">\(\Delta\)</span> is the Laplacian, <span class="math">\(\mu\)</span> some number greater than <span class="math">\(0\)</span>, <span class="math">\(b\)</span>
+is a Lipschitz function, and <span class="math">\(D\)</span> is a first order partial differential operator. We want to show
+that for a large enough <span class="math">\(\mu\)</span> there exists a solution <span class="math">\(u \in H^2(U) \cap H^1_0(U)\)</span>, where <span class="math">\(H^2\)</span> and
+<span class="math">\(H^1_0\)</span> are the appropriate Sobolev spaces (if you don't know what Sobolev spaces are, think of
+these spaces as functions whose derivatives are bounded).</p>
+<p>For any <span class="math">\(w \in H^1_0(U)\)</span>, define <span class="math">\(f_w\)</span> to be the function <span class="math">\(-b(Dw)\)</span>. Since <span class="math">\(b\)</span> is Lipschitz, <span class="math">\(f_w\)</span> is in <span class="math">\(L^2\)</span>.
+If we plug in <span class="math">\(f_w\)</span> instead of <span class="math">\(-b(Du)\)</span> in the PDE, we have the following linear PDE (after fixing <span class="math">\(w\)</span>).
+</p>
+<div class="math">\begin{align*}
+    - \Delta u + \mu u = f_w
+\end{align*}</div>
+<p>
+By general PDE theory, linear elliptic PDEs have unique
+solutions. Let the solution we get be denoted by <span class="math">\(u_w\)</span>.  By more general nonsense (i.e. elliptic
+regularity and similar statements), we have that <span class="math">\(u_w\)</span> is in <span class="math">\(H^2(U)\)</span>.  We thus have a map that
+takes <span class="math">\(w \in H^1_0(U)\)</span> to a <span class="math">\(u_w\)</span> in <span class="math">\(H^2\)</span>. This can also be thought of as a non-linear continuous
+map from <span class="math">\(H^1_0(U)\)</span> to <span class="math">\(H^1_0(U)\)</span>. We call this map <span class="math">\(A\)</span>, and we can bound the <span class="math">\(H^2\)</span> norm of <span class="math">\(A\)</span>. The
+Rellich lemma tells us that <span class="math">\(A\)</span> takes bounded sets to pre-compact sets in <span class="math">\(H^1_0\)</span>. After some more
+analysis, which we'll skip, we can show that for a large enough <span class="math">\(\mu\)</span>, the following set is bounded.
+</p>
+<div class="math">\begin{align*}
+SFP = \{ w \in H^1_0(U)\ |\ w = \lambda A(w) \text{ for some $\lambda \in [0,1]$} \}
+\end{align*}</div>
+<p>
+Observe that any <span class="math">\(w\)</span> such that <span class="math">\(w = A(w)\)</span> will be a solution of our original PDE. That means
+we would like to show that <span class="math">\(A\)</span> has fixed points. What we have from our analysis so far is
+that the set of scaled fixed points <span class="math">\(SFP\)</span> is bounded. This is our a priori estimate. The second
+step is applying Schaefer's fixed point theorem to the map <span class="math">\(A\)</span>, which requires the set <span class="math">\(SFP\)</span> be bounded,
+and gives us that the map <span class="math">\(A\)</span> has a fixed point, and hence our original PDE has a solution.</p>
+<p>In both the examples, the idea of the proof was guided by the following principle: pretend a solution exists to get
+bounds, and after obtaining those bounds, show that a solution actually exists.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -214,6 +234,27 @@ it's not so ab<em>normal</em> for mathematicians to overuse normal after all.</p
         <hr />
     </div>
 		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="/overloaded-word.html"><h2>The most overloaded word in math</h2></a>
+        <div class= "well small"> Sun 14 October 2018
+
+by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>Last Wednesday, the conversation in my office veered towards the words we hated the most in
+math. Not surprisingly, the list included the usual suspects like <em>normal</em>, <em>simple</em>, and <em>regular</em>.
+It's probably the same reason that these words also make it to the top five of <a href="https://mathoverflow.net/questions/7389/what-are-the-most-overloaded-words-in-mathematics">this MathOverflow
+post</a>. These …</p> <a class="btn btn-info xsmall" href="/overloaded-word.html">read more</a></div>
+    </div>	
+				
 
  
         
