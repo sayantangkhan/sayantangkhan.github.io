@@ -64,8 +64,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="/cohomology-local-global.html"><h1>Cohomology as a measure of local to global failure</h1></a>
-Mon 25 December 2017
+            <a href="/orbit-points-1.0.html"><h1>Counting orbit points under group actions - Part 1</h1></a>
+Sat 19 October 2019
 
 by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
  
@@ -74,178 +74,136 @@ by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
  
         </div>
         
-        <div><h2>Motivation for cohomology</h2>
-<p>In most introductory algebraic topology courses, cohomology is rather poorly motivated. It's most
-commonly seen form in an algebraic topology course is singular cohomology, which arises as a the
-homology of the dual of the singular chain complex, but that doesn't really tell you why it's of any
-more interest than singular homology, aside from the fact that you get an additional cup product
-which you did not have before. However, this approach obscures the geometric meaning of cohomology.</p>
-<p>A much more intuitive introduction to cohomology turns out to be De Rham cohomology, often
-encountered in introductory differential geometry courses. Loosely speaking, De Rham cohomology
-measures in how many different ways can a closed form fail to be exact.</p>
-<p>Another cohomology theory we'll look at is sheaf cohomology. Loosely, the cohomology of a sheaf
-measures how a certain functor <span class="math">\(\Gamma\)</span>, which we'll define later fails to be an exact functor.</p>
-<p>In the case of De Rham cohomology, we'll interpret the form being closed as a local property, and it
-being exact a global property, and the the case of sheaf cohomology, the exactness of the following
-sequence (the exact details of which we'll see in a later section) as a local property.  </p>
-<div class="math">$$0
-\rightarrow \mathcal{S}_1 \rightarrow \mathcal{S}_2\rightarrow \mathcal{S}_3 \rightarrow 0$$</div>
-<p> The
-exactness of the sequence we get by applying <span class="math">\(\Gamma\)</span> to the above sequence turns out to be a global
-property.</p>
-<p>In both the cases, the cohomology measures how the local property fails to translate to the global
-one.</p>
-<h2>De Rham Cohomology</h2>
-<p>The De Rham cohomology of a manifold <span class="math">\(M\)</span> (of dimension <span class="math">\(m\)</span>) is the homology of the following of the
-following cochain sequence.  </p>
-<div class="math">$$0 \xrightarrow{d} \Lambda^0(M) \xrightarrow{d} \Lambda^1(M)
-\xrightarrow{d} \cdots \xrightarrow{d} \Lambda^m(M) \xrightarrow{d} 0$$</div>
-<p> Here, <span class="math">\(\Lambda^k(M)\)</span> is the
-space of <span class="math">\(k\)</span>-forms on <span class="math">\(M\)</span>, and <span class="math">\(d\)</span> is the exterior derivative operator.  For a <span class="math">\(k\)</span>-form <span class="math">\(\omega\)</span> to
-be closed, <span class="math">\(d\omega\)</span> must be <span class="math">\(0\)</span>. This is a local property, in the sense that <span class="math">\(d\omega\)</span> evaluated at
-any point <span class="math">\(p \in M\)</span> depends only on the value of <span class="math">\(\omega\)</span> on any small neighbourhood of <span class="math">\(p\)</span>.  In
-fact, one can say a little more, and claim that <span class="math">\(d\omega(p)\)</span> depends only on the <em>germ</em> of <span class="math">\(\omega\)</span>
-at <span class="math">\(p\)</span>.  If we pick a Euclidean neighbourhood <span class="math">\(U\)</span> of <span class="math">\(p\)</span> which is homeomorphic to the open unit
-ball, the Poincaré lemma tells us that there is some <span class="math">\((k+1)\)</span>-form <span class="math">\(\eta\)</span> defined on <span class="math">\(U\)</span> such that
-<span class="math">\(\omega = d\eta\)</span>. In other words, the closed form <span class="math">\(\omega\)</span> is locally exact.</p>
-<p>The De Rham cohomology class of <span class="math">\(\omega\)</span> measures how badly does the property of local exactness
-fail to translate to global exactness. We can write <span class="math">\(\omega\)</span> as <span class="math">\(\gamma + d\zeta\)</span>, where <span class="math">\(\gamma\)</span> is
-the canonical representative of the cohomology class of <span class="math">\(\omega\)</span> (more on this in later posts), and
-<span class="math">\(\zeta\)</span> is a <span class="math">\((k-1)\)</span>-form. If we stretch the analogy a bit, we can say <span class="math">\(\omega\)</span> misses being
-globally exact by <span class="math">\(\gamma\)</span> amount. This is the first example of how cohomology measures how badly a
-local property fails to be global.</p>
-<h2>Sheaf Cohomology</h2>
-<p>Before we see what sort of local to global failure sheaf cohomology measures, we'll quickly define
-sheaves and sheaf cohomology, and look at one example.</p>
-<h3>Quick introduction to sheaves</h3>
-<p>Given a manifold <span class="math">\(M\)</span> (whatever we discuss will hold in for Hausdorff spaces, and with a little more
-work, can be made to work even for a larger class of spaces like spectra of rings), a sheaf
-<span class="math">\(\mathcal{S}\)</span> of <span class="math">\(K\)</span>-modules (<span class="math">\(K\)</span> is always assumed to be a commutative ring with identity) over <span class="math">\(M\)</span>
-is a topological space <span class="math">\(\mathcal{S}\)</span> with a surjective map <span class="math">\(\pi: \mathcal{S} \to M\)</span>, such that the
-following properties are satisfied.</p>
+        <div><p>After 10 months of being unable to come up with anything interesting to post on the blog, I realized
+it might be a good idea use this blog to keep track of the math I've been working on. That way my blog
+can act as a public version of my research notebook, and be a good place to relearn this material if I
+happen to forget the details in the future.</p>
+<p>I have been learning some Patterson-Sullivan theory for the past few weeks with the goal of using the
+theory to solve some counting problems. To be more precise, I'm working with the following setup.</p>
+<ul>
+<li><span class="math">\(X\)</span> is an unbounded metric space (in practice, <span class="math">\(X\)</span> is usually <span class="math">\(\mathbb{R}^n\)</span>, <span class="math">\(\mathbb{H}^n\)</span>, or
+      <span class="math">\(\mathcal{T}_{g}\)</span> (the Teichmüller space of genus <span class="math">\(g\)</span> surfaces)).</li>
+<li><span class="math">\(\Gamma\)</span> is a discrete group acting on <span class="math">\(X\)</span> via isometries.</li>
+</ul>
+<p>Given a point <span class="math">\(x \in X\)</span>, and a radius <span class="math">\(r\)</span>, I'm interested in knowing how many points of the orbit of
+<span class="math">\(x\)</span> under <span class="math">\(\Gamma\)</span>, which we'll denote <span class="math">\(\Gamma x\)</span>, lie in a ball of radius <span class="math">\(r\)</span> about <span class="math">\(x\)</span> (which
+we'll denote by <span class="math">\(B(x, r)\)</span>). Since we're dealing with a discrete group, the number of orbit points
+clearly won't be a continuous function of <span class="math">\(r\)</span>, which means we can't expect a nice exact answer, but
+we can ask questions about the asymptotics of the orbit counting function.</p>
+<p>It's instructive to start off with the simplest example: our metric space is <span class="math">\(\mathbb{R}^2\)</span>, and our
+discrete group <span class="math">\(\Gamma\)</span> is just the group generated by translations by <span class="math">\((0,1)\)</span> and <span class="math">\((1,0)\)</span>. If we
+pick <span class="math">\(x\)</span> to be the point <span class="math">\((0.5,0.5)\)</span> (we're picking this point so our pictures look nicer), our
+orbit counting question translates to the following question: How many half-integer points does a ball of
+radius <span class="math">\(r\)</span> contain? A way to answer this question is to think of the fundamental domain of the group
+<span class="math">\(\Gamma\)</span>. If the ball contains <span class="math">\(n\)</span> points, we might expect it to contain <span class="math">\(n\)</span> copies of the fundamental domain,
+which means we'd expect it have <span class="math">\(n\)</span> times the area of a fundamental domain. That's not quite correct, as the following
+picture demonstrates.</p>
+<table class="image">
+<caption align="bottom">Figure 1: The black orbit points have their fundamental domains completely in the ball, whereas the red ones don't. The ball also
+has parts of fundamental domains for which it doesn't contain the corresponding orbit point.</caption>
+<tr><td><img src="../images/orbit-points-1/fig1.png" width="70%" height="auto" class="center"/></td></tr>
+</table>
+
+<p>However, since the fundamental domain has diameter bounded by <span class="math">\(1\)</span>, we can expand and contract our ball slightly to get
+upper and lower bounds in terms of area. If we denote the number of orbit points in a ball of radius <span class="math">\(r\)</span> as <span class="math">\(C(r)\)</span>,
+we get the following inequality for <span class="math">\(C(r)\)</span>.
+</p>
+<div class="math">$$
+\frac{\text{Area}(B(x, r-1))}{\text{Area}(\text{Fundamental domain})} \leq C(r) \leq \frac{\text{Area}(B(x, r+1))}{\text{Area}(\text{Fundamental domain})}
+$$</div>
+<p>Note now for large values of <span class="math">\(r\)</span>, <span class="math">\(\text{Area}(x, r-1)\)</span> is approximately equal to <span class="math">\(\text{Area}(x,
+r+1)\)</span>, i.e. their ratio approaches <span class="math">\(0\)</span>. That means for large values of <span class="math">\(r\)</span>, <span class="math">\(C(r)\)</span> behaves like
+<span class="math">\(\frac{\text{Area}(B(x, r+1))}{\text{Area}(\text{Fundamental domain})}\)</span>. This only works out because
+<span class="math">\(\frac{(r+1)^2}{(r-1)^2}\)</span> approaches <span class="math">\(1\)</span> as <span class="math">\(r\)</span> gets larger.</p>
+<p>The result in the case of <span class="math">\(\mathbb{R}^n\)</span> suggests what the answer should be even in the more general
+cases, at least when the discrete group <span class="math">\(\Gamma\)</span> has a fundamental domain with finite volume,
+i.e. when <span class="math">\(\Gamma\)</span> is a <a href="https://en.wikipedia.org/wiki/Lattice_(discrete_subgroup)">lattice</a>. In the
+case when one is working in <span class="math">\(\mathbb{H}^n\)</span>, the asymptotics are the same.  </p>
+<div class="math">$$ C(r) \sim
+\frac{\text{Area}(B(x, r))}{\text{Area}(\text{Fundamental domain})} $$</div>
+<p> One might try the same proof
+as before, and it almost works except that it fails at a rather critical step.  Recall that the
+volume of a ball of radius <span class="math">\(r\)</span> in <span class="math">\(\mathbb{H}^n\)</span> is not polynomial in <span class="math">\(r\)</span>, but rather exponential.
+To be more specific, the volume is proportional to <span class="math">\(e^r\)</span>, which means the following ratio
+does not converge to <span class="math">\(1\)</span>.
+</p>
+<div class="math">$$
+\frac{\text{Area}(x, r+1)}{\text{Area}(x, r-1)}
+$$</div>
+<p>
+To be more precise, the thing that can go wrong is the following: by estimating the number of lattice points
+as <span class="math">\(c \cdot \text{Area}(B(x,r))\)</span> (where <span class="math">\(c = \frac{1}{\text{Area}(\text{Fundamental domain})}\)</span>), we may
+drastically over count or under count, as the following pictures illustrate.</p>
+<table class="image">
+<caption align="bottom">Figure 2: This is an underestimate because even though the blue orbit points are in the ball,
+most of their fundamental domains aren't, which leads to an underestimate by the area calculation/</caption>
+<tr><td><img src="../images/orbit-points-1/under_estimate.png" width="70%" height="auto" class="center"/></td></tr>
+</table>
+
+<table class="image">
+<caption align="bottom">Figure 3: This is an overestimate because even though the blue orbit points are outside the ball,
+most of their fundamental domains are in the ball, which leads to an overestimate by the area calculation/</caption>
+<tr><td><img src="../images/orbit-points-1/over_estimate.png" width="70%" height="auto" class="center"/></td></tr>
+</table>
+
+<p>However, these are the worst case scenarios. In a more realistic scenario, one might expect the
+overestimates and underestimates to cancel out as the ball gets larger and larger. One might expect
+that to happen if the direction at which the boundary of the ball approaches translates of the
+fundamental domain is approximately random, and independent of the directions it approaches other
+translates by. That turns out to be true, and is a consequence of the fact that the geodesic flow on
+hyperbolic surfaces of finite volume is
+<a href="https://en.wikipedia.org/wiki/Mixing_(mathematics)#Mixing_in_dynamical_systems">mixing</a>.
+This intuition is formalized in the following lemma from a paper by Eskin and McMullen<sup id="fnref:paper1"><a class="footnote-ref" href="#fn:paper1">1</a></sup>.</p>
+<p><strong>Lemma:</strong> Let <span class="math">\(X = \Gamma/\mathbb{H}^2\)</span> be a finite volume hyperbolic surface, and <span class="math">\(S(p, r)\)</span> be the image
+of a sphere of radius <span class="math">\(r\)</span> on <span class="math">\(\mathbb{H}^2\)</span> with centre a lift of a point <span class="math">\(p\)</span> in <span class="math">\(\Gamma/\mathbb{H}^2\)</span>.
+Then for any compactly supported continuous function <span class="math">\(\alpha\)</span>, the average of <span class="math">\(\alpha\)</span> over <span class="math">\(S(p, r)\)</span> (with
+respect to the Lebesgue measure on <span class="math">\(S^1\)</span>) approaches the average of <span class="math">\(\alpha\)</span> over <span class="math">\(X\)</span> as
+<span class="math">\(r\)</span> approaches <span class="math">\(\infty\)</span>.</p>
+<p><strong>Proof:</strong> To prove this result, we need to lift the function <span class="math">\(\alpha\)</span> to the unit tangent bundle
+<span class="math">\(T^1X\)</span>, and we do that in the obvious way, i.e. <span class="math">\({\alpha}(x, v) = \alpha(x)\)</span>, for any unit tangent
+vector <span class="math">\(v\)</span> over <span class="math">\(x\)</span>. Also, let <span class="math">\(K\)</span> be the set of all vectors over <span class="math">\(p\)</span>. Then the image of <span class="math">\(K\)</span> under
+the geodesic flow <span class="math">\(g_t\)</span> is the collection of vectors over <span class="math">\(S(p, t)\)</span> pointing normally outwards. In
+particular, the average of <span class="math">\(\alpha\)</span> over <span class="math">\(S(p, t)\)</span> is the same as the average of <span class="math">\(\alpha\)</span> over
+<span class="math">\(g_t(K)\)</span><sup id="fnref:observation"><a class="footnote-ref" href="#fn:observation">2</a></sup>. Furthermore, <span class="math">\(g_t(K)\)</span> can be approximated arbitrarily well by <span class="math">\(g_t(U)\)</span> where
+<span class="math">\(U\)</span> is the collection of vectors over a small neighbourhood of <span class="math">\(p\)</span>. Because the geodesic flow is
+mixing, the average of <span class="math">\(\alpha\)</span> over <span class="math">\(g_t(U)\)</span> approaches the average of <span class="math">\(\alpha\)</span> over <span class="math">\(S^1X\)</span> (and
+equivalently, <span class="math">\(X\)</span>), as <span class="math">\(t\)</span> approaches <span class="math">\(\infty\)</span>. This proves the result. <span class="math">\(\square\)</span></p>
+<p>Once we have the lemma, the rest is smooth sailing. We let <span class="math">\(\alpha\)</span> be a bump function supported in
+a small neighbourhood of <span class="math">\(p\)</span>, and lift <span class="math">\(\alpha\)</span> to a function <span class="math">\(\widetilde{\alpha}\)</span> on the universal
+cover. To count the number of orbit points in a ball of radius <span class="math">\(r\)</span>, we just integrate
+<span class="math">\(\widetilde{\alpha}\)</span> on that ball. We can approximate this integral for large <span class="math">\(r\)</span> using the lemma we
+just proved, and that gives us the estimate we want, namely that the number of orbit points in a
+ball of radius <span class="math">\(r\)</span> is asymptotically <span class="math">\(\frac{\text{Area}(B(p, r))}{\text{Area}(\text{Fundamental
+Domain})}\)</span>.</p>
+<p>One of the key elements of this proof was the fact that the geodesic flow is mixing with respect to
+a suitable measure. That suggests how one might extend this idea to other contexts. One important
+generalization of cocompact lattices are convex cocompact groups<sup id="fnref:convex"><a class="footnote-ref" href="#fn:convex">3</a></sup>. And for these groups, the
+estimates we have here don't work verbatim because the fundamental domain for a convex cocompact
+group may not have finite area. Secondly, the lemma as stated won't work either because the
+Liouville measure is not the "correct" measure on the unit tangent bundle. Not only is it not
+mixing, it's not even preserved by geodesic flow. In fact, the geodesic flow makes all the
+mass of Liouville measure escape the convex core, which means that one cannot do dynamics on a convex cocompact
+group using the Liouville measure. The right measure for this context turns out to be the Bowen-Margulis measure,
+which is constructed using the Patterson-Sullivan measure on the boundary, and that is what I will write about in
+my next blog post.</p>
+<div class="footnote">
+<hr>
 <ol>
-<li><span class="math">\(\pi\)</span> is a local homeomorphism, i.e. for any point <span class="math">\(s \in \mathcal{S}\)</span>, there's a neighbourhood
-of <span class="math">\(s\)</span> such that <span class="math">\(\pi\)</span> restricted to that neighbourhood is a homeomorphism.</li>
-<li><span class="math">\(\pi^{-1}(x)\)</span>, which we'll denote by <span class="math">\(\mathcal{O}_x\)</span>, is a <span class="math">\(K\)</span>-module, for all <span class="math">\(x \in
-M\)</span>. <span class="math">\(\mathcal{O}_x\)</span> is called the stalk of <span class="math">\(\mathcal{S}\)</span> at <span class="math">\(x\)</span>.</li>
-<li>The module operations on the stalk are continuous, i.e. if we look at the stalk with the subspace
-topology, the module operations of addition and scalar multiplication are continuous.</li>
+<li id="fn:paper1">
+<p><a href="https://projecteuclid.org/euclid.dmj/1077289841">Mixing, counting, and equidistribution in Lie groups</a>, Alex Eskin and Curt McMullen.&#160;<a class="footnote-backref" href="#fnref:paper1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:observation">
+<p>The fact is fairly obvious in this case because the measure on <span class="math">\(S^1X\)</span> is the
+Liouville measure, which is locally a product of the Riemannian measure on the base, and
+Lebesgue measure on the fibre. However, this fact is no longer obvious if one is dealing with
+other measures like the Bowen-Margulis measure, which may not be uniform in every direction.&#160;<a class="footnote-backref" href="#fnref:observation" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:convex">
+<p>Convex cocompact groups are discrete groups whose action on the convex hull of its limit set is
+cocompact (but its action on the universal cover may not cocompact).&#160;<a class="footnote-backref" href="#fnref:convex" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
 </ol>
-<p>Sheaves in some sense a modules parametrized by the space <span class="math">\(M\)</span>, like vector bundles, but vector
-bundles do not satisfy the first condition, unlike sheaves.  The simplest example of a sheaf is the
-<em>constant sheaf</em> which is just <span class="math">\(M \times V\)</span>, where <span class="math">\(V\)</span> is a <span class="math">\(K\)</span>-module with the discrete topology.</p>
-<p>Another important example is the sheaf of germs of <span class="math">\(C^{\infty}\)</span> functions on a manifold <span class="math">\(M\)</span>. For
-each <span class="math">\(x \in M\)</span>, a point in <span class="math">\(\mathcal{O}_x\)</span> is an equivalence class of functions, the equivalence
-relation being that <span class="math">\(f \sim g\)</span> if <span class="math">\(f\)</span> and <span class="math">\(g\)</span> agree on some neighbourhood of <span class="math">\(x\)</span>. This sheaf
-deserves a post of its own, and I shall write about it in the future.</p>
-<p>The last example, which will be key to our goal, is the <em>skyscraper sheaf</em>. We'll describe it by
-first describing the stalk at each point, and then putting an appropriate topology on it. Fix a
-point <span class="math">\(x_0 \in M\)</span>.  The stalk <span class="math">\(\mathcal{O}_{x_0}\)</span> at <span class="math">\(x_0\)</span> will be <span class="math">\(K\)</span> as a module over itself. The
-stalk at every other point is the zero module. As a set, our sheaf is the following.  </p>
-<div class="math">$$\mathcal{S}
-= K \sqcup \bigsqcup_{x \neq x_0} \{0\}$$</div>
-<p> The question is what topology do we put on this space. The
-<a href="https://en.wikipedia.org/wiki/Non-Hausdorff_manifold#Line_with_two_origins">line with two origins</a>
-provides a hint. What we do is take <span class="math">\(|K|\)</span> copies of the space <span class="math">\(M\)</span>, and if <span class="math">\(x \neq x_0\)</span>, we identify
-all of those <span class="math">\(x\)</span>'s, otherwise we do nothing. It's not too hard to check that this defines a sheaf
-over <span class="math">\(M\)</span> (the local homeomorphism property is the hardest to check, and relies on the fact that
-points are closed in Hausdorff spaces). In fact, if <span class="math">\(M = \mathbb{R}\)</span> and <span class="math">\(K = \mathbb{Z}/2\)</span>, then
-then skyscraper sheaf at <span class="math">\(0\)</span> <em>is</em> the line with two origins. The reason this is called the
-skyscraper sheaf is because only the stalk at <span class="math">\(x_0\)</span> is tall, the stalks everywhere are flat, which
-makes it look like a tall structure in an otherwise flat featureless landscape.</p>
-<p>We're really interested in is a variant of a skyscraper sheaf with two skyscrapers, i.e. the stalks
-at points <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span> are <span class="math">\(K\)</span>, and otherwise <span class="math">\(0\)</span>. The topology on this sheaf can be defined
-analogously. We'll come back to this example once we've defined sheaf cohomology.</p>
-<h3>The category of sheaves of <span class="math">\(K\)</span>-modules over a space</h3>
-<p>Just like in the case of a vector bundles over a manifold <span class="math">\(M\)</span>, where the <em>right</em> kind of map between
-vector bundles is a smooth map that is a linear map on each fibre, the <em>right</em> kind of map between
-two sheaves <span class="math">\(\mathcal{S}_1\)</span> and <span class="math">\(\mathcal{S}_2\)</span> on a space <span class="math">\(M\)</span> is a continuous map <span class="math">\(f\)</span> such that it
-satisfies the following properties.</p>
-<ol>
-<li><span class="math">\(\pi = \pi \circ f\)</span></li>
-<li><span class="math">\(f\)</span> restricted to any any stalk <span class="math">\(\mathcal{O}_x\)</span> is a <span class="math">\(K\)</span>-module homomorphism.</li>
-</ol>
-<p>Fixing a space <span class="math">\(M\)</span>, we get the category of sheaves of <span class="math">\(K\)</span>-modules over <span class="math">\(M\)</span>, whose objects are
-sheaves, and the morphisms are what we just defined, called sheaf homomorphisms. It follows from the
-fact that <span class="math">\(\pi\)</span> is a local homeomorphism that even sheaf homomorphisms are local homeomorphisms.
-This category turns out to be especially nice, sharing many characteristics with the category of
-abelian groups and more generally, the category of <span class="math">\(K\)</span>-modules, such as maps possessing kernels and
-cokernels, and possessing a version of the <a href="https://en.wikipedia.org/wiki/Isomorphism_theorems#First_isomorphism_theorem">First Isomorphism
-Theorem</a>.  This sort
-of category is called an abelian category, and this category is the appropriate category to do
-homological algebra in. Coming back to sheaves, the kernel of a sheaf homomorphism <span class="math">\(f: \mathcal{S}_1
-\to \mathcal{S}_2\)</span> is the set of all points which map to the zero element in the stalk. With a
-little bit of work, we can show the image of <span class="math">\(f\)</span> is a sheaf in its own right, and subsheaf of
-<span class="math">\(\mathcal{S}_2\)</span>, just like the kernel of <span class="math">\(f\)</span> is a subsheaf of <span class="math">\(\mathcal{S}_1\)</span> (the definition of a
-subsheaf is the most obvious one).</p>
-<p>With all these definitions in hand, we can talk about exact sequences of sheaves. Consider a
-sequence of sheaves and sheaf homomorphisms of the following kind.  </p>
-<div class="math">$$\cdots \xrightarrow{d_{i-2}}
-\mathcal{S}_{i-1} \xrightarrow{d_{i-1}} \mathcal{S}_{i} \xrightarrow{d_{i}} \mathcal{S}_{i+1}
-\xrightarrow{d_{i+1}} \cdots$$</div>
-<p> This sequence is exact if <span class="math">\(\mathrm{ker}(d_{i}) =
-\mathrm{im}(d_{i-1})\)</span>.</p>
-<p>The next thing we look at is the functor <span class="math">\(\Gamma\)</span> from the category of sheaves of <span class="math">\(K\)</span>-modules over
-<span class="math">\(M\)</span> to the category of <span class="math">\(K\)</span>-modules. For each sheaf <span class="math">\(\mathcal{S}\)</span>, the object <span class="math">\(\Gamma(\mathcal{S})\)</span>
-is the module of sections of <span class="math">\(\mathcal{S}\)</span>. A section of a sheaf <span class="math">\(\mathcal{S}\)</span> is a map <span class="math">\(s: M \to
-\mathcal{S}\)</span> such that <span class="math">\(\pi \circ s = \mathrm{id}\)</span>. Clearly, we can add two sections, and we can
-also multiply them by a scalar; we therefore have a <span class="math">\(K\)</span>-module. The functor <span class="math">\(\Gamma\)</span> acts on
-morphisms by composing them with the section map, i.e. <span class="math">\(\Gamma(f) = f \circ s\)</span>. The important
-question to ask here is whether the functor <span class="math">\(\Gamma\)</span> is exact, i.e. does it short exact sequences to
-short exact sequences. The answer is no. Consider the following short exact sequence.  </p>
-<div class="math">$$0
-\rightarrow \mathcal{S}_1 \xrightarrow{\alpha} \mathcal{S}_2\xrightarrow{\beta} \mathcal{S}_3
-\rightarrow 0 \tag{1}$$</div>
-<p> If we apply the functor <span class="math">\(\Gamma\)</span> to the sequence, we get something that is
-not completely exact.  </p>
-<div class="math">$$0 \rightarrow \Gamma(\mathcal{S}_1) \xrightarrow{\Gamma(\alpha)}
-\Gamma(\mathcal{S}_2) \xrightarrow{\Gamma(\beta)} \Gamma(\mathcal{S}_3) \rightarrow 0 \tag{2}$$</div>
-<p> This
-sequence is exact only exact at <span class="math">\(\Gamma(\mathcal{S}_1)\)</span> and <span class="math">\(\Gamma(\mathcal{S}_2)\)</span>.</p>
-<p>Suppose some <span class="math">\(s \in \Gamma(\mathcal{S}_1)\)</span> maps to <span class="math">\(0\)</span> in <span class="math">\(\Gamma(\mathcal{S}_2)\)</span>. That tells us
-that <span class="math">\(\Gamma(\alpha)(s) = 0\)</span>. But that by definition means that <span class="math">\(\alpha \circ s = 0\)</span>. But <span class="math">\(\alpha\)</span>
-is injective, which means <span class="math">\(s = 0\)</span>. This shows exactness at <span class="math">\(\Gamma(\mathcal{S}_1)\)</span>.</p>
-<p>Showing exactness at <span class="math">\(\Gamma(\mathcal{S}_2)\)</span> is a little more involved. Consider an element <span class="math">\(s \in
-\Gamma(\mathcal{S}_2)\)</span> which gets mapped to the zero section in <span class="math">\(\Gamma(\mathcal{S}_3)\)</span>. That means
-for all <span class="math">\(m \in M\)</span>, <span class="math">\(\beta(s(m)) = 0\)</span>.  By exactness at <span class="math">\(\mathcal{S}_2\)</span>, we can find for each <span class="math">\(m\)</span>, an
-element <span class="math">\(s'(m)\)</span> of <span class="math">\(\mathcal{S}_1\)</span> such that <span class="math">\(\alpha(s'(m)) = s(m)\)</span>.  Furthermore, because the
-original short exact sequence is exact at <span class="math">\(\mathcal{S}_1\)</span>, the element <span class="math">\(s'(m)\)</span> is uniquely defined
-(this is where the argument fails to work for <span class="math">\(\Gamma(\mathcal{S}_3)\)</span>). All we need to show now is
-that the map <span class="math">\(m \mapsto s'(m)\)</span> is a continuous map. This is where we use the fact that sheaf
-homomorphisms are local homeomorphisms. For any <span class="math">\(m\)</span>, pick a small enough neighbourhood <span class="math">\(U\)</span> around
-<span class="math">\(s'(m)\)</span> such that <span class="math">\(\alpha\)</span> is a local homeomorphism on <span class="math">\(U\)</span>. Then <span class="math">\(s'^{-1}(U)\)</span> is given by
-<span class="math">\(s^{-1}(\alpha(U))\)</span>, which is open since <span class="math">\(s\)</span> is a continuous section.</p>
-<p>Notice that the exactness of sequence <span class="math">\((1)\)</span> is a purely local property; it suffices to check whether
-the sequence on each stalk is exact. On the other hand, showing exactness at <span class="math">\(\Gamma(\mathcal{S}_3)\)</span>
-would be a global property. This is because given any section <span class="math">\(s \in \Gamma(\mathcal{S}_3)\)</span>, the
-best we can do is construct sections <span class="math">\(s_U\)</span> on open subsets <span class="math">\(U\)</span> of <span class="math">\(M\)</span>. It might so happen that these
-sections defined on different subsets of <span class="math">\(M\)</span> cannot be patched together consistently to get a
-continuous section. The cohomology of the sheaf will measure how badly the functor <span class="math">\(\Gamma\)</span> fails to
-be exact; to be more precise, the cohomology will tell us how extend sequence <span class="math">\((2)\)</span> to get an exact
-sequence. We'll leave the precise details of this for a later post, and satisfy ourselves with an
-example of when exactness fails to happen at <span class="math">\(\Gamma(\mathcal{S}_3)\)</span>.</p>
-<p>To show this, we will exhibit a surjective sheaf homomorphism <span class="math">\(f\)</span> such that <span class="math">\(\Gamma(f)\)</span> is not a
-surjective module map. Consider a connected space <span class="math">\(M\)</span>, and let <span class="math">\(\mathcal{S}_1\)</span> be the constant sheaf
-on <span class="math">\(M\)</span>. Recall that this means <span class="math">\(\mathcal{S}_1\)</span> is <span class="math">\(M \times K\)</span>, with the discrete topology on
-<span class="math">\(K\)</span>. Let <span class="math">\(\mathcal{S}_2\)</span> be the skyscraper sheaf on <span class="math">\(M\)</span> with two skyscrapers, which means the stalk
-is <span class="math">\(K\)</span> at points <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span> and zero otherwise.  On the stalk at point which is not <span class="math">\(x_0\)</span> or
-<span class="math">\(x_1\)</span>, the homomorphism is obviously the zero homomorphism. On the stalk at <span class="math">\(x_0\)</span> and <span class="math">\(x_1\)</span>, we let
-the homomorphism be the identity homomorphism. It's clear that this sheaf homomorphism, call it <span class="math">\(f\)</span>
-is surjective. But observe that <span class="math">\(\Gamma(\mathcal{S}_1) = K\)</span>. That's because we picked <span class="math">\(M\)</span> to be a
-connected manifold, which means the section must the constant section. On the other hand,
-<span class="math">\(\Gamma(\mathcal{S}_2) = K \oplus K\)</span>, since the section can take any value independently at <span class="math">\(x_0\)</span>
-and <span class="math">\(x_1\)</span>. Which means <span class="math">\(\Gamma(f)\)</span> is a map from <span class="math">\(K\)</span> to <span class="math">\(K \oplus K\)</span>, which cannot be surjective in
-general.</p>
-<p>This tells us that exactness at <span class="math">\(\Gamma(\mathcal{S}_3)\)</span> is a global property, and the cohomology
-measures (in a loose sense) how the local property of exactness of <span class="math">\((1)\)</span> fails to translate to
-exactness of <span class="math">\((2)\)</span>.</p>
-<p>ADDENDUM: I will add links to similar expositions whenever I find them.</p>
-<ol>
-<li>Čech cohomology and the Mittag-Leffler problem: The Čech cohomology determines
-whether meromorphic functions defined on small open sets can be patched together to
-get a globally defined meromorphic function satisfying certain properties. 
-(<a href="https://toperkin.mysite.syr.edu/talks/sheaves_and_more_cohomology.pdf">Link</a> to article)</li>
-</ol>
+</div>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -304,6 +262,27 @@ get a globally defined meromorphic function satisfying certain properties.
         <hr />
     </div>
 		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="/cohomology-local-global.html"><h2>Cohomology as a measure of local to global failure</h2></a>
+        <div class= "well small"> Mon 25 December 2017
+
+by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
+ 
+
+
+ </div>
+        <div class="summary"><h2>Motivation for cohomology</h2>
+<p>In most introductory algebraic topology courses, cohomology is rather poorly motivated. It's most
+commonly seen form in an algebraic topology course is singular cohomology, which arises as a the
+homology of the dual of the singular chain complex, but that doesn't really tell you why it's of …</p> <a class="btn btn-info xsmall" href="/cohomology-local-global.html">read more</a></div>
+    </div>	
+				
 <div class="pagination">
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>

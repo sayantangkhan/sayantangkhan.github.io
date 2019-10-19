@@ -125,19 +125,19 @@ web interface.</p>
 in the root directory, but rather organize them by course and assignment number.
 So the TeX file for the fourth assignment for a topology course will have the following
 location: </p>
-<div class="highlight"><pre><span></span>Math/MA232\ Topology/assignments/04/assignment_04.tex
+<div class="highlight"><pre><span></span><span class="n">Math</span><span class="o">/</span><span class="n">MA232</span><span class="err">\</span> <span class="n">Topology</span><span class="o">/</span><span class="n">assignments</span><span class="o">/</span><span class="mi">04</span><span class="o">/</span><span class="n">assignment_04</span><span class="p">.</span><span class="n">tex</span>
 </pre></div>
 
 
 <p>What I would like is to make sure the generated PDF for this TeX file is
 placed in the following location.</p>
-<div class="highlight"><pre><span></span>Math/MA232\ Topology/assignments/assignment_04.pdf
+<div class="highlight"><pre><span></span><span class="n">Math</span><span class="o">/</span><span class="n">MA232</span><span class="err">\</span> <span class="n">Topology</span><span class="o">/</span><span class="n">assignments</span><span class="o">/</span><span class="n">assignment_04</span><span class="p">.</span><span class="n">pdf</span>
 </pre></div>
 
 
 <p>I'd also like my thesis to be compiled on each commit; the location
 of my thesis in the repository is the following.</p>
-<div class="highlight"><pre><span></span>Math/UM400\ Undergraduate\ Project/thesis/thesis.tex
+<div class="highlight"><pre><span></span><span class="n">Math</span><span class="o">/</span><span class="n">UM400</span><span class="err">\</span> <span class="n">Undergraduate</span><span class="err">\</span> <span class="n">Project</span><span class="o">/</span><span class="n">thesis</span><span class="o">/</span><span class="n">thesis</span><span class="p">.</span><span class="n">tex</span>
 </pre></div>
 
 
@@ -154,18 +154,18 @@ in appropriate locations.</p>
 
 
 <p>And the <code>.gitlab-ci.yml</code> file I finally ended up using was this.</p>
-<div class="highlight"><pre><span></span>stages:
-  - build
-compile_pdf:
-  image: aergus/latex
-  script:
-    - make assignments
-    - make thesis
-  stage: build
-  artifacts:
-    paths:
-      - &quot;Math/MA339 Geometric Analysis/assignments/assignment_*.pdf&quot;
-      - &quot;Math/UM400 Undergraduate Project/thesis/thesis.pdf&quot;
+<div class="highlight"><pre><span></span><span class="n">stages</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">build</span>
+<span class="n">compile_pdf</span><span class="p">:</span>
+  <span class="n">image</span><span class="p">:</span> <span class="n">aergus</span><span class="o">/</span><span class="n">latex</span>
+  <span class="n">script</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">make</span> <span class="n">assignments</span>
+    <span class="o">-</span> <span class="n">make</span> <span class="n">thesis</span>
+  <span class="n">stage</span><span class="p">:</span> <span class="n">build</span>
+  <span class="n">artifacts</span><span class="p">:</span>
+    <span class="n">paths</span><span class="p">:</span>
+      <span class="o">-</span> <span class="ss">&quot;Math/MA339 Geometric Analysis/assignments/assignment_*.pdf&quot;</span>
+      <span class="o">-</span> <span class="ss">&quot;Math/UM400 Undergraduate Project/thesis/thesis.pdf&quot;</span>
 </pre></div>
 
 
@@ -173,7 +173,7 @@ compile_pdf:
 One issue I came up against was the spaces in filenames shouldn't be escaped
 with a backslash, but rather the whole file name should be enclosed in quotes.</p>
 <p>The generated artifacts can be browsed by visiting the following link.</p>
-<div class="highlight"><pre><span></span>https://gitlab.com/&lt;username&gt;/&lt;repo-name&gt;/-/jobs/artifacts/master/browse?job=compile_pdf
+<div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gitlab</span><span class="p">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/&lt;</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;/-/</span><span class="n">jobs</span><span class="o">/</span><span class="n">artifacts</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">browse</span><span class="o">?</span><span class="n">job</span><span class="o">=</span><span class="n">compile_pdf</span>
 </pre></div>
 
 
