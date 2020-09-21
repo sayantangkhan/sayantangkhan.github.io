@@ -19,7 +19,7 @@
     <link href="/theme/pygments.css" rel="stylesheet">
 
     <!-- So Firefox can bookmark->"abo this site" -->
-        <link href="/feeds/all.atom.xml" rel="alternate" title="Sayantan Khan's Blog" type="application/atom+xml">
+	<link href="/feeds/all.atom.xml" rel="alternate" title="Sayantan Khan's Blog" type="application/atom+xml">
 
 </head>
 
@@ -29,25 +29,26 @@
     <div class="navbar-inner">
     <div class="container">
 
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
+	 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	     <span class="icon-bar"></span>
+	     <span class="icon-bar"></span>
+	     <span class="icon-bar"></span>
+	 </a>
 
 
-        <div class="nav-collapse in collapse" style="height: auto;">
-        <ul class="nav">
-            <li><a href="/index.html">Blog</a></li>
-            
-            <li><a href="/pages/about-me.html">About me</a></li>
-            <li><a href="/pages/past-projects.html">Past projects</a></li>
-            <li><a href="/pages/talks.html">Talks</a></li>
-            <li><a href="/pages/curriculum-vitae.html">Curriculum Vitae</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-        </ul>
-        </div>
-        
+	<div class="nav-collapse in collapse" style="height: auto;">
+	<ul class="nav">
+	    <li><a href="/index.html">Blog</a></li>
+	    <li><a href="/pages/about-me.html">About</a></li>
+	    <li><a href="http://www-personal.umich.edu/~saykhan/research.html">Research</a></li>
+	    <li><a href="http://www-personal.umich.edu/~saykhan/talks.html">Talks</a></li>
+	    <li><a href="http://www-personal.umich.edu/~saykhan/notes.html">Notes</a></li>
+	    <li><a href="/pages/contact.html">Contact</a></li>
+	    <li><a href="/pages/pdfs/cv/cv.pdf">CV</a></li>
+
+	</ul>
+	</div>
+
     </div>
     </div>
 </div>
@@ -56,7 +57,7 @@
     <div class="content">
     <div class="row">
 
-        <div class="span9">
+	<div class="span9">
         
 
         
@@ -64,168 +65,22 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="/orbit-points-2.0.html"><h1>Counting orbit points (part 2): Patterson-Sullivan theory</h1></a>
-Sun 05 January 2020
+            <a href="/orbit-points-3.0.html"><h1>Counting orbit points (part 3): Asymptotics for convex-cocompact groups</h1></a>
+Posted: Sun 12 January 2020
+<br>
+<!-- Author <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a> -->
+<!-- <br> -->
+Filed under <a href="/category/mathematics.html">mathematics</a>
+<br>
 
-by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
- 
-
-
- 
+Tags: <a href="/tag/geometry.html">geometry</a> <a href="/tag/dynamics.html">dynamics</a> <a href="/tag/topology.html">topology</a>  
         </div>
         
-        <div><p>In the <a href="/orbit-points-1.0.html">previous post</a>, we saw how to get an asymptotic
-count of orbit points under a lattice action, i.e. a finite covolume Fuchsian group. To do so, we needed the
-fact that the geodesic flow on the associated quotient was mixing with respect to the Liouville
-measure. That suggests that if we want to get asymptotic counting for the orbit of an infinite
-covolume Fuchsian group, we might want to show mixing of the geodesic flow for the associated
-quotient space. However, proving mixing with respect to the Liouville measure is pointless, since
-the Liouville measure is infinite. What we need therefore, is a some other measure on the unit tangent
-bundle that is invariant under and mixing with respect to the geodesic flow.</p>
-<p>For a class of Fuchsian groups known as <a href="https://en.wikipedia.org/wiki/Geometric_finiteness">geometrically finite
-groups</a>, such a measure does exist: it's called
-the <a href="http://www.scholarpedia.org/article/Bowen-Margulis_measure">Bowen-Margulis measure</a>. The construction
-of this measure is fairly involved, and will take up several blog posts, but the intermediate constructions
-are interesting in their own right. We will start off by looking at a family of measures associated to a
-geometrically finite group <span class="math">\(\Gamma\)</span> on the limit set <span class="math">\(\Lambda(\Gamma)\)</span>, which is a subset of the boundary
-<span class="math">\(\partial \mathbb{H}^2\)</span>. These measures are called the Patterson-Sullivan measures.</p>
-<p>Before we describe how the Patterson-Sullivan measures on the boundary are constructed, it will be
-useful to make explicit what properties we would like for them to have.  We want this measure to
-respect the dimension of the limit set, at least infinitesimally. What that means is that if there's
-set of radius <span class="math">\(r\)</span> which has measure <span class="math">\(\mu\)</span>, and if it's size is doubled to <span class="math">\(2r\)</span>, then it's measure
-should becomes <span class="math">\(2^\delta\)</span> times the original measure, where <span class="math">\(\delta\)</span> in some sense is the dimension
-of the limit set. In other words, whatever measure we construct on the limit set has to be
-compatible with the metric on the limit set.</p>
-<p>Note however that the boundary <span class="math">\(\partial \mathbb{H}^2\)</span> (and the limit set <span class="math">\(\Lambda(\Gamma)\)</span> by extension),
-doesn't have a canonical metric. Instead, it has a family of metrics, all conformal to each other,
-and every one of those metrics come from a point <span class="math">\(x \in \mathbb{H}^2\)</span>. The metric associated to each point
-<span class="math">\(x\)</span> comes from the identification of the unit tangent sphere at that point to the boundary. Suppose
-we did have a family of measures <span class="math">\(\mu_x\)</span> one for each point, that satisfied the scaling
-property. That would then mean that for any two points <span class="math">\(x\)</span> and <span class="math">\(y\)</span>, <span class="math">\(\mu_x\)</span> was absolutely
-continuous with respect to <span class="math">\(\mu_y\)</span> (and the other way round), and the Radon-Nikodym derivative
-<span class="math">\(\frac{d\mu_y}{d\mu_x}\)</span> would be
-<span class="math">\(\left( \frac{g_y}{g_x} \right)^{\delta}\)</span>, where <span class="math">\(g_y\)</span> and <span class="math">\(g_x\)</span> are the associated
-metrics. For negatively curved spaces, the ratio <span class="math">\(\left( \frac{g_y}{g_x} \right)\)</span>
-at a point <span class="math">\(\xi\)</span> in the boundary is actually the Busemann function <span class="math">\(e^{\beta_{\xi}(y,x)}\)</span>. This lets us
-define what we want our family of measures to be in a more precise manner.</p>
-<p><strong>Definition</strong>: A conformal density of dimension <span class="math">\(\delta\)</span> on
-  <span class="math">\(\partial \mathbb{H}^2\)</span> is a family of Radon measures <span class="math">\(\{\mu_x\}_{x \in \mathbb{H}^2}\)</span> such that all of them lie in
-  the same measure class, and their Radon-Nikodym derivatives satisfy the following property.
-  </p>
-<div class="math">\begin{equation}
-    \label{eq:1}
-    \frac{d\mu_y}{d\mu_x}(\xi) = \left(e^{\beta_{\xi}(y,x)} \right)^\delta
-  \end{equation}</div>
-<p>Examples of conformal densities aren't too hard to construct. For instance, the Hausdorff <span class="math">\(\delta\)</span>
-measure on the limit set <span class="math">\(\Lambda(\Gamma)\)</span> is a conformal density of dimension <span class="math">\(\delta\)</span>, where
-<span class="math">\(\delta\)</span> is the Hausdorff dimension of the limit set. However, this is not the only property we want
-our family of measures to satisfy. We want this family of measures to also capture which part
-of the boundary do the orbit points go to. That means our family of measures should be equivariant
-with respect to the <span class="math">\(\Gamma\)</span> action, i.e. the pushforward of <span class="math">\(\mu_x\)</span> under <span class="math">\(\gamma \in \Gamma\)</span> should be
-the same as the measure <span class="math">\(\mu_{\gamma x}\)</span>. If a conformal density satisfies this property, we say that
-conformal density is invariant under <span class="math">\(\Gamma\)</span>.</p>
-<p><strong>Definition</strong>: A conformal density <span class="math">\(\{\mu_x\}_{x \in \mathbb{H}^2}\)</span> is said to be <span class="math">\(\Gamma\)</span>-invariant if
-  the following identity holds for all <span class="math">\(x \in \mathbb{H}^2\)</span>, and all <span class="math">\(\gamma \in \Gamma\)</span>.
-  </p>
-<div class="math">\begin{equation}
-  \label{eq:2}
-  \gamma_{\ast} \mu_x = \mu_{\gamma x}
-  \end{equation}</div>
-<p>
-  Furthermore, we will also assume
-  that all these measures are supported on <span class="math">\(\Lambda(\Gamma)\)</span>.</p>
-<p>It turns the definition of <span class="math">\(\Gamma\)</span>-invariant conformal density is restrictive enough to let us
-deduce many properties of the measure without actually explicitly working with such a measure. For
-instance, one can deduce from the definition that such a family of measures is quasi-ergodic with
-respect to the <span class="math">\(\Gamma\)</span> action on <span class="math">\(\partial \mathbb{H}^2\)</span>. However, before we start proving such results,
-we should verify that <span class="math">\(\Gamma\)</span>-invariant conformal densities actually exist, otherwise, any theorem
-we prove about <span class="math">\(\Gamma\)</span>-invariant conformal densities will have no content.</p>
-<p>The construction we will show first appeared in a paper by S.J. Patterson<sup id="fnref:paper1"><a class="footnote-ref" href="#fn:paper1">1</a></sup>, and was
-later generalized to all hyperbolic spaces in by Dennis Sullivan<sup id="fnref:paper2"><a class="footnote-ref" href="#fn:paper2">2</a></sup>.
-The idea behind the construction of the Patterson-Sullivan measures is quite clever (and hard to
-come up with), but easy to understand. One starts off with a family of measures <span class="math">\(\mu_{x}^s\)</span>, for
-every <span class="math">\(x \in \mathbb{H}^2\)</span>, and where <span class="math">\(s\)</span> is some large enough real number that makes the infinite sum
-converge (assuming it exists).
-</p>
-<div class="math">\begin{equation}
-  \mu_x^s = \frac{\sum_{\gamma \in \Gamma} e^{-s \cdot d(x, \gamma x)} \delta_{\gamma x_0} }{\sum_{\gamma \in \Gamma} e^{-s \cdot d(x, \gamma x)} }
-\end{equation}</div>
-<p>
-For large enough <span class="math">\(s\)</span>, the infinite series in the denominator converges, giving us a probability
-measure on <span class="math">\(\mathbb{H}^2\)</span> (and not <span class="math">\(\partial \mathbb{H}^2\)</span>).  Also, it turns out that this choice of
-normalization isn't quite right: the family <span class="math">\(\{\mu_{x}^s\}_{x \in \mathbb{H}^2}\)</span> doesn't quite transform
-like \eqref{eq:1} and \eqref{eq:2}, but it's close. The correct normalization as it turns out, comes
-from picking a fixed point <span class="math">\(x_0 \in \mathbb{H}^2\)</span>, and modifying <span class="math">\(\mu_x^s\)</span> in the following manner.
-</p>
-<div class="math">\begin{equation}
-  \mu_x^s = \frac{\sum_{\gamma \in \Gamma} e^{-s \cdot d(x, \gamma x_0)} \delta_{\gamma x} }{\sum_{\gamma \in \Gamma} e^{-s \cdot d(x_0, \gamma x_0)} }
-\end{equation}</div>
-<p>This family of measures is no longer a probability measure, unless <span class="math">\(x = x_0\)</span>, but for a fixed <span class="math">\(x\)</span>, it's still a finite
-measure. In fact, the total mass of <span class="math">\(\mu_x^s\)</span> satisfies the following inequality.
-</p>
-<div class="math">\begin{equation}
-  e^{-s \cdot d(x, x_0)} \leq \lVert{\mu_x^s}\rVert \leq e^{s \cdot d(x, x_0)}
-\end{equation}</div>
-<p>The next thing we do is observe that for large enough <span class="math">\(s\)</span>, the infinite sum
-<span class="math">\(g(s) := \sum_{\gamma \in \Gamma} e^{-s \cdot d(x_0, \gamma x_0)}\)</span> does actually converge. The
-easy way to see it is to get an asymptotic upper bound on how many points of <span class="math">\(\Gamma x_0\)</span> lie in a
-ball radius <span class="math">\(r\)</span> around <span class="math">\(x_0\)</span>. An upper bound that works for us is <span class="math">\(c e^{r}\)</span>,
-which means that an <span class="math">\(s \geq n-1\)</span> will make the infinite series converge.</p>
-<p>On the other hand, for small enough <span class="math">\(s\)</span>, the series <span class="math">\(g(s)\)</span> will diverge. Which means there is a
-critical exponent <span class="math">\(\delta\)</span>, depending on the group <span class="math">\(\Gamma\)</span> such for all <span class="math">\(s &gt; \delta\)</span>, <span class="math">\(g(s)\)</span>
-converges, and for all <span class="math">\(s &lt; \delta\)</span>, <span class="math">\(g(s)\)</span> diverges. Suppose <span class="math">\(g(\delta)\)</span> actually diverges. Then we
-could pick a sequence <span class="math">\(\{s_i\}\)</span>, going down to <span class="math">\(\delta\)</span>, and look at the sequence of measures
-<span class="math">\(\mu_x^{s_i}\)</span>. Since these can be thought of as measures on <span class="math">\(\overline{\mathbb{H}^2}\)</span>, which is compact,
-and the mass of all these measures is bounded by inequality <em>(5)</em>, one can pick out a
-convergent subsequence. Since we assumed <span class="math">\(g(\delta)\)</span> actually diverged, the limit measure <span class="math">\(\mu_x\)</span>
-will actually be supported on the limit set <span class="math">\(\Lambda(\Gamma)\)</span>, and satisfy the properties we want
-it to satisfy (we will verify that).</p>
-<p>This is the rough idea behind the Patterson-Sullivan construction. However, there are many questions
-that one needs to answer.</p>
-<ol>
-<li>What does one do if <span class="math">\(g(\delta)\)</span> does not diverge?</li>
-<li>How does this measure depend on the choice of <span class="math">\(\{s_i\}\)</span>?</li>
-<li>Does it depend on the choice of basepoint <span class="math">\(x_0\)</span>?</li>
-</ol>
-<p>The first problem was dealt with by Patterson in Lemma 3.1 of his paper. The idea is
-to attach additional weights to <span class="math">\(e^{-s \cdot d(x,\gamma x_0)}\)</span> by multiplying it with
-<span class="math">\(h(d(x, \gamma x_0))\)</span>, where <span class="math">\(h\)</span> is a function from <span class="math">\(\mathbb{R}_+\)</span> to <span class="math">\(\mathbb{R}_+\)</span>, which grows slowly, i.e. it
-makes the infinite series diverge for exponent <span class="math">\(\delta\)</span>, but still converge for larger exponents. We
-also require that for any <span class="math">\(d\)</span>, <span class="math">\(\lim_{r \to \infty} \frac{h(r + d)}{h(r)} = 1\)</span>. The last
-condition ensures that this modified measure transforms like the original measure in the limit.<sup id="fnref2:paper1"><a class="footnote-ref" href="#fn:paper1">1</a></sup></p>
-<p>The second and the third questions can be answered by proving a rather general theorem about the uniqueness
-of the constructed measures.</p>
-<p><strong>Theorem</strong> (Uniqueness):   Let <span class="math">\(\{\nu_x\}_{x \in \mathbb{H}^2}\)</span> and <span class="math">\(\{\mu_x\}_{x \in \mathbb{H}^2}\)</span> be two <span class="math">\(\Gamma\)</span>-invariant conformal densities of the same dimension
-  <span class="math">\(\delta\)</span>. Then <span class="math">\(\{\mu_x\}_{x \in \mathbb{H}^2}\)</span> and <span class="math">\(\{\nu_x\}_{x \in \mathbb{H}^2}\)</span> are the same up to
-  scaling.</p>
-<p>This statement of the above theorem is equivalent to the following statement.</p>
-<p><strong>Theorem</strong> (Quasi-ergodicity):   Let <span class="math">\(\nu\)</span> be a <span class="math">\(\Gamma\)</span>-invariant conformal density. Then the <span class="math">\(\Gamma\)</span> action on the boundary <span class="math">\(\partial \mathbb{H}^2\)</span> is
-  quasi-ergodic with respect to <span class="math">\(\nu\)</span>, i.e. any <span class="math">\(\Gamma\)</span>-invariant sets have full measure
-  or zero measure.</p>
-<p>The equivalence of these two statements is straightforward to see. Suppose one had a non-trivial
-invariant set <span class="math">\(U\)</span>. One could then condition the measure on <span class="math">\(U\)</span> to get a <span class="math">\(\Gamma\)</span>-invariant conformal
-density that wasn't a scalar multiple of the original <span class="math">\(\Gamma\)</span>-invariant conformal density. That
-would contradict uniqueness. On the other hand, if one had two <span class="math">\(\Gamma\)</span>-invariant conformal
-densities, their Radon-Nikodym derivative would be a <span class="math">\(\Gamma\)</span> invariant function, and hence constant
-almost everywhere.</p>
-<p>Although in principle, we can prove quasi-ergodicity using just the results we have now, the
-appropriate place for its proof is the post on the ergodicity of the geodesic flow. One may worry
-that in the process of doing so, its proof may become circular, i.e. it may use uniqueness. The fact
-that this does not happen can be verified skipping ahead to the relevant section.<sup id="fnref:footnote3"><a class="footnote-ref" href="#fn:footnote3">3</a></sup></p>
-<p>Once the foundational question has been dealt with, one is faced a (relatively) more mundane
-problem: how does one actually measure the Patterson-Sullivan measure of a given set, or at least,
-get a good estimate. To this end, we have Sullivan's shadow lemma.  Before we state the lemma, we
-need to define what a shadow is.</p>
-<p><strong>Definition</strong> (Shadow): For any points <span class="math">\(x\)</span> in <span class="math">\(\overline{\mathbb{H}^2}\)</span> and <span class="math">\(y\)</span> in <span class="math">\(\mathbb{H}^2\)</span>, and any <span class="math">\(r
-  \geq 0\)</span>, the shadow <span class="math">\(\mathcal{O}_r(x, y)\)</span> is the set of all points <span class="math">\(\xi\)</span> in <span class="math">\(\partial \mathbb{H}^2\)</span> such
-  that the geodesic from <span class="math">\(x\)</span> to <span class="math">\(\xi\)</span> intersects a ball of radius <span class="math">\(r\)</span> around <span class="math">\(y\)</span>.</p>
-<table class="image">
-<caption align="bottom">Figure 1: The point ξ lies in the shadow cast by a ball around y and a light
-source at x. Image taken from
-<a href="https://www.math.u-bordeaux.fr/~jquint/publications/courszurich.pdf">(a)n overview of Patterson-Sullivan theory</a> by J.F. Quint. </caption>
-<tr><td><img src="../images/orbit-points-2/shadow1.png" width="100%" height="auto" class="center"/></td></tr>
-</table>
-
+        <div><p>In the <a href="/orbit-points-3.0.html">previous post</a>, we proved Sullivan's shadow lemma, which gave
+us concrete estimates for special subsets of the boundary, namely <em>shadows</em>. Recall that the shadow of a ball of
+radius <span class="math">\(r\)</span> based at <span class="math">\(y\)</span>, with the source at <span class="math">\(x\)</span>, denoted by <span class="math">\(\mathcal{O}_r(x, y)\)</span>, is the set of all points <span class="math">\(z\)</span>
+in the boundary <span class="math">\(\partial \mathbb{H}^2\)</span> such that a geodesic from <span class="math">\(x\)</span> to <span class="math">\(z\)</span> gets within distance <span class="math">\(r\)</span> of <span class="math">\(y\)</span>. In the
+special case when <span class="math">\(y\)</span> and <span class="math">\(x\)</span> lie in the same orbit, we can estimate the Patterson-Sullivan measure of the shadow.</p>
 <p><strong>Lemma</strong> (Sullivan's shadow lemma):  Let <span class="math">\(\Gamma\)</span> be a non-elementary discrete group, and let <span class="math">\(\{\mu_x\}_{x \in \mathbb{H}^2}\)</span> be a <span class="math">\(\Gamma\)</span>-invariant conformal density of
   dimension <span class="math">\(\delta\)</span>. Then for any <span class="math">\(x\)</span> there exists a large enough <span class="math">\(r_0\)</span>, such that for all
   <span class="math">\(r \geq r_0\)</span>, there exists a <span class="math">\(C &gt; 0\)</span>, depending on <span class="math">\(r\)</span> for which the following inequality holds
@@ -233,61 +88,159 @@ source at x. Image taken from
   </p>
 <div class="math">\begin{equation}
     \frac{1}{C} e^{-\delta \cdot d(x, \gamma x)} \leq \mu_{x}\left( \mathcal{O}_r(x, \gamma x) \right) \leq  C e^{-\delta \cdot d(x, \gamma x)}
-  \end{equation}</div>
-<p><strong>Proof</strong>:   The first thing we need to show is that there exists an <span class="math">\(r\)</span> large enough, and an <span class="math">\(\varepsilon\)</span> small
-  enough such that the following inequality holds for all <span class="math">\(y \in \overline{\Omega}\)</span>.
+ \end{equation}</div>
+<p>We went through all the trouble of developing the machinery of Patterson-Sullivan theory to answer the following
+question.</p>
+<p><strong>Question</strong>: Suppose <span class="math">\(\Gamma\)</span> is a <em>convex-cocompact group</em><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.  Let <span class="math">\(x_0\)</span> be a point in <span class="math">\(\Omega\)</span>, and let
+  <span class="math">\(C(r)\)</span> be the number of points in the orbit <span class="math">\(\Gamma x_0\)</span> that lie within distance <span class="math">\(r\)</span> of <span class="math">\(x_0\)</span>. What can we
+  say about the asymptotics of <span class="math">\(C(r)\)</span>? Do we have asymptotic upper and lower bounds? Can we determine what
+  <span class="math">\(C(r)\)</span> is asymptotically equal to?</p>
+<p>One can prove a somewhat weak asymptotic upper bound without using any Patterson-Sullivan theory.</p>
+<p><strong>Proposition</strong>: <span class="math">\(C(r)\)</span> is less than <span class="math">\(e^r\)</span>.</p>
+<p><strong>Proof</strong>: Since the group <span class="math">\(\Gamma\)</span> is discrete, there exists a small enough constant <span class="math">\(r_0 &gt; 0\)</span>, such that for
+  any pair of points in the orbit <span class="math">\(\Gamma x_0\)</span> are distance at least <span class="math">\(2r_0\)</span> apart. Let <span class="math">\(S_r\)</span> be the set of
+  orbit points within distance <span class="math">\(r\)</span> of <span class="math">\(x_0\)</span>, and let <span class="math">\(T_r\)</span> be the union of balls of radius <span class="math">\(r_0\)</span> around each
+  point of <span class="math">\(S_r\)</span>.  These balls don't intersect. Furthermore, all these balls lie in the ball of radius <span class="math">\(r+
+  r_0\)</span> around <span class="math">\(x_0\)</span>.  The volume of a ball of radius <span class="math">\(r\)</span> is <span class="math">\(ke^{r}\)</span> for a constant <span class="math">\(k\)</span>. We also note
+  that the volume of <span class="math">\(T_r\)</span> must be less than the volume of the ball of radius <span class="math">\(r+r_0\)</span>. This gives us that
+  following inequality.
   </p>
-<div class="math">\begin{equation}
-    \label{eq:5}
-    1 \geq \mu_x\left( \mathcal{O}_r(y, x) \right) \geq \varepsilon
-  \end{equation}</div>
+<div class="math">\begin{align*}
+  k C(r) e^{r_0} \leq ke^{(r+r_0)}
+  \end{align*}</div>
 <p>
-  As <span class="math">\(r\)</span> gets larger, the set <span class="math">\( \mathcal{O}_r(y, x)\)</span> gets larger as well, and contains everything
-  but the endpoint of the geodesic from <span class="math">\(x\)</span> to <span class="math">\(y\)</span>. That means the only way this inequality can fail
-  to hold is if all the mass of <span class="math">\(\mu_x\)</span> was concentrated at that point. But since <span class="math">\(\Gamma\)</span> is
-  non-elementary, the measure <span class="math">\(\mu_x\)</span> cannot be supported on a single point.</p>
-<table class="image">
-<caption align="bottom">Figure 2: A large ball around x casts a very large shadow. Image taken from
-<a href="https://www.math.u-bordeaux.fr/~jquint/publications/courszurich.pdf">(a)n overview of Patterson-Sullivan theory</a> by J.F. Quint. </caption>
-<tr><td><img src="../images/orbit-points-2/shadow2.png" width="100%" height="auto" class="center"/></td></tr>
-</table>
-
-<p>We now rewrite <span class="math">\(\mu_x\left( \mathcal{O}_r(x, \gamma x) \right)\)</span> using identities \eqref{eq:1} and \eqref{eq:2}.
+  Rearranging the above inequality gives us the result. <span class="math">\(\square\)</span></p>
+<p>Since we didn't have to work very hard to prove this inequality, it shouldn't come as a surprise
+that this bound is far from sharp. We can prove a better inequality by using Sullivan's shadow lemma.
+For simplicity, we'll first estimate the quantity <span class="math">\(A(r)\)</span> instead, which is
+the number of orbit points contained in an annulus of inner radius <span class="math">\(r-1\)</span> and outer radius <span class="math">\(r\)</span> about
+the point <span class="math">\(x_0\)</span>. The value of <span class="math">\(C(r)\)</span> can be obtained by just adding up the values of <span class="math">\(A(r)\)</span>,
+i.e. <span class="math">\(C(r) = \sum_{i=1}^{r} A(r)\)</span>.</p>
+<p><strong>Proposition</strong>: Suppose <span class="math">\(\delta\)</span> is the critical exponent<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> of <span class="math">\(\Gamma\)</span>. Then there exists a positive constant
+<span class="math">\(k\)</span> which makes the following inequalities involving <span class="math">\(A(r)\)</span> hold for all <span class="math">\(r\)</span>.
+</p>
+<div class="math">\begin{align*}
+    \frac{1}{k} e^{\delta r} \leq A(r) \leq k e^{\delta r}
+\end{align*}</div>
+<p><strong>Proof</strong>: We begin by defining the set <span class="math">\(\alpha_r\)</span>: this is the set of elements <span class="math">\(\gamma\)</span> in <span class="math">\(\Gamma\)</span> such
+  that <span class="math">\(\gamma x_0\)</span> lands in the annulus of inner radius <span class="math">\(r-1\)</span> and outer radius <span class="math">\(r\)</span> about <span class="math">\(x_0\)</span>,
+  i.e. <span class="math">\(\gamma x_0\)</span> contributes to <span class="math">\(A(r)\)</span>.  Consider the following function defined on
+  <span class="math">\(\partial \mathbb{H}^2\)</span>.
   </p>
-<div class="math">\begin{equation}
-    \label{eq:6}
-    \mu_x\left( \mathcal{O}_r(x, \gamma x) \right) = \int_{\mathcal{O}_r(\gamma^{-1}x, x)} e^{-\delta \cdot \beta_{\xi}(\gamma^{-1}x, x)} d\mu_x(\xi)
-  \end{equation}</div>
+<div class="math">\begin{align*}
+    S(\xi) := \sum_{\gamma \in \alpha_r} \mathbb{1}_{\mathcal{O}_{r_0}(x, \gamma x)}(\xi)
+  \end{align*}</div>
 <p>
-  Since we already know <span class="math">\( \mu_x\left( \mathcal{O}_r(\gamma^{-1}x, x) \right)\)</span> is between <span class="math">\(1\)</span> and <span class="math">\(\varepsilon\)</span>,
-  all we need to do is estimate the Busemann function on the shadow. We can do that using the triangle
-  inequality, which gives us the following inequality.
+  Here, <span class="math">\(r_0\)</span> is some big enough constant such that the Sullivan's shadow lemma applies. Note that
+  this function depends on <span class="math">\(r\)</span> as well, although the notation hides that dependence. That's because
+  this function can be uniformly bounded above and below, independent of what <span class="math">\(r\)</span> is. The lower
+  bound of course, is just <span class="math">\(0\)</span>, which is trivial, but the upper bound requires proof. For any point
+  <span class="math">\(\xi\)</span> on the boundary, the value of <span class="math">\(S(\xi)\)</span> will depend on how many balls of radius <span class="math">\(r_0\)</span> about
+  points in <span class="math">\(\alpha(r)\)</span> intersect the geodesic going from <span class="math">\(x\)</span> to <span class="math">\(\xi\)</span>. By an application of the
+  triangle inequality, it suffices to count how many of these balls intersect a segment of length
+  <span class="math">\(2r_0 + 1\)</span> depicted in Figure 1.
+  <table class="image">
+<caption align="bottom">Figure 1: Line segment indicating where <span class="math">\(S(\xi)\)</span> may get some contribution from.</caption>
+<tr><td><img src="../images/orbit-points-3/fig1.png" width="70%" height="auto" class="center"/></td></tr>
+</table></p>
+<p>This means that <span class="math">\(S(\xi)\)</span> is at most the number of orbit points contained in a neighbourhood of radius <span class="math">\(r_0\)</span>
+  about the segment of length <span class="math">\(2r_0 + 1\)</span>. Since <span class="math">\(r_0\)</span> is fixed, this quantity is bounded above no matter where
+  the segment is on <span class="math">\(\mathbb{H}^2\)</span>, which proves the uniform upper bound on the function <span class="math">\(S\)</span>. Let us denote this
+  uniform bound by <span class="math">\(J\)</span>. This uniform upper bound will help us get an upper bound on <span class="math">\(A(r)\)</span>. Observe that
+  showing the upper bound didn't require convex-cocompactness, and in fact works for any discrete group
+  <span class="math">\(\Gamma\)</span>.</p>
+<p>We can use convex-cocompactness of <span class="math">\(\Gamma\)</span> to get a positive lower bound on <span class="math">\(S(\xi)\)</span> when <span class="math">\(\xi\)</span> is in the limit
+  set <span class="math">\(\Lambda(\Gamma)\)</span>. Since <span class="math">\(\Gamma\)</span> is convex cocompact, the restriction of a fundamental domain to the convex
+  hull of the limit set will be compact. Without loss of generality, we can assume the diameter of this compact
+  set is less than <span class="math">\(1\)</span> (otherwise we just make the annuli thicker). If <span class="math">\(\xi\)</span> is in the limit set, the geodesic
+  from <span class="math">\(x_0\)</span> to <span class="math">\(\xi\)</span> is always within distance <span class="math">\(1\)</span> of some orbit point, since the closure of the orbits
+  of the compact set contain the limit set. This means <span class="math">\(S(\xi) \geq 1\)</span>, and proves the lower bound.</p>
+<p>We have, with some effort, managed to prove our main inequality, which holds for all <span class="math">\(\xi\)</span> in the
+  radial limit set, which has full measure.
   </p>
-<div class="math">\begin{equation}
-    \label{eq:7}
-    d(\gamma^{-1}x, x) - 2r \leq \beta_{\xi}(\gamma^{-1}x, x) \leq d(\gamma^{-1}x, x)
-  \end{equation}</div>
+<div class="math">\begin{align}
+    \label{eq:4}
+    1 \leq S(\xi) \leq J
+  \end{align}</div>
 <p>
-  Combining \eqref{eq:5}, \eqref{eq:6}, and \eqref{eq:7}, we get the inequality we need. <span class="math">\(\square\)</span></p>
-<p>All this may seem like it has noting to do with counting, but in fact, we already have developed enough tools
-to get a rough asymptotic count of the orbit points for convex cocompact groups, but that will have to wait for
-the next post because I think this post is long enough already.</p>
+  We now integrate this with respect to the Patterson-Sullivan measure <span class="math">\(\mu_x\)</span>, and interchange the
+  sum and the integral to get the following inequality.
+  </p>
+<div class="math">\begin{align}
+    \label{eq:8}
+    \mu_x(\partial \Omega) \leq \sum_{\gamma \in \alpha_r} \mu_x\left( \mathcal{O}_r(x, \gamma x) \right) \leq J \mu_x(\partial \Omega)
+  \end{align}</div>
+<p>
+  Sullivan's shadow lemma also gives us another useful inequality.
+  </p>
+<div class="math">\begin{align}
+    \label{eq:9}
+    \frac{1}{C} \sum_{\gamma \in \alpha_r} e^{-\delta r} \leq \sum_{\gamma \in \alpha_r} \mu_x\left( \mathcal{O}_r(x, \gamma x) \right) \leq C \sum_{\gamma \in \alpha_r} e^{-\delta r}
+  \end{align}</div>
+<p>
+  Combining inequalities \eqref{eq:8} and \eqref{eq:9}, we get the inequalities we were after.
+  </p>
+<div class="math">\begin{align}
+    \label{eq:10}
+    \frac{1}{k} e^{\delta r} \leq A(r) \leq k e^{\delta r}
+  \end{align}</div>
+<p>
+  Summing up the <span class="math">\(A(r)\)</span> gives us a similar inequality for <span class="math">\(C(r)\)</span>, which is what we wanted. <span class="math">\(\square\)</span></p>
+<p>We have improved upon our earlier naïve inequalities in two ways. First, we now have a lower bound
+too. Secondly, if we know that <span class="math">\(\delta &lt; 1\)</span>, we will have a strictly better inequality. Of course,
+this is only an improvement if we can actually find groups <span class="math">\(\Gamma\)</span> where the critical exponent
+<span class="math">\(\delta\)</span> is less than <span class="math">\(1\)</span>. Schottky groups provide a family of such examples.</p>
+<p><strong>Example</strong>: (Schottky groups) Let <span class="math">\(x_0 \in \mathbb{H}^2\)</span> be a basepoint. Let <span class="math">\(a_1\)</span> be a hyperbolic isometry whose axis passes through
+  <span class="math">\(x_0\)</span>, and translates <span class="math">\(x_0\)</span> by distance <span class="math">\(d\)</span>, where <span class="math">\(d\)</span> is a constant we'll fix later, and <span class="math">\(a_2\)</span> be
+  another hyperbolic isometry with translation distance <span class="math">\(d\)</span> whose axis also passes through <span class="math">\(x_0\)</span>,
+  and is perpendicular to the axis of <span class="math">\(a_1\)</span>. For <span class="math">\(d\)</span> large enough, <span class="math">\(a_1\)</span> and <span class="math">\(a_2\)</span> generate a free
+  subgroup of <span class="math">\(\mathrm{PSL}(2, \mathbb{R})\)</span>: this will be our group <span class="math">\(\Gamma\)</span>. To get an upper bound on the
+  critical exponent of <span class="math">\(\Gamma\)</span>, we need to relate the word length of elements of <span class="math">\(\Gamma\)</span> to the
+  distance they translate <span class="math">\(x_0\)</span> by. Suppose we had the following inequality for all elements
+  <span class="math">\(\gamma\)</span> in <span class="math">\(\Gamma\)</span>.
+  </p>
+<div class="math">\begin{align}
+    \label{eq:11}
+    |\gamma| d' - c \leq \mathrm{dist}(x_0, \gamma x_0)
+  \end{align}</div>
+<p>
+  We could use this to determine for what values of <span class="math">\(s\)</span> does the following infinite sum converge
+  (recall that this infinite sum showed up in the construction of the Patterson-Sullivan measure).
+  </p>
+<div class="math">\begin{align*}
+    \sum_{\gamma \in \Gamma} \exp(-s \cdot d(x_0, \gamma x_0))
+    &amp;= \sum_{n=0}^{\infty} \sum_{|\gamma| = n} \exp(-s \cdot d(x_0, \gamma x_0)) \\
+    &amp;\leq \sum_{n=0}^{\infty} \sum_{|\gamma| = n} \exp(-s \cdot (nd' - c)) \\
+    &amp;\leq \sum_{n=0} k 3^n \exp(-snd') \\
+    &amp;= \sum_{n=0} k \exp(\ln 3 - snd')
+  \end{align*}</div>
+<p>
+  Clearly, for large values of <span class="math">\(s\)</span>, this converges, to no one's surprise. But since we want the
+  critical exponent to be less than <span class="math">\(1\)</span>, would like this to converge for <span class="math">\(s &lt; 1\)</span>. We could make that
+  happen if we <span class="math">\(d'\)</span> could get arbitrarily large: we claim that as <span class="math">\(d\)</span> gets larger, so does <span class="math">\(d'\)</span>.</p>
+<p>To prove the above claim, we need to do some elementary hyperbolic geometry. Firstly, observe that
+  if the world length of <span class="math">\(\gamma\)</span> is <span class="math">\(n\)</span>, then the geodesic joining <span class="math">\(x_0\)</span> to <span class="math">\(\gamma x_0\)</span> goes
+  through <span class="math">\((n-2)\)</span> translates of the fundamental domain of <span class="math">\(\Gamma\)</span>. The boundary of the fundamental
+  domain is composed of <span class="math">\(4\)</span> biinfinite geodesics, such that the distance between each pair is
+  bounded below, away from <span class="math">\(0\)</span>. That lower bound on the distance is where <span class="math">\(d'\)</span> comes from. One can
+  explicitly relate <span class="math">\(d\)</span> and <span class="math">\(d'\)</span> in this manner by constructing a hyperbolic right pentagon. The details
+  of this construction are elementary, and left to the reader, and after that point, one uses the formula for
+  hyperbolic right angled pentagons (see Thurston's, <a href="http://library.msri.org/books/gt3m/PDF/Thurston-gt3m.pdf">The Geometry and Topology of Three-Manifolds</a>) to get the formula for <span class="math">\(d'\)</span>. Roughly,
+  as <span class="math">\(d\)</span> gets larger, <span class="math">\(d'\)</span> is approximately <span class="math">\(2d\)</span>, which certainly approaches infinity, proving our claim.</p>
+<p>This example shows us that Patterson-Sullivan theory did give us a strong estimate of the count of the orbit
+  points. This concludes the three part series on counting orbit points. All of this material can be found in
+  Dennis Sullivan's excellent paper, titled <a href="http://www.numdam.org/article/PMIHES_1979__50__171_0.pdf">The density at infinity of a discrete group of hyperbolic motions</a>.</p>
 <div class="footnote">
 <hr>
 <ol>
-<li id="fn:paper1">
-<p><a href="https://projecteuclid.org/euclid.acta/1485889894">The limit set of a Fuchsian group</a>, S.J. Patterson&#160;<a class="footnote-backref" href="#fnref:paper1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:paper1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn:1">
+<p>A convex cocompact group is a discrete subgroup of <span class="math">\(\mathrm{PSL}(2, \mathbb{R})\)</span> that acts cocompacty on
+the convex hull of its limit set. The surface one gets by quotienting the hyperbolic plane by a
+convex-cocompact group is a hyperbolic surface with no cusps, and finitely many <em>flares</em>, which have infinite
+area, and look like one of the ends of <span class="math">\(\mathbb{H}^2\)</span> modulo an hyperbolic element.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
-<li id="fn:paper2">
-<p><a href="https://doi.org/10.1007/BF02684773">The density at infinity of a discrete group of hyperbolic motions</a>, Dennis Sullivan&#160;<a class="footnote-backref" href="#fnref:paper2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
-</li>
-<li id="fn:footnote3">
-<p>The proof goes via the proof of the fact that the Bowen-Margulis measure is an ergodic
-  measure for the geodesic flow. At this point, it's natural to ask why is the easiest proof of
-  ergodicity of the <span class="math">\(\Gamma\)</span>-action via the ergodicity of the geodesic flow. A somewhat
-  unsatisfactory answer to that is that the geodesic flow and the Bowen-Margulis measure have
-  structures that are compatible with each other: the geodesic flow has stable and unstable
-  manifolds, and the Bowen-Margulis measure happens to decompose nicely along these foliations.&#160;<a class="footnote-backref" href="#fnref:footnote3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<li id="fn:2">
+<p>See the <a href="/orbit-points-3.0.html">previous post</a> for the definition of critical exponent.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -356,14 +309,37 @@ the next post because I think this post is long enough already.</p>
  
 
     <div class='article'>
-        <a href="/orbit-points-1.0.html"><h2>Counting orbit points under group actions - Part 1</h2></a>
-        <div class= "well small"> Sat 19 October 2019
+        <a href="/orbit-points-2.0.html"><h2>Counting orbit points (part 2): Patterson-Sullivan theory</h2></a>
+        <div class= "well small"> Posted: Sun 05 January 2020
+<br>
+<!-- Author <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a> -->
+<!-- <br> -->
+Filed under <a href="/category/mathematics.html">mathematics</a>
+<br>
 
-by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
+Tags: <a href="/tag/geometry.html">geometry</a> <a href="/tag/dynamics.html">dynamics</a> <a href="/tag/topology.html">topology</a>  </div>
+        <div class="summary"><p>In the <a href="/orbit-points-1.0.html">previous post</a>, we saw how to get an asymptotic
+count of orbit points under a lattice action, i.e. a finite covolume Fuchsian group. To do so, we needed the
+fact that the geodesic flow on the associated quotient was mixing with respect to the Liouville
+measure. That …</p> <a class="btn btn-info xsmall" href="/orbit-points-2.0.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
  
 
+    <div class='article'>
+        <a href="/orbit-points-1.0.html"><h2>Counting orbit points under group actions - Part 1</h2></a>
+        <div class= "well small"> Posted: Sat 19 October 2019
+<br>
+<!-- Author <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a> -->
+<!-- <br> -->
+Filed under <a href="/category/mathematics.html">mathematics</a>
+<br>
 
- </div>
+Tags: <a href="/tag/geometry.html">geometry</a> <a href="/tag/dynamics.html">dynamics</a> <a href="/tag/topology.html">topology</a>  </div>
         <div class="summary"><p>After 10 months of being unable to come up with anything interesting to post on the blog, I realized
 it might be a good idea use this blog to keep track of the math I've been working on. That way my blog
 can act as a public version of my …</p> <a class="btn btn-info xsmall" href="/orbit-points-1.0.html">read more</a></div>
@@ -377,13 +353,14 @@ can act as a public version of my …</p> <a class="btn btn-info xsmall" href="/
 
     <div class='article'>
         <a href="/a-priori-estimates.html"><h2>What is an "a priori estimate"?</h2></a>
-        <div class= "well small"> Tue 18 December 2018
+        <div class= "well small"> Posted: Tue 18 December 2018
+<br>
+<!-- Author <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a> -->
+<!-- <br> -->
+Filed under <a href="/category/mathematics.html">mathematics</a>
+<br>
 
-by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
- 
-
-
- </div>
+Tags: <a href="/tag/analysis.html">analysis</a>  </div>
         <div class="summary"><p>One of the things a math major learns in their first proof based course is that one must
 prove existence of objects before going on to prove any properties about them. After a few years,
 this becomes almost second nature, and most pure mathematicians are wary of making claims about …</p> <a class="btn btn-info xsmall" href="/a-priori-estimates.html">read more</a></div>
@@ -397,13 +374,14 @@ this becomes almost second nature, and most pure mathematicians are wary of maki
 
     <div class='article'>
         <a href="/overloaded-word.html"><h2>The most overloaded word in math</h2></a>
-        <div class= "well small"> Sun 14 October 2018
+        <div class= "well small"> Posted: Sun 14 October 2018
+<br>
+<!-- Author <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a> -->
+<!-- <br> -->
+Filed under <a href="/category/mathematics.html">mathematics</a>
+<br>
 
-by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
- 
-
-
- </div>
+Tags: <a href="/tag/nomenclature.html">nomenclature</a>  </div>
         <div class="summary"><p>Last Wednesday, the conversation in my office veered towards the words we hated the most in
 math. Not surprisingly, the list included the usual suspects like <em>normal</em>, <em>simple</em>, and <em>regular</em>.
 It's probably the same reason that these words also make it to the top five of <a href="https://mathoverflow.net/questions/7389/what-are-the-most-overloaded-words-in-mathematics">this MathOverflow
@@ -418,13 +396,14 @@ post</a>. These …</p> <a class="btn btn-info xsmall" href="/overloaded-word.ht
 
     <div class='article'>
         <a href="/algebraic-cotangent-space.html"><h2>An algebraic definition of the cotangent space</h2></a>
-        <div class= "well small"> Sat 30 June 2018
+        <div class= "well small"> Posted: Sat 30 June 2018
+<br>
+<!-- Author <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a> -->
+<!-- <br> -->
+Filed under <a href="/category/mathematics.html">mathematics</a>
+<br>
 
-by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
- 
-
-
- </div>
+Tags: <a href="/tag/differential-geometry.html">differential-geometry</a> <a href="/tag/algebraic-geometry.html">algebraic-geometry</a>  </div>
         <div class="summary"><p>I'm almost a week into the algebraic geometry workshop now, and I've learnt a
 lot.  I've learnt a few things about varieties, and also a bit of commutative
 algebra, but the most important takeaway for me from the first week was the
@@ -439,13 +418,14 @@ sheaf theoretic way of looking at smooth manifolds …</p> <a class="btn btn-inf
 
     <div class='article'>
         <a href="/chern-classes.html"><h2>Construction of Chern classes</h2></a>
-        <div class= "well small"> Fri 20 April 2018
+        <div class= "well small"> Posted: Fri 20 April 2018
+<br>
+<!-- Author <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a> -->
+<!-- <br> -->
+Filed under <a href="/category/mathematics.html">mathematics</a>
+<br>
 
-by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
- 
-
-
- </div>
+Tags: <a href="/tag/differential-geometry.html">differential-geometry</a> <a href="/tag/vector-bundles.html">vector-bundles</a>  </div>
         <div class="summary"><h2>Characteristic classes</h2>
 <p>Given a manifold <span class="math">\(M\)</span>, one way to study vector bundles over <span class="math">\(M\)</span> is to use the theory of
 characteristic classes. A characteristic class is a way of assigning to each vector bundle over <span class="math">\(M\)</span>
@@ -460,13 +440,14 @@ an element of the cohomology ring <span class="math">\(H^{\ast}(M, G)\)</span>. 
 
     <div class='article'>
         <a href="/bms-week.html"><h2>A week at Berlin Mathematical School</h2></a>
-        <div class= "well small"> Sat 24 February 2018
+        <div class= "well small"> Posted: Sat 24 February 2018
+<br>
+<!-- Author <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a> -->
+<!-- <br> -->
+Filed under <a href="/category/mathematics.html">mathematics</a>
+<br>
 
-by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
- 
-
-
- </div>
+Tags: <a href="/tag/travel.html">travel</a> <a href="/tag/math-talks.html">math-talks</a>  </div>
         <div class="summary"><p>I spent the last week (18th to 24th February) at Berlin, courtesy Berlin Mathematical School,
 who invited me over for the BMS Days (where I had an interview for a PhD position), as well
 as the BMS Student Conference which immediately followed the BMS Days. I heard a lot of …</p> <a class="btn btn-info xsmall" href="/bms-week.html">read more</a></div>
@@ -480,13 +461,14 @@ as the BMS Student Conference which immediately followed the BMS Days. I heard a
 
     <div class='article'>
         <a href="/cohomology-local-global.html"><h2>Cohomology as a measure of local to global failure</h2></a>
-        <div class= "well small"> Mon 25 December 2017
+        <div class= "well small"> Posted: Mon 25 December 2017
+<br>
+<!-- Author <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a> -->
+<!-- <br> -->
+Filed under <a href="/category/mathematics.html">mathematics</a>
+<br>
 
-by <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a>
- 
-
-
- </div>
+Tags: <a href="/tag/cohomology.html">cohomology</a> <a href="/tag/sheaves.html">sheaves</a> <a href="/tag/topology.html">topology</a>  </div>
         <div class="summary"><h2>Motivation for cohomology</h2>
 <p>In most introductory algebraic topology courses, cohomology is rather poorly motivated. It's most
 commonly seen form in an algebraic topology course is singular cohomology, which arises as a the
@@ -505,49 +487,46 @@ homology of the dual of the singular chain complex, but that doesn't really tell
 </div>
  
   
-        </div>
-        
-        <div class="span3">
+	</div>
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="/archives.html">Archives</a>
-                <li><a href="/tags.html">Tags</a>
+	<div class="span3">
 
+	    <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+	    <ul class="nav nav-list">
+		<li class="nav-header">
+		Site
+		</li>
 
-
-                <li><a href="/feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-
-            </ul>
-            </div>
+		<li><a href="/archives.html">Archives</a>
+		<li><a href="/tags.html">Tags</a>
 
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                <li><a href="/category/latex.html">LaTeX</a></li>
-                <li><a href="/category/mathematics.html">mathematics</a></li>
-                <li><a href="/category/personal.html">personal</a></li>
-                   
-            </ul>
-            </div>
 
+		<li><a href="/feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+
+	    </ul>
+	    </div>
+
+
+	    <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+	    <ul class="nav nav-list">
+		<li class="nav-header">
+		Categories
+		</li>
+
+		<li><a href="/category/latex.html">LaTeX</a></li>
+		<li><a href="/category/mathematics.html">mathematics</a></li>
+		<li><a href="/category/personal.html">personal</a></li>
+	    </ul>
+	    </div>
 
 
 
 
-        </div>  
-    </div>     </div> 
+
+	</div>     </div>     </div> 
 </div> <!-- /container -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="/theme/bootstrap-collapse.js"></script>
- 
 </body>
 </html>
