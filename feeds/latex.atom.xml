@@ -33,14 +33,14 @@ necessary software (i.e. &lt;code&gt;texlive-full&lt;/code&gt;) installed on it 
 &lt;a href="https://github.com/aufenthaltsraum/stuff/wiki/Using-GitLab-CI-for-Building-LaTeX"&gt;configuration&lt;/a&gt;,
 which is rather rudimentary, but is good guide for creating
 our configuration.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;compile_pdf&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;compile_pdf&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
   &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;aergus&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;latex&lt;/span&gt;
   &lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;latexmk&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pdf&lt;/span&gt; &lt;span class="n"&gt;my_file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;tex&lt;/span&gt;
   &lt;span class="n"&gt;artifacts&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;paths&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
       &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;my_file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;pdf&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Let's go over this line by line. The first line describes the name of the job that
@@ -60,56 +60,56 @@ web interface.&lt;/p&gt;
 in the root directory, but rather organize them by course and assignment number.
 So the TeX file for the fourth assignment for a topology course will have the following
 location: &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;MA232&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="n"&gt;Topology&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;assignments&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;assignment_04&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tex&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Math/MA232\ Topology/assignments/04/assignment_04.tex&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;What I would like is to make sure the generated PDF for this TeX file is
 placed in the following location.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;MA232&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="n"&gt;Topology&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;assignments&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;assignment_04&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pdf&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Math/MA232\ Topology/assignments/assignment_04.pdf&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;I'd also like my thesis to be compiled on each commit; the location
 of my thesis in the repository is the following.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;UM400&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="n"&gt;Undergraduate&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="n"&gt;Project&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;thesis&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;thesis&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tex&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Math/UM400\ Undergraduate\ Project/thesis/thesis.tex&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;I wrote up a &lt;code&gt;Makefile&lt;/code&gt; that does all the compilation work, and places the PDFs
 in appropriate locations.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;assignments&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;assignments&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="sr"&gt;/MA339\ Geometric\ Analysis/&lt;/span&gt;&lt;span class="n"&gt;assignments&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="o"&gt;\&lt;/span&gt;
     &lt;span class="n"&gt;latexmk&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pdf&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt;&lt;span class="n"&gt;assignment_&lt;/span&gt;&lt;span class="o"&gt;*.&lt;/span&gt;&lt;span class="n"&gt;tex&lt;/span&gt; 
 
 &lt;span class="n"&gt;thesis&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="sr"&gt;/UM400\ Undergraduate\ Project/&lt;/span&gt;&lt;span class="n"&gt;thesis&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="o"&gt;\&lt;/span&gt;
     &lt;span class="n"&gt;latexmk&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pdf&lt;/span&gt; &lt;span class="n"&gt;thesis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;tex&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;And the &lt;code&gt;.gitlab-ci.yml&lt;/code&gt; file I finally ended up using was this.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;stages&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;
-&lt;span class="n"&gt;compile_pdf&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-  &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;aergus&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;latex&lt;/span&gt;
-  &lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;assignments&lt;/span&gt;
-    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;thesis&lt;/span&gt;
-  &lt;span class="n"&gt;stage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;
-  &lt;span class="n"&gt;artifacts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;paths&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-      &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;Math/MA339 Geometric Analysis/assignments/assignment_*.pdf&amp;quot;&lt;/span&gt;
-      &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;Math/UM400 Undergraduate Project/thesis/thesis.pdf&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;stages:&lt;/span&gt;
+&lt;span class="c"&gt;  - build&lt;/span&gt;
+&lt;span class="c"&gt;compile_pdf:&lt;/span&gt;
+&lt;span class="c"&gt;  image: aergus/latex&lt;/span&gt;
+&lt;span class="c"&gt;  script:&lt;/span&gt;
+&lt;span class="c"&gt;    - make assignments&lt;/span&gt;
+&lt;span class="c"&gt;    - make thesis&lt;/span&gt;
+&lt;span class="c"&gt;  stage: build&lt;/span&gt;
+&lt;span class="c"&gt;  artifacts:&lt;/span&gt;
+&lt;span class="c"&gt;    paths:&lt;/span&gt;
+&lt;span class="c"&gt;      - &amp;quot;Math/MA339 Geometric Analysis/assignments/assignment_*.pdf&amp;quot;&lt;/span&gt;
+&lt;span class="c"&gt;      - &amp;quot;Math/UM400 Undergraduate Project/thesis/thesis.pdf&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Adding these two files to the root directory of the repository does the trick.
 One issue I came up against was the spaces in filenames shouldn't be escaped
 with a backslash, but rather the whole file name should be enclosed in quotes.&lt;/p&gt;
 &lt;p&gt;The generated artifacts can be browsed by visiting the following link.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;gitlab&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;/&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;/-/&lt;/span&gt;&lt;span class="n"&gt;jobs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;artifacts&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;master&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;browse&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;compile_pdf&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;https://gitlab.com/&amp;lt;username&amp;gt;/&amp;lt;repo-name&amp;gt;/-/jobs/artifacts/master/browse?job=compile_pdf&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;It seems that compiling all the files after a commit takes up four to five minutes on 

@@ -1,7 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Sayantan Khan's Blog</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2020-01-12T00:00:00-05:00</updated><entry><title>Counting orbit points (part 3): Asymptotics for convex-cocompact groups</title><link href="/orbit-points-3.0.html" rel="alternate"></link><published>2020-01-12T00:00:00-05:00</published><updated>2020-01-12T00:00:00-05:00</updated><author><name>Sayantan Khan</name></author><id>tag:None,2020-01-12:/orbit-points-3.0.html</id><summary type="html">&lt;p&gt;In the &lt;a href="/orbit-points-3.0.html"&gt;previous post&lt;/a&gt;, we proved Sullivan's shadow lemma, which gave
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Sayantan Khan's Blog</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2020-09-26T00:00:00-04:00</updated><entry><title>Summer 2020 update</title><link href="/update-summer-2020.html" rel="alternate"></link><published>2020-09-26T00:00:00-04:00</published><updated>2020-09-26T00:00:00-04:00</updated><author><name>Sayantan Khan</name></author><id>tag:None,2020-09-26:/update-summer-2020.html</id><summary type="html">&lt;p&gt;Another 9 months have gone by without a blog post, and this time I don't even have lack of time as an excuse
+my lack of writing. This summer turned out to be quite different from what I had planned, which probably goes
+to show one shouldn't plan too far …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Another 9 months have gone by without a blog post, and this time I don't even have lack of time as an excuse
+my lack of writing. This summer turned out to be quite different from what I had planned, which probably goes
+to show one shouldn't plan too far ahead, in this day and age. I figured it might be a good time make a list of
+what I did this summer, and contrast that with what I was planning to do, before I forget a the details.&lt;/p&gt;
+&lt;h2&gt;Math&lt;/h2&gt;
+&lt;p&gt;I was supposed to begin my summer with a conference at Haifa, but that of course didn't pan out, given the
+pandemic. The expectation was to follow up the conference by learning more Lie group theory and associated
+dynamics and representation theory, along the lines of what Hee Oh does, but I never got around to doing that.&lt;/p&gt;
+&lt;p&gt;However, I did manage to get some math done this summer.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I worked with my undergraduate collaborator CP&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;, and my postdoc mentor BW, as a part of AW's REU, and
+managed to prove some asymptotic bounds on the minimal stretch factors of certain pseudo-Anosov maps. BW is
+still reviewing the paper right now, and fixing up some sections, but hopefully the preprint should be up on
+ArXiV soon.&lt;/li&gt;
+&lt;li&gt;I also have enough theorems to write up a paper on the project I have been working on since February. Writing
+it up might be a bit of a nightmare, given how long it's been since the earlier results. But hopefully I should
+have something up on ArXiV in a month.&lt;/li&gt;
+&lt;li&gt;I also learnt enough Teichmüller theory and Teichmüller dynamics to pass my prelims, which is definitely
+  good. I am no longer as afraid of complex analytic Teichmüller theory as I used to be.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Programming&lt;/h2&gt;
+&lt;p&gt;This summer was fairly productive in terms of programming: I went through most of
+&lt;a href="https://www.nand2tetris.org/"&gt;nand2tetris&lt;/a&gt;, i.e. designed a 16-bit computer from scratch, starting with the
+NAND gates, going up to assembly, followed with an intermediate VM language. I skipped writing a compiler for
+compiling Scheme to the intermediate VM language, because the Scheme specification is more complicated than I
+thought. I followed that up with trying to write a x86-64 microkernel in Rust, but x86-64 has a lot of details
+to debug, so I shelved that project as well. Right now, I am writing some userspace filesystem code that
+should be easier to debug, given that it doesn't work at the kernel level.&lt;/p&gt;
+&lt;h2&gt;Climbing&lt;/h2&gt;
+&lt;p&gt;My climbing goals have suffered the most since the pandemic began. Originally, I was planning on getting my
+lead climbing certification this summer, and progress to climbing 5.10+ or 5.11- outdoors, but none of that
+happened after the gyms closed down. I've only climbed twice outside since then, and my footwork, among other
+things, has obviously degraded. I'm just hoping that once the gyms open up again, I can recover to the point
+where I was in a month or two.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;I figure it's a good idea to not name people I know personally in my blog.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content><category term="personal"></category><category term="personal"></category><category term="math"></category><category term="programming"></category><category term="climbing"></category></entry><entry><title>Counting orbit points (part 3): Asymptotics for convex-cocompact groups</title><link href="/orbit-points-3.0.html" rel="alternate"></link><published>2020-01-12T00:00:00-05:00</published><updated>2020-01-12T00:00:00-05:00</updated><author><name>Sayantan Khan</name></author><id>tag:None,2020-01-12:/orbit-points-3.0.html</id><summary type="html">&lt;p&gt;In the &lt;a href="/orbit-points-2.0.html"&gt;previous post&lt;/a&gt;, we proved Sullivan's shadow lemma, which gave
 us concrete estimates for special subsets of the boundary, namely &lt;em&gt;shadows&lt;/em&gt;. Recall that the shadow of a ball of
-radius &lt;span class="math"&gt;\(r\)&lt;/span&gt; based at &lt;span class="math"&gt;\(y\)&lt;/span&gt;, with the source at &lt;span class="math"&gt;\(x\)&lt;/span&gt;, denoted by &lt;span class="math"&gt;\(\mathcal{O}_r(x, y)\)&lt;/span&gt;, is the set …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In the &lt;a href="/orbit-points-3.0.html"&gt;previous post&lt;/a&gt;, we proved Sullivan's shadow lemma, which gave
+radius &lt;span class="math"&gt;\(r\)&lt;/span&gt; based at &lt;span class="math"&gt;\(y\)&lt;/span&gt;, with the source at &lt;span class="math"&gt;\(x\)&lt;/span&gt;, denoted by &lt;span class="math"&gt;\(\mathcal{O}_r(x, y)\)&lt;/span&gt;, is the set …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In the &lt;a href="/orbit-points-2.0.html"&gt;previous post&lt;/a&gt;, we proved Sullivan's shadow lemma, which gave
 us concrete estimates for special subsets of the boundary, namely &lt;em&gt;shadows&lt;/em&gt;. Recall that the shadow of a ball of
 radius &lt;span class="math"&gt;\(r\)&lt;/span&gt; based at &lt;span class="math"&gt;\(y\)&lt;/span&gt;, with the source at &lt;span class="math"&gt;\(x\)&lt;/span&gt;, denoted by &lt;span class="math"&gt;\(\mathcal{O}_r(x, y)\)&lt;/span&gt;, is the set of all points &lt;span class="math"&gt;\(z\)&lt;/span&gt;
 in the boundary &lt;span class="math"&gt;\(\partial \mathbb{H}^2\)&lt;/span&gt; such that a geodesic from &lt;span class="math"&gt;\(x\)&lt;/span&gt; to &lt;span class="math"&gt;\(z\)&lt;/span&gt; gets within distance &lt;span class="math"&gt;\(r\)&lt;/span&gt; of &lt;span class="math"&gt;\(y\)&lt;/span&gt;. In the
@@ -1708,14 +1751,14 @@ necessary software (i.e. &lt;code&gt;texlive-full&lt;/code&gt;) installed on it 
 &lt;a href="https://github.com/aufenthaltsraum/stuff/wiki/Using-GitLab-CI-for-Building-LaTeX"&gt;configuration&lt;/a&gt;,
 which is rather rudimentary, but is good guide for creating
 our configuration.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;compile_pdf&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;compile_pdf&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
   &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;aergus&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;latex&lt;/span&gt;
   &lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;latexmk&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pdf&lt;/span&gt; &lt;span class="n"&gt;my_file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;tex&lt;/span&gt;
   &lt;span class="n"&gt;artifacts&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;paths&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
       &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;my_file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;pdf&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Let's go over this line by line. The first line describes the name of the job that
@@ -1735,56 +1778,56 @@ web interface.&lt;/p&gt;
 in the root directory, but rather organize them by course and assignment number.
 So the TeX file for the fourth assignment for a topology course will have the following
 location: &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;MA232&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="n"&gt;Topology&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;assignments&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;assignment_04&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tex&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Math/MA232\ Topology/assignments/04/assignment_04.tex&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;What I would like is to make sure the generated PDF for this TeX file is
 placed in the following location.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;MA232&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="n"&gt;Topology&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;assignments&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;assignment_04&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pdf&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Math/MA232\ Topology/assignments/assignment_04.pdf&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;I'd also like my thesis to be compiled on each commit; the location
 of my thesis in the repository is the following.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;UM400&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="n"&gt;Undergraduate&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="n"&gt;Project&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;thesis&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;thesis&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tex&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Math/UM400\ Undergraduate\ Project/thesis/thesis.tex&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;I wrote up a &lt;code&gt;Makefile&lt;/code&gt; that does all the compilation work, and places the PDFs
 in appropriate locations.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;assignments&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;assignments&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="sr"&gt;/MA339\ Geometric\ Analysis/&lt;/span&gt;&lt;span class="n"&gt;assignments&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="o"&gt;\&lt;/span&gt;
     &lt;span class="n"&gt;latexmk&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pdf&lt;/span&gt; &lt;span class="o"&gt;*/&lt;/span&gt;&lt;span class="n"&gt;assignment_&lt;/span&gt;&lt;span class="o"&gt;*.&lt;/span&gt;&lt;span class="n"&gt;tex&lt;/span&gt; 
 
 &lt;span class="n"&gt;thesis&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;Math&lt;/span&gt;&lt;span class="sr"&gt;/UM400\ Undergraduate\ Project/&lt;/span&gt;&lt;span class="n"&gt;thesis&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="o"&gt;\&lt;/span&gt;
     &lt;span class="n"&gt;latexmk&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pdf&lt;/span&gt; &lt;span class="n"&gt;thesis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;tex&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;And the &lt;code&gt;.gitlab-ci.yml&lt;/code&gt; file I finally ended up using was this.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;stages&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-  &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;
-&lt;span class="n"&gt;compile_pdf&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-  &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;aergus&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;latex&lt;/span&gt;
-  &lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;assignments&lt;/span&gt;
-    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;thesis&lt;/span&gt;
-  &lt;span class="n"&gt;stage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;
-  &lt;span class="n"&gt;artifacts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;paths&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-      &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;Math/MA339 Geometric Analysis/assignments/assignment_*.pdf&amp;quot;&lt;/span&gt;
-      &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;Math/UM400 Undergraduate Project/thesis/thesis.pdf&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;stages:&lt;/span&gt;
+&lt;span class="c"&gt;  - build&lt;/span&gt;
+&lt;span class="c"&gt;compile_pdf:&lt;/span&gt;
+&lt;span class="c"&gt;  image: aergus/latex&lt;/span&gt;
+&lt;span class="c"&gt;  script:&lt;/span&gt;
+&lt;span class="c"&gt;    - make assignments&lt;/span&gt;
+&lt;span class="c"&gt;    - make thesis&lt;/span&gt;
+&lt;span class="c"&gt;  stage: build&lt;/span&gt;
+&lt;span class="c"&gt;  artifacts:&lt;/span&gt;
+&lt;span class="c"&gt;    paths:&lt;/span&gt;
+&lt;span class="c"&gt;      - &amp;quot;Math/MA339 Geometric Analysis/assignments/assignment_*.pdf&amp;quot;&lt;/span&gt;
+&lt;span class="c"&gt;      - &amp;quot;Math/UM400 Undergraduate Project/thesis/thesis.pdf&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Adding these two files to the root directory of the repository does the trick.
 One issue I came up against was the spaces in filenames shouldn't be escaped
 with a backslash, but rather the whole file name should be enclosed in quotes.&lt;/p&gt;
 &lt;p&gt;The generated artifacts can be browsed by visiting the following link.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;gitlab&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;/&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;/-/&lt;/span&gt;&lt;span class="n"&gt;jobs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;artifacts&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;master&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;browse&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;compile_pdf&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;https://gitlab.com/&amp;lt;username&amp;gt;/&amp;lt;repo-name&amp;gt;/-/jobs/artifacts/master/browse?job=compile_pdf&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;It seems that compiling all the files after a commit takes up four to five minutes on 

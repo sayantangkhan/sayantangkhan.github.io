@@ -65,243 +65,83 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="/orbit-points-3.0.html"><h1>Counting orbit points (part 3): Asymptotics for convex-cocompact groups</h1></a>
-Posted: Sun 12 January 2020
+            <a href="/update-summer-2020.html"><h1>Summer 2020 update</h1></a>
+Posted: Sat 26 September 2020
+<br>
+<!-- Author <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a> -->
+<!-- <br> -->
+Filed under <a href="/category/personal.html">personal</a>
+<br>
+
+Tags: <a href="/tag/personal.html">personal</a> <a href="/tag/math.html">math</a> <a href="/tag/programming.html">programming</a> <a href="/tag/climbing.html">climbing</a>  
+        </div>
+        
+        <div><p>Another 9 months have gone by without a blog post, and this time I don't even have lack of time as an excuse
+my lack of writing. This summer turned out to be quite different from what I had planned, which probably goes
+to show one shouldn't plan too far ahead, in this day and age. I figured it might be a good time make a list of
+what I did this summer, and contrast that with what I was planning to do, before I forget a the details.</p>
+<h2>Math</h2>
+<p>I was supposed to begin my summer with a conference at Haifa, but that of course didn't pan out, given the
+pandemic. The expectation was to follow up the conference by learning more Lie group theory and associated
+dynamics and representation theory, along the lines of what Hee Oh does, but I never got around to doing that.</p>
+<p>However, I did manage to get some math done this summer.</p>
+<ul>
+<li>I worked with my undergraduate collaborator CP<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, and my postdoc mentor BW, as a part of AW's REU, and
+managed to prove some asymptotic bounds on the minimal stretch factors of certain pseudo-Anosov maps. BW is
+still reviewing the paper right now, and fixing up some sections, but hopefully the preprint should be up on
+ArXiV soon.</li>
+<li>I also have enough theorems to write up a paper on the project I have been working on since February. Writing
+it up might be a bit of a nightmare, given how long it's been since the earlier results. But hopefully I should
+have something up on ArXiV in a month.</li>
+<li>I also learnt enough Teichmüller theory and Teichmüller dynamics to pass my prelims, which is definitely
+  good. I am no longer as afraid of complex analytic Teichmüller theory as I used to be.</li>
+</ul>
+<h2>Programming</h2>
+<p>This summer was fairly productive in terms of programming: I went through most of
+<a href="https://www.nand2tetris.org/">nand2tetris</a>, i.e. designed a 16-bit computer from scratch, starting with the
+NAND gates, going up to assembly, followed with an intermediate VM language. I skipped writing a compiler for
+compiling Scheme to the intermediate VM language, because the Scheme specification is more complicated than I
+thought. I followed that up with trying to write a x86-64 microkernel in Rust, but x86-64 has a lot of details
+to debug, so I shelved that project as well. Right now, I am writing some userspace filesystem code that
+should be easier to debug, given that it doesn't work at the kernel level.</p>
+<h2>Climbing</h2>
+<p>My climbing goals have suffered the most since the pandemic began. Originally, I was planning on getting my
+lead climbing certification this summer, and progress to climbing 5.10+ or 5.11- outdoors, but none of that
+happened after the gyms closed down. I've only climbed twice outside since then, and my footwork, among other
+things, has obviously degraded. I'm just hoping that once the gyms open up again, I can recover to the point
+where I was in a month or two.</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>I figure it's a good idea to not name people I know personally in my blog.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
+        <hr />
+    </div>
+		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="/orbit-points-3.0.html"><h2>Counting orbit points (part 3): Asymptotics for convex-cocompact groups</h2></a>
+        <div class= "well small"> Posted: Sun 12 January 2020
 <br>
 <!-- Author <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a> -->
 <!-- <br> -->
 Filed under <a href="/category/mathematics.html">mathematics</a>
 <br>
 
-Tags: <a href="/tag/geometry.html">geometry</a> <a href="/tag/dynamics.html">dynamics</a> <a href="/tag/topology.html">topology</a>  
-        </div>
-        
-        <div><p>In the <a href="/orbit-points-3.0.html">previous post</a>, we proved Sullivan's shadow lemma, which gave
+Tags: <a href="/tag/geometry.html">geometry</a> <a href="/tag/dynamics.html">dynamics</a> <a href="/tag/topology.html">topology</a>  </div>
+        <div class="summary"><p>In the <a href="/orbit-points-2.0.html">previous post</a>, we proved Sullivan's shadow lemma, which gave
 us concrete estimates for special subsets of the boundary, namely <em>shadows</em>. Recall that the shadow of a ball of
-radius <span class="math">\(r\)</span> based at <span class="math">\(y\)</span>, with the source at <span class="math">\(x\)</span>, denoted by <span class="math">\(\mathcal{O}_r(x, y)\)</span>, is the set of all points <span class="math">\(z\)</span>
-in the boundary <span class="math">\(\partial \mathbb{H}^2\)</span> such that a geodesic from <span class="math">\(x\)</span> to <span class="math">\(z\)</span> gets within distance <span class="math">\(r\)</span> of <span class="math">\(y\)</span>. In the
-special case when <span class="math">\(y\)</span> and <span class="math">\(x\)</span> lie in the same orbit, we can estimate the Patterson-Sullivan measure of the shadow.</p>
-<p><strong>Lemma</strong> (Sullivan's shadow lemma):  Let <span class="math">\(\Gamma\)</span> be a non-elementary discrete group, and let <span class="math">\(\{\mu_x\}_{x \in \mathbb{H}^2}\)</span> be a <span class="math">\(\Gamma\)</span>-invariant conformal density of
-  dimension <span class="math">\(\delta\)</span>. Then for any <span class="math">\(x\)</span> there exists a large enough <span class="math">\(r_0\)</span>, such that for all
-  <span class="math">\(r \geq r_0\)</span>, there exists a <span class="math">\(C &gt; 0\)</span>, depending on <span class="math">\(r\)</span> for which the following inequality holds
-  for all <span class="math">\(\gamma \in \Gamma\)</span>.
-  </p>
-<div class="math">\begin{equation}
-    \frac{1}{C} e^{-\delta \cdot d(x, \gamma x)} \leq \mu_{x}\left( \mathcal{O}_r(x, \gamma x) \right) \leq  C e^{-\delta \cdot d(x, \gamma x)}
- \end{equation}</div>
-<p>We went through all the trouble of developing the machinery of Patterson-Sullivan theory to answer the following
-question.</p>
-<p><strong>Question</strong>: Suppose <span class="math">\(\Gamma\)</span> is a <em>convex-cocompact group</em><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.  Let <span class="math">\(x_0\)</span> be a point in <span class="math">\(\Omega\)</span>, and let
-  <span class="math">\(C(r)\)</span> be the number of points in the orbit <span class="math">\(\Gamma x_0\)</span> that lie within distance <span class="math">\(r\)</span> of <span class="math">\(x_0\)</span>. What can we
-  say about the asymptotics of <span class="math">\(C(r)\)</span>? Do we have asymptotic upper and lower bounds? Can we determine what
-  <span class="math">\(C(r)\)</span> is asymptotically equal to?</p>
-<p>One can prove a somewhat weak asymptotic upper bound without using any Patterson-Sullivan theory.</p>
-<p><strong>Proposition</strong>: <span class="math">\(C(r)\)</span> is less than <span class="math">\(e^r\)</span>.</p>
-<p><strong>Proof</strong>: Since the group <span class="math">\(\Gamma\)</span> is discrete, there exists a small enough constant <span class="math">\(r_0 &gt; 0\)</span>, such that for
-  any pair of points in the orbit <span class="math">\(\Gamma x_0\)</span> are distance at least <span class="math">\(2r_0\)</span> apart. Let <span class="math">\(S_r\)</span> be the set of
-  orbit points within distance <span class="math">\(r\)</span> of <span class="math">\(x_0\)</span>, and let <span class="math">\(T_r\)</span> be the union of balls of radius <span class="math">\(r_0\)</span> around each
-  point of <span class="math">\(S_r\)</span>.  These balls don't intersect. Furthermore, all these balls lie in the ball of radius <span class="math">\(r+
-  r_0\)</span> around <span class="math">\(x_0\)</span>.  The volume of a ball of radius <span class="math">\(r\)</span> is <span class="math">\(ke^{r}\)</span> for a constant <span class="math">\(k\)</span>. We also note
-  that the volume of <span class="math">\(T_r\)</span> must be less than the volume of the ball of radius <span class="math">\(r+r_0\)</span>. This gives us that
-  following inequality.
-  </p>
-<div class="math">\begin{align*}
-  k C(r) e^{r_0} \leq ke^{(r+r_0)}
-  \end{align*}</div>
-<p>
-  Rearranging the above inequality gives us the result. <span class="math">\(\square\)</span></p>
-<p>Since we didn't have to work very hard to prove this inequality, it shouldn't come as a surprise
-that this bound is far from sharp. We can prove a better inequality by using Sullivan's shadow lemma.
-For simplicity, we'll first estimate the quantity <span class="math">\(A(r)\)</span> instead, which is
-the number of orbit points contained in an annulus of inner radius <span class="math">\(r-1\)</span> and outer radius <span class="math">\(r\)</span> about
-the point <span class="math">\(x_0\)</span>. The value of <span class="math">\(C(r)\)</span> can be obtained by just adding up the values of <span class="math">\(A(r)\)</span>,
-i.e. <span class="math">\(C(r) = \sum_{i=1}^{r} A(r)\)</span>.</p>
-<p><strong>Proposition</strong>: Suppose <span class="math">\(\delta\)</span> is the critical exponent<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> of <span class="math">\(\Gamma\)</span>. Then there exists a positive constant
-<span class="math">\(k\)</span> which makes the following inequalities involving <span class="math">\(A(r)\)</span> hold for all <span class="math">\(r\)</span>.
-</p>
-<div class="math">\begin{align*}
-    \frac{1}{k} e^{\delta r} \leq A(r) \leq k e^{\delta r}
-\end{align*}</div>
-<p><strong>Proof</strong>: We begin by defining the set <span class="math">\(\alpha_r\)</span>: this is the set of elements <span class="math">\(\gamma\)</span> in <span class="math">\(\Gamma\)</span> such
-  that <span class="math">\(\gamma x_0\)</span> lands in the annulus of inner radius <span class="math">\(r-1\)</span> and outer radius <span class="math">\(r\)</span> about <span class="math">\(x_0\)</span>,
-  i.e. <span class="math">\(\gamma x_0\)</span> contributes to <span class="math">\(A(r)\)</span>.  Consider the following function defined on
-  <span class="math">\(\partial \mathbb{H}^2\)</span>.
-  </p>
-<div class="math">\begin{align*}
-    S(\xi) := \sum_{\gamma \in \alpha_r} \mathbb{1}_{\mathcal{O}_{r_0}(x, \gamma x)}(\xi)
-  \end{align*}</div>
-<p>
-  Here, <span class="math">\(r_0\)</span> is some big enough constant such that the Sullivan's shadow lemma applies. Note that
-  this function depends on <span class="math">\(r\)</span> as well, although the notation hides that dependence. That's because
-  this function can be uniformly bounded above and below, independent of what <span class="math">\(r\)</span> is. The lower
-  bound of course, is just <span class="math">\(0\)</span>, which is trivial, but the upper bound requires proof. For any point
-  <span class="math">\(\xi\)</span> on the boundary, the value of <span class="math">\(S(\xi)\)</span> will depend on how many balls of radius <span class="math">\(r_0\)</span> about
-  points in <span class="math">\(\alpha(r)\)</span> intersect the geodesic going from <span class="math">\(x\)</span> to <span class="math">\(\xi\)</span>. By an application of the
-  triangle inequality, it suffices to count how many of these balls intersect a segment of length
-  <span class="math">\(2r_0 + 1\)</span> depicted in Figure 1.
-  <table class="image">
-<caption align="bottom">Figure 1: Line segment indicating where <span class="math">\(S(\xi)\)</span> may get some contribution from.</caption>
-<tr><td><img src="../images/orbit-points-3/fig1.png" width="70%" height="auto" class="center"/></td></tr>
-</table></p>
-<p>This means that <span class="math">\(S(\xi)\)</span> is at most the number of orbit points contained in a neighbourhood of radius <span class="math">\(r_0\)</span>
-  about the segment of length <span class="math">\(2r_0 + 1\)</span>. Since <span class="math">\(r_0\)</span> is fixed, this quantity is bounded above no matter where
-  the segment is on <span class="math">\(\mathbb{H}^2\)</span>, which proves the uniform upper bound on the function <span class="math">\(S\)</span>. Let us denote this
-  uniform bound by <span class="math">\(J\)</span>. This uniform upper bound will help us get an upper bound on <span class="math">\(A(r)\)</span>. Observe that
-  showing the upper bound didn't require convex-cocompactness, and in fact works for any discrete group
-  <span class="math">\(\Gamma\)</span>.</p>
-<p>We can use convex-cocompactness of <span class="math">\(\Gamma\)</span> to get a positive lower bound on <span class="math">\(S(\xi)\)</span> when <span class="math">\(\xi\)</span> is in the limit
-  set <span class="math">\(\Lambda(\Gamma)\)</span>. Since <span class="math">\(\Gamma\)</span> is convex cocompact, the restriction of a fundamental domain to the convex
-  hull of the limit set will be compact. Without loss of generality, we can assume the diameter of this compact
-  set is less than <span class="math">\(1\)</span> (otherwise we just make the annuli thicker). If <span class="math">\(\xi\)</span> is in the limit set, the geodesic
-  from <span class="math">\(x_0\)</span> to <span class="math">\(\xi\)</span> is always within distance <span class="math">\(1\)</span> of some orbit point, since the closure of the orbits
-  of the compact set contain the limit set. This means <span class="math">\(S(\xi) \geq 1\)</span>, and proves the lower bound.</p>
-<p>We have, with some effort, managed to prove our main inequality, which holds for all <span class="math">\(\xi\)</span> in the
-  radial limit set, which has full measure.
-  </p>
-<div class="math">\begin{align}
-    \label{eq:4}
-    1 \leq S(\xi) \leq J
-  \end{align}</div>
-<p>
-  We now integrate this with respect to the Patterson-Sullivan measure <span class="math">\(\mu_x\)</span>, and interchange the
-  sum and the integral to get the following inequality.
-  </p>
-<div class="math">\begin{align}
-    \label{eq:8}
-    \mu_x(\partial \Omega) \leq \sum_{\gamma \in \alpha_r} \mu_x\left( \mathcal{O}_r(x, \gamma x) \right) \leq J \mu_x(\partial \Omega)
-  \end{align}</div>
-<p>
-  Sullivan's shadow lemma also gives us another useful inequality.
-  </p>
-<div class="math">\begin{align}
-    \label{eq:9}
-    \frac{1}{C} \sum_{\gamma \in \alpha_r} e^{-\delta r} \leq \sum_{\gamma \in \alpha_r} \mu_x\left( \mathcal{O}_r(x, \gamma x) \right) \leq C \sum_{\gamma \in \alpha_r} e^{-\delta r}
-  \end{align}</div>
-<p>
-  Combining inequalities \eqref{eq:8} and \eqref{eq:9}, we get the inequalities we were after.
-  </p>
-<div class="math">\begin{align}
-    \label{eq:10}
-    \frac{1}{k} e^{\delta r} \leq A(r) \leq k e^{\delta r}
-  \end{align}</div>
-<p>
-  Summing up the <span class="math">\(A(r)\)</span> gives us a similar inequality for <span class="math">\(C(r)\)</span>, which is what we wanted. <span class="math">\(\square\)</span></p>
-<p>We have improved upon our earlier naïve inequalities in two ways. First, we now have a lower bound
-too. Secondly, if we know that <span class="math">\(\delta &lt; 1\)</span>, we will have a strictly better inequality. Of course,
-this is only an improvement if we can actually find groups <span class="math">\(\Gamma\)</span> where the critical exponent
-<span class="math">\(\delta\)</span> is less than <span class="math">\(1\)</span>. Schottky groups provide a family of such examples.</p>
-<p><strong>Example</strong>: (Schottky groups) Let <span class="math">\(x_0 \in \mathbb{H}^2\)</span> be a basepoint. Let <span class="math">\(a_1\)</span> be a hyperbolic isometry whose axis passes through
-  <span class="math">\(x_0\)</span>, and translates <span class="math">\(x_0\)</span> by distance <span class="math">\(d\)</span>, where <span class="math">\(d\)</span> is a constant we'll fix later, and <span class="math">\(a_2\)</span> be
-  another hyperbolic isometry with translation distance <span class="math">\(d\)</span> whose axis also passes through <span class="math">\(x_0\)</span>,
-  and is perpendicular to the axis of <span class="math">\(a_1\)</span>. For <span class="math">\(d\)</span> large enough, <span class="math">\(a_1\)</span> and <span class="math">\(a_2\)</span> generate a free
-  subgroup of <span class="math">\(\mathrm{PSL}(2, \mathbb{R})\)</span>: this will be our group <span class="math">\(\Gamma\)</span>. To get an upper bound on the
-  critical exponent of <span class="math">\(\Gamma\)</span>, we need to relate the word length of elements of <span class="math">\(\Gamma\)</span> to the
-  distance they translate <span class="math">\(x_0\)</span> by. Suppose we had the following inequality for all elements
-  <span class="math">\(\gamma\)</span> in <span class="math">\(\Gamma\)</span>.
-  </p>
-<div class="math">\begin{align}
-    \label{eq:11}
-    |\gamma| d' - c \leq \mathrm{dist}(x_0, \gamma x_0)
-  \end{align}</div>
-<p>
-  We could use this to determine for what values of <span class="math">\(s\)</span> does the following infinite sum converge
-  (recall that this infinite sum showed up in the construction of the Patterson-Sullivan measure).
-  </p>
-<div class="math">\begin{align*}
-    \sum_{\gamma \in \Gamma} \exp(-s \cdot d(x_0, \gamma x_0))
-    &amp;= \sum_{n=0}^{\infty} \sum_{|\gamma| = n} \exp(-s \cdot d(x_0, \gamma x_0)) \\
-    &amp;\leq \sum_{n=0}^{\infty} \sum_{|\gamma| = n} \exp(-s \cdot (nd' - c)) \\
-    &amp;\leq \sum_{n=0} k 3^n \exp(-snd') \\
-    &amp;= \sum_{n=0} k \exp(\ln 3 - snd')
-  \end{align*}</div>
-<p>
-  Clearly, for large values of <span class="math">\(s\)</span>, this converges, to no one's surprise. But since we want the
-  critical exponent to be less than <span class="math">\(1\)</span>, would like this to converge for <span class="math">\(s &lt; 1\)</span>. We could make that
-  happen if we <span class="math">\(d'\)</span> could get arbitrarily large: we claim that as <span class="math">\(d\)</span> gets larger, so does <span class="math">\(d'\)</span>.</p>
-<p>To prove the above claim, we need to do some elementary hyperbolic geometry. Firstly, observe that
-  if the world length of <span class="math">\(\gamma\)</span> is <span class="math">\(n\)</span>, then the geodesic joining <span class="math">\(x_0\)</span> to <span class="math">\(\gamma x_0\)</span> goes
-  through <span class="math">\((n-2)\)</span> translates of the fundamental domain of <span class="math">\(\Gamma\)</span>. The boundary of the fundamental
-  domain is composed of <span class="math">\(4\)</span> biinfinite geodesics, such that the distance between each pair is
-  bounded below, away from <span class="math">\(0\)</span>. That lower bound on the distance is where <span class="math">\(d'\)</span> comes from. One can
-  explicitly relate <span class="math">\(d\)</span> and <span class="math">\(d'\)</span> in this manner by constructing a hyperbolic right pentagon. The details
-  of this construction are elementary, and left to the reader, and after that point, one uses the formula for
-  hyperbolic right angled pentagons (see Thurston's, <a href="http://library.msri.org/books/gt3m/PDF/Thurston-gt3m.pdf">The Geometry and Topology of Three-Manifolds</a>) to get the formula for <span class="math">\(d'\)</span>. Roughly,
-  as <span class="math">\(d\)</span> gets larger, <span class="math">\(d'\)</span> is approximately <span class="math">\(2d\)</span>, which certainly approaches infinity, proving our claim.</p>
-<p>This example shows us that Patterson-Sullivan theory did give us a strong estimate of the count of the orbit
-  points. This concludes the three part series on counting orbit points. All of this material can be found in
-  Dennis Sullivan's excellent paper, titled <a href="http://www.numdam.org/article/PMIHES_1979__50__171_0.pdf">The density at infinity of a discrete group of hyperbolic motions</a>.</p>
-<div class="footnote">
-<hr>
-<ol>
-<li id="fn:1">
-<p>A convex cocompact group is a discrete subgroup of <span class="math">\(\mathrm{PSL}(2, \mathbb{R})\)</span> that acts cocompacty on
-the convex hull of its limit set. The surface one gets by quotienting the hyperbolic plane by a
-convex-cocompact group is a hyperbolic surface with no cusps, and finitely many <em>flares</em>, which have infinite
-area, and look like one of the ends of <span class="math">\(\mathbb{H}^2\)</span> modulo an hyperbolic element.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-<li id="fn:2">
-<p>See the <a href="/orbit-points-3.0.html">previous post</a> for the definition of critical exponent.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script></div>
-        <hr />
-    </div>
-		
+radius <span class="math">\(r\)</span> based at <span class="math">\(y\)</span>, with the source at <span class="math">\(x\)</span>, denoted by <span class="math">\(\mathcal{O}_r(x, y)\)</span>, is the set …</p> <a class="btn btn-info xsmall" href="/orbit-points-3.0.html">read more</a></div>
+    </div>	
+				
 
  
         

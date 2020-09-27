@@ -100,14 +100,14 @@ necessary software (i.e. <code>texlive-full</code>) installed on it already.</p>
 <a href="https://github.com/aufenthaltsraum/stuff/wiki/Using-GitLab-CI-for-Building-LaTeX">configuration</a>,
 which is rather rudimentary, but is good guide for creating
 our configuration.</p>
-<div class="highlight"><pre><span></span><span class="n">compile_pdf</span><span class="o">:</span>
+<div class="highlight"><pre><span></span><code><span class="n">compile_pdf</span><span class="o">:</span>
   <span class="n">image</span><span class="o">:</span> <span class="n">aergus</span><span class="o">/</span><span class="n">latex</span>
   <span class="n">script</span><span class="o">:</span>
     <span class="o">-</span> <span class="n">latexmk</span> <span class="o">-</span><span class="n">pdf</span> <span class="n">my_file</span><span class="o">.</span><span class="na">tex</span>
   <span class="n">artifacts</span><span class="o">:</span>
     <span class="n">paths</span><span class="o">:</span>
       <span class="o">-</span> <span class="n">my_file</span><span class="o">.</span><span class="na">pdf</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Let's go over this line by line. The first line describes the name of the job that
@@ -127,56 +127,56 @@ web interface.</p>
 in the root directory, but rather organize them by course and assignment number.
 So the TeX file for the fourth assignment for a topology course will have the following
 location: </p>
-<div class="highlight"><pre><span></span><span class="n">Math</span><span class="o">/</span><span class="n">MA232</span><span class="err">\</span> <span class="n">Topology</span><span class="o">/</span><span class="n">assignments</span><span class="o">/</span><span class="mi">04</span><span class="o">/</span><span class="n">assignment_04</span><span class="p">.</span><span class="n">tex</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">Math/MA232\ Topology/assignments/04/assignment_04.tex</span>
+</code></pre></div>
 
 
 <p>What I would like is to make sure the generated PDF for this TeX file is
 placed in the following location.</p>
-<div class="highlight"><pre><span></span><span class="n">Math</span><span class="o">/</span><span class="n">MA232</span><span class="err">\</span> <span class="n">Topology</span><span class="o">/</span><span class="n">assignments</span><span class="o">/</span><span class="n">assignment_04</span><span class="p">.</span><span class="n">pdf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">Math/MA232\ Topology/assignments/assignment_04.pdf</span>
+</code></pre></div>
 
 
 <p>I'd also like my thesis to be compiled on each commit; the location
 of my thesis in the repository is the following.</p>
-<div class="highlight"><pre><span></span><span class="n">Math</span><span class="o">/</span><span class="n">UM400</span><span class="err">\</span> <span class="n">Undergraduate</span><span class="err">\</span> <span class="n">Project</span><span class="o">/</span><span class="n">thesis</span><span class="o">/</span><span class="n">thesis</span><span class="p">.</span><span class="n">tex</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">Math/UM400\ Undergraduate\ Project/thesis/thesis.tex</span>
+</code></pre></div>
 
 
 <p>I wrote up a <code>Makefile</code> that does all the compilation work, and places the PDFs
 in appropriate locations.</p>
-<div class="highlight"><pre><span></span><span class="n">assignments</span><span class="o">:</span>
+<div class="highlight"><pre><span></span><code><span class="n">assignments</span><span class="o">:</span>
     <span class="n">cd</span> <span class="n">Math</span><span class="sr">/MA339\ Geometric\ Analysis/</span><span class="n">assignments</span><span class="o">;</span> <span class="o">\</span>
     <span class="n">latexmk</span> <span class="o">-</span><span class="n">pdf</span> <span class="o">*/</span><span class="n">assignment_</span><span class="o">*.</span><span class="n">tex</span> 
 
 <span class="n">thesis</span><span class="o">:</span>
     <span class="n">cd</span> <span class="n">Math</span><span class="sr">/UM400\ Undergraduate\ Project/</span><span class="n">thesis</span><span class="o">;</span> <span class="o">\</span>
     <span class="n">latexmk</span> <span class="o">-</span><span class="n">pdf</span> <span class="n">thesis</span><span class="o">.</span><span class="na">tex</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>And the <code>.gitlab-ci.yml</code> file I finally ended up using was this.</p>
-<div class="highlight"><pre><span></span><span class="n">stages</span><span class="p">:</span>
-  <span class="o">-</span> <span class="n">build</span>
-<span class="n">compile_pdf</span><span class="p">:</span>
-  <span class="n">image</span><span class="p">:</span> <span class="n">aergus</span><span class="o">/</span><span class="n">latex</span>
-  <span class="n">script</span><span class="p">:</span>
-    <span class="o">-</span> <span class="n">make</span> <span class="n">assignments</span>
-    <span class="o">-</span> <span class="n">make</span> <span class="n">thesis</span>
-  <span class="n">stage</span><span class="p">:</span> <span class="n">build</span>
-  <span class="n">artifacts</span><span class="p">:</span>
-    <span class="n">paths</span><span class="p">:</span>
-      <span class="o">-</span> <span class="ss">&quot;Math/MA339 Geometric Analysis/assignments/assignment_*.pdf&quot;</span>
-      <span class="o">-</span> <span class="ss">&quot;Math/UM400 Undergraduate Project/thesis/thesis.pdf&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="c">stages:</span>
+<span class="c">  - build</span>
+<span class="c">compile_pdf:</span>
+<span class="c">  image: aergus/latex</span>
+<span class="c">  script:</span>
+<span class="c">    - make assignments</span>
+<span class="c">    - make thesis</span>
+<span class="c">  stage: build</span>
+<span class="c">  artifacts:</span>
+<span class="c">    paths:</span>
+<span class="c">      - &quot;Math/MA339 Geometric Analysis/assignments/assignment_*.pdf&quot;</span>
+<span class="c">      - &quot;Math/UM400 Undergraduate Project/thesis/thesis.pdf&quot;</span>
+</code></pre></div>
 
 
 <p>Adding these two files to the root directory of the repository does the trick.
 One issue I came up against was the spaces in filenames shouldn't be escaped
 with a backslash, but rather the whole file name should be enclosed in quotes.</p>
 <p>The generated artifacts can be browsed by visiting the following link.</p>
-<div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gitlab</span><span class="p">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/&lt;</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;/-/</span><span class="n">jobs</span><span class="o">/</span><span class="n">artifacts</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">browse</span><span class="o">?</span><span class="n">job</span><span class="o">=</span><span class="n">compile_pdf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="c">https://gitlab.com/&lt;username&gt;/&lt;repo-name&gt;/-/jobs/artifacts/master/browse?job=compile_pdf</span>
+</code></pre></div>
 
 
 <p>It seems that compiling all the files after a commit takes up four to five minutes on 

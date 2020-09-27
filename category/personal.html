@@ -65,72 +65,84 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="/update-summer-2018.html"><h1>Summer 2018 update</h1></a>
-Posted: Sat 02 June 2018
+            <a href="/update-summer-2020.html"><h1>Summer 2020 update</h1></a>
+Posted: Sat 26 September 2020
 <br>
 <!-- Author <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a> -->
 <!-- <br> -->
 Filed under <a href="/category/personal.html">personal</a>
 <br>
 
-Tags: <a href="/tag/personal.html">personal</a>  
+Tags: <a href="/tag/personal.html">personal</a> <a href="/tag/math.html">math</a> <a href="/tag/programming.html">programming</a> <a href="/tag/climbing.html">climbing</a>  
         </div>
         
-        <div><p>I'm getting lazy. I thought I would be posting more often once the summer holidays started
-but May came and went with nary a post. In my defence, I was fairly busy, dealing with
-the usual bureaucratic nonsense that comes with leaving your institution for good and moving
-to another country. I also started learning algebraic geometry seriously, and will continue to
-focus on it for a major part of the summer. Doing only math gets boring really quick though,
-so I'll interleave the math sessions with some coding. I started learning <a href="https://www.rust-lang.org">Rust</a>,
-and got sidetracked for a while by Emacs. But before I talk about Rust and Emacs, I'll quickly
-outline my math plans for the summer.</p>
-<h3>Math in Summer 2018</h3>
-<p>Given that I'll probably be doing more differential geometry at UMichigan, I figured I'd take
-a break from that in the summer. In fact, I decided to stay as far as I can from analysis as well;
-in fact, anything that involves taking derivatives, or dealing with inequalities. I considered
-studying combinatorics, number theory or algebraic geometry, none of which I know anything about. I was also initially
-encouraged by the fact that they seem as far from analysis as possible. That, of course, was astonishing
-naïveté and ignorance on my part, because <a href="https://en.wikipedia.org/wiki/Generating_function">generating functions</a> 
-crop up everywhere in combinatorics, and sooner or later, one would have to show one of these
-things converges in some small ball in the complex plane, and then we would be back to doing analysis.
-That left number theory and algebraic geometry. Analytic number theory was out of the question, so the choice
-essentially boiled down to algebraic number theory or algebraic geometry. The <a href="https://en.wikipedia.org/wiki/Algebraic_number_theory">Wikipedia page</a>
-for algebraic
-number theory had one picture, and that was a picture of a textbook. The <a href="https://en.wikipedia.org/wiki/Algebraic_geometry">page</a> for 
-algebraic geometry had three, and they were all images of algebraic varieties. That essentially made my decision.</p>
-<p>I started reading Fulton's <a href="www.math.lsa.umich.edu/~wfulton/CurveBook.pdf">book</a> on algebraic curves and assumed
-that would be enough. However, I learnt of an algebraic geometry summer school happening in IISER Pune, and signed
-up for it immediately. But that necessitated a change of pace as they require the attendees to have studied the first chapter of Hartshorne's book
-in excruciating detail. Currently, I'm reading both Fulton and Hartshorne
-simultaneously and I'll probably also resume doing the exercises in Atiyah-Macdonald's commutative algebra book.</p>
-<p>My personal goal is to build up some sort of Rosetta stone like glossary for translating stuff from algebraic
-to differential geometry and vice versa. I'll write more about it once I've made some progress. The long term
-goal is to learn complex algebraic geometry, where I'll be able to use techniques from both differential and
-algebraic geometry. But this will probably take some time, perhaps a year or longer.</p>
-<h3>Rust and Emacs</h3>
-<p>I've been hearing about Rust a lot these days, especially after the release of Firefox Quantum, which
-apparently has large parts written in Rust. I thought it would be nice to pick a low level language
-like Rust. It's certainly more suitable than Python for writing always running daemons, given that
-each individual Python program spins up VM that takes up 20 to 30 megabytes for simple tasks like
-scanning log files or fetching mail.</p>
-<p>So far, I've learnt the basics of Rust's <a href="https://doc.rust-lang.org/book/second-edition/ch04-00-understanding-ownership.html">ownership model</a>,
-and I seem to get the basic idea, although I'll only know that for sure if I use it build something fairly
-complex. I'm racking my brains thinking about what to write: I've considered writing a compression program,
-which might be fun, but I'm afraid it might be a bit too ambitious. I guess I'll figure it out sooner or later.</p>
-<p>As I mentioned earlier, I got sidetracked for a while by Emacs when I was setting it up as a Rust
-environment. As it often happens, instead of just using Emacs as a tool to write code in, I started
-playing around with it instead. Of course, the fact that Emacs essentially is a Lisp environment
-only got me more distracted. I learnt some Emacs Lisp from this really well written <a href="https://www.gnu.org/software/emacs/manual/eintr.html">book</a> 
-and it was rather fun. In fact, just a few days ago, I sent out a <a href="https://github.com/rakanalh/emacs-dashboard/pull/70">pull request</a> 
-extending an Emacs package I use. I'll be thrilled if it gets accepted. Emacs is really nice this way because
-there's practically no barrier between using the editor to examining and changing the source code of the various components
-that make up the editor. I cannot imagine doing the same in Vim. I'm really glad I switched.</p>
-<h3>Conclusion</h3>
-<p>That's it for the summer update. I'll post more (and I hope with greater frequency), hopefully stuff related to algebraic
-geometry and Rust (and maybe even Emacs).</p></div>
+        <div><p>Another 9 months have gone by without a blog post, and this time I don't even have lack of time as an excuse
+my lack of writing. This summer turned out to be quite different from what I had planned, which probably goes
+to show one shouldn't plan too far ahead, in this day and age. I figured it might be a good time make a list of
+what I did this summer, and contrast that with what I was planning to do, before I forget a the details.</p>
+<h2>Math</h2>
+<p>I was supposed to begin my summer with a conference at Haifa, but that of course didn't pan out, given the
+pandemic. The expectation was to follow up the conference by learning more Lie group theory and associated
+dynamics and representation theory, along the lines of what Hee Oh does, but I never got around to doing that.</p>
+<p>However, I did manage to get some math done this summer.</p>
+<ul>
+<li>I worked with my undergraduate collaborator CP<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, and my postdoc mentor BW, as a part of AW's REU, and
+managed to prove some asymptotic bounds on the minimal stretch factors of certain pseudo-Anosov maps. BW is
+still reviewing the paper right now, and fixing up some sections, but hopefully the preprint should be up on
+ArXiV soon.</li>
+<li>I also have enough theorems to write up a paper on the project I have been working on since February. Writing
+it up might be a bit of a nightmare, given how long it's been since the earlier results. But hopefully I should
+have something up on ArXiV in a month.</li>
+<li>I also learnt enough Teichmüller theory and Teichmüller dynamics to pass my prelims, which is definitely
+  good. I am no longer as afraid of complex analytic Teichmüller theory as I used to be.</li>
+</ul>
+<h2>Programming</h2>
+<p>This summer was fairly productive in terms of programming: I went through most of
+<a href="https://www.nand2tetris.org/">nand2tetris</a>, i.e. designed a 16-bit computer from scratch, starting with the
+NAND gates, going up to assembly, followed with an intermediate VM language. I skipped writing a compiler for
+compiling Scheme to the intermediate VM language, because the Scheme specification is more complicated than I
+thought. I followed that up with trying to write a x86-64 microkernel in Rust, but x86-64 has a lot of details
+to debug, so I shelved that project as well. Right now, I am writing some userspace filesystem code that
+should be easier to debug, given that it doesn't work at the kernel level.</p>
+<h2>Climbing</h2>
+<p>My climbing goals have suffered the most since the pandemic began. Originally, I was planning on getting my
+lead climbing certification this summer, and progress to climbing 5.10+ or 5.11- outdoors, but none of that
+happened after the gyms closed down. I've only climbed twice outside since then, and my footwork, among other
+things, has obviously degraded. I'm just hoping that once the gyms open up again, I can recover to the point
+where I was in a month or two.</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>I figure it's a good idea to not name people I know personally in my blog.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         <hr />
     </div>
 		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="/update-summer-2018.html"><h2>Summer 2018 update</h2></a>
+        <div class= "well small"> Posted: Sat 02 June 2018
+<br>
+<!-- Author <a class="url fn" href="/author/sayantan-khan.html">Sayantan Khan</a> -->
+<!-- <br> -->
+Filed under <a href="/category/personal.html">personal</a>
+<br>
+
+Tags: <a href="/tag/personal.html">personal</a>  </div>
+        <div class="summary"><p>I'm getting lazy. I thought I would be posting more often once the summer holidays started
+but May came and went with nary a post. In my defence, I was fairly busy, dealing with
+the usual bureaucratic nonsense that comes with leaving your institution for good and moving
+to another …</p> <a class="btn btn-info xsmall" href="/update-summer-2018.html">read more</a></div>
+    </div>	
+				
 <div class="pagination">
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>

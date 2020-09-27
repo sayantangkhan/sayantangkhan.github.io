@@ -1,5 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Sayantan Khan's Blog - personal</title><link href="/" rel="alternate"></link><link href="/feeds/personal.atom.xml" rel="self"></link><id>/</id><updated>2018-06-02T00:00:00-04:00</updated><entry><title>Summer 2018 update</title><link href="/update-summer-2018.html" rel="alternate"></link><published>2018-06-02T00:00:00-04:00</published><updated>2018-06-02T00:00:00-04:00</updated><author><name>Sayantan Khan</name></author><id>tag:None,2018-06-02:/update-summer-2018.html</id><summary type="html">&lt;p&gt;I'm getting lazy. I thought I would be posting more often once the summer holidays started
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Sayantan Khan's Blog - personal</title><link href="/" rel="alternate"></link><link href="/feeds/personal.atom.xml" rel="self"></link><id>/</id><updated>2020-09-26T00:00:00-04:00</updated><entry><title>Summer 2020 update</title><link href="/update-summer-2020.html" rel="alternate"></link><published>2020-09-26T00:00:00-04:00</published><updated>2020-09-26T00:00:00-04:00</updated><author><name>Sayantan Khan</name></author><id>tag:None,2020-09-26:/update-summer-2020.html</id><summary type="html">&lt;p&gt;Another 9 months have gone by without a blog post, and this time I don't even have lack of time as an excuse
+my lack of writing. This summer turned out to be quite different from what I had planned, which probably goes
+to show one shouldn't plan too far …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Another 9 months have gone by without a blog post, and this time I don't even have lack of time as an excuse
+my lack of writing. This summer turned out to be quite different from what I had planned, which probably goes
+to show one shouldn't plan too far ahead, in this day and age. I figured it might be a good time make a list of
+what I did this summer, and contrast that with what I was planning to do, before I forget a the details.&lt;/p&gt;
+&lt;h2&gt;Math&lt;/h2&gt;
+&lt;p&gt;I was supposed to begin my summer with a conference at Haifa, but that of course didn't pan out, given the
+pandemic. The expectation was to follow up the conference by learning more Lie group theory and associated
+dynamics and representation theory, along the lines of what Hee Oh does, but I never got around to doing that.&lt;/p&gt;
+&lt;p&gt;However, I did manage to get some math done this summer.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I worked with my undergraduate collaborator CP&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;, and my postdoc mentor BW, as a part of AW's REU, and
+managed to prove some asymptotic bounds on the minimal stretch factors of certain pseudo-Anosov maps. BW is
+still reviewing the paper right now, and fixing up some sections, but hopefully the preprint should be up on
+ArXiV soon.&lt;/li&gt;
+&lt;li&gt;I also have enough theorems to write up a paper on the project I have been working on since February. Writing
+it up might be a bit of a nightmare, given how long it's been since the earlier results. But hopefully I should
+have something up on ArXiV in a month.&lt;/li&gt;
+&lt;li&gt;I also learnt enough Teichmüller theory and Teichmüller dynamics to pass my prelims, which is definitely
+  good. I am no longer as afraid of complex analytic Teichmüller theory as I used to be.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Programming&lt;/h2&gt;
+&lt;p&gt;This summer was fairly productive in terms of programming: I went through most of
+&lt;a href="https://www.nand2tetris.org/"&gt;nand2tetris&lt;/a&gt;, i.e. designed a 16-bit computer from scratch, starting with the
+NAND gates, going up to assembly, followed with an intermediate VM language. I skipped writing a compiler for
+compiling Scheme to the intermediate VM language, because the Scheme specification is more complicated than I
+thought. I followed that up with trying to write a x86-64 microkernel in Rust, but x86-64 has a lot of details
+to debug, so I shelved that project as well. Right now, I am writing some userspace filesystem code that
+should be easier to debug, given that it doesn't work at the kernel level.&lt;/p&gt;
+&lt;h2&gt;Climbing&lt;/h2&gt;
+&lt;p&gt;My climbing goals have suffered the most since the pandemic began. Originally, I was planning on getting my
+lead climbing certification this summer, and progress to climbing 5.10+ or 5.11- outdoors, but none of that
+happened after the gyms closed down. I've only climbed twice outside since then, and my footwork, among other
+things, has obviously degraded. I'm just hoping that once the gyms open up again, I can recover to the point
+where I was in a month or two.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;I figure it's a good idea to not name people I know personally in my blog.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content><category term="personal"></category><category term="personal"></category><category term="math"></category><category term="programming"></category><category term="climbing"></category></entry><entry><title>Summer 2018 update</title><link href="/update-summer-2018.html" rel="alternate"></link><published>2018-06-02T00:00:00-04:00</published><updated>2018-06-02T00:00:00-04:00</updated><author><name>Sayantan Khan</name></author><id>tag:None,2018-06-02:/update-summer-2018.html</id><summary type="html">&lt;p&gt;I'm getting lazy. I thought I would be posting more often once the summer holidays started
 but May came and went with nary a post. In my defence, I was fairly busy, dealing with
 the usual bureaucratic nonsense that comes with leaving your institution for good and moving
 to another …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I'm getting lazy. I thought I would be posting more often once the summer holidays started
